@@ -42,6 +42,21 @@
     <EmbeddedResource Include="ContentPages\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="ContentPages\LengthConversionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentPages\AreaConversionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPages\AngleConversionsMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentPages\DecimalAngleConversionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentPages\DegreesMinutesSecondsConversionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -60,6 +75,21 @@
     </Compile>
     <Compile Include="ContentPages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\LengthConversionPage.xaml.cs">
+      <DependentUpon>LengthConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\AreaConversionPage.xaml.cs">
+      <DependentUpon>AreaConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPages\AngleConversionsMenuPage.xaml.cs">
+      <DependentUpon>AngleConversionsMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\DecimalAngleConversionPage.xaml.cs">
+      <DependentUpon>DecimalAngleConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentPages\DegreesMinutesSecondsConversionPage.xaml.cs">
+      <DependentUpon>DegreesMinutesSecondsConversionPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
