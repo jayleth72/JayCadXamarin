@@ -41,10 +41,10 @@
                 Factor=1,
                 Constant=20}">
             <Label Text="Conversions Menu" Style="{StaticResource pageLabel}" />
-            <Button Text="Length Conversion" Style="{StaticResource menuButton}" />
-            <Button Text="Area Conversion" Style="{StaticResource menuButton}" />
-            <Button Text="Angle Conversions" Style="{StaticResource menuButton}" />
-            <Button Text="Main Menu" Style="{StaticResource menuButton}" />
+            <Button Text="Length Conversion" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" />
+            <Button Text="Area Conversion" Style="{StaticResource menuButton}" Clicked="Handle_Clicked"/>
+            <Button Text="Angle Conversions" Style="{StaticResource menuButton}" Clicked="Handle_Clicked"/>
+            <Button Text="Main Menu" Style="{StaticResource menuButton}" Clicked="Handle_Clicked"/>
         </StackLayout>
     </RelativeLayout>
 </ContentPage>
