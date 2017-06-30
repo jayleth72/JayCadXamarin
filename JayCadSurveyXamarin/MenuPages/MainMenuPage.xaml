@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
     x:Class="JayCadSurveyXamarin.MenuPages.MainMenuPage"
     BackgroundColor="{StaticResource mainColorBackground}">
 	<ContentPage.Padding>
@@ -8,7 +9,17 @@
             iOS="0, 0, 0, 0"/>
     </ContentPage.Padding>
     <RelativeLayout>
-        <BoxView BackgroundColor="#3B3AA3" x:Name="banner"
+       <BoxView BackgroundColor="{StaticResource bannerBackground}" x:Name="banner"
+            RelativeLayout.HeightConstraint="{ConstraintExpression 
+                Type=RelativeToParent,
+                Property=Height,
+                Factor=0.1}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression
+                Type=RelativeToParent,
+                Property=Width,
+                Factor=1}" />
+       <Image Source="{local:EmbeddedImage JayCadSurveyXamarin.Images.top_banner.png}"
+            x:Name="bannerImageLogo"
             RelativeLayout.HeightConstraint="{ConstraintExpression 
                 Type=RelativeToParent,
                 Property=Height,

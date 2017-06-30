@@ -4,6 +4,7 @@
 		<!-- Application resource dictionary -->
         <ResourceDictionary>
             <Color x:Key="mainColorBackground">#283460</Color>
+            <Color x:Key="bannerBackground">#3E2A98</Color>
             <Style x:Key="menuButton" TargetType="Button">
                 <Setter Property="BorderRadius" Value="20" />
                 <Setter Property="FontSize" Value="20" />
