@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
-    x:Class="JayCadSurveyXamarin.MenuPages.MainMenuPage"
-    BackgroundColor="{StaticResource mainColorBackground}">
-	<ContentPage.Padding>
+    x:Class="JayCadSurveyXamarin.MenuPages.ConversionsMenuPage"
+	BackgroundColor="{StaticResource mainColorBackground}">
+    <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
             iOS="0, 0, 0, 0"/>
     </ContentPage.Padding>
@@ -40,10 +40,12 @@
                 Property=Height,
                 Factor=1,
                 Constant=20}">
-            <Label Text="Main Menu" Style="{StaticResource pageLabel}" />
-            <Button Text="Conversions" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" />
-            <Button Text="Angle Add/Subtract" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" />
-            <Button Text="About" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" />
+            <Label Text="Conversions Menu" Style="{StaticResource pageLabel}" />
+            <Button Text="Length Conversion" Style="{StaticResource menuButton}" />
+            <Button Text="Area Conversion" Style="{StaticResource menuButton}" />
+            <Button Text="Angle Conversions" Style="{StaticResource menuButton}" />
+            <Button Text="Main Menu" Style="{StaticResource menuButton}" />
         </StackLayout>
     </RelativeLayout>
 </ContentPage>
+
