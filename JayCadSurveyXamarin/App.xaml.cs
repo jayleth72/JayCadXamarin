@@ -8,7 +8,7 @@ namespace JayCadSurveyXamarin
         {
             InitializeComponent();
 
-            MainPage = new JayCadSurveyXamarinPage();
+            MainPage = new NavigationPage(new MenuPages.MainMenuPage());
         }
 
         protected override void OnStart()
