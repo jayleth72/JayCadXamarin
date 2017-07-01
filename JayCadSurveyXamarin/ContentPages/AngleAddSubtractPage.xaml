@@ -3,10 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
     x:Class="JayCadSurveyXamarin.ContentPages.AngleAddSubtractPage"
-    BackgroundColor="{StaticResource mainColorBackground}">
+    BackgroundColor="{StaticResource mainColorBackground}"
+    NavigationPage.HasNavigationBar="false"
+    NavigationPage.HasBackButton="false" >
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
-            iOS="0, 0, 0, 0"/>
+            iOS="0, 20, 0, 0"/>
     </ContentPage.Padding>
     <RelativeLayout>
        <BoxView BackgroundColor="{StaticResource bannerBackground}" x:Name="banner"
@@ -41,7 +43,12 @@
                 Factor=1,
                 Constant=20}">
             <Label Text="Angle Add/Subtract" Style="{StaticResource pageLabel}" />
-
+           
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                <Button Text="Back" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" WidthRequest="150" />
+            </StackLayout>
+               
         </StackLayout>
+
     </RelativeLayout>
 </ContentPage>

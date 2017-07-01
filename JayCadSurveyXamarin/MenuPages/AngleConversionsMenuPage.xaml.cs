@@ -24,6 +24,9 @@ namespace JayCadSurveyXamarin.MenuPages
 				case "DEG/MIN/SEC Conversion":
                     await Navigation.PushAsync(new ContentPages.DegreesMinutesSecondsConversionPage());
 					break;
+				case "Back":
+					await Navigation.PopAsync();
+					break;
 				case "Main Menu":
 					await Navigation.PopToRootAsync();
 					break;

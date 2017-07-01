@@ -7,9 +7,16 @@ namespace JayCadSurveyXamarin.ContentPages
 {
     public partial class AboutPage : ContentPage
     {
-        public AboutPage()
+		public AboutPage()
+		{
+			InitializeComponent();
+		}
+
+        async void Handle_Clicked(object sender, System.EventArgs e)
         {
-            InitializeComponent();
+            await Navigation.PopAsync();
         }
+
+      
     }
 }

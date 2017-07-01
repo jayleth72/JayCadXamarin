@@ -28,7 +28,7 @@ namespace JayCadSurveyXamarin.MenuPages
                     await Navigation.PushAsync(new MenuPages.AngleConversionsMenuPage());
 					break;
 				case "Main Menu":
-                    await Navigation.PopToRootAsync();
+                    await Navigation.PopAsync();
 					break;
 				default:
 					break;
