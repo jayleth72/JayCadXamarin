@@ -48,7 +48,7 @@
                     <TableSection Title="Enter Convert From Units" >
                         <EntryCell x:Name="MainUnit" Label="Feet" Keyboard="Numeric" />
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                  <Picker Title="Inches"
                                     HorizontalOptions="FillAndExpand">
                                     <Picker.Items>
@@ -85,12 +85,14 @@
                                         <x:String>15/16</x:String>
                                      </Picker.Items>
                                  </Picker>
+                                 <Button Text="  Clear  "
+                                    BackgroundColor="#F8CE18" />
                             </StackLayout>
                        </ViewCell>
                     </TableSection>
                     <TableSection Title="Select Convert To Units" >
                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                  <Button Text="Convert"
                                     HorizontalOptions="FillAndExpand"
                                     BackgroundColor="#F8CE18"/>
@@ -105,6 +107,44 @@
                                  </Picker>
                             </StackLayout>
                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Results of your conversion">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
+                                <Label x:Name="ConvertTo"
+                                    Text="Metres" 
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="#B7B5CF" 
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"/>
+                                <Button Text="  Clear Result  "
+                                    BackgroundColor="#F8CE18" />
+                            </StackLayout>
+                       </ViewCell>
+                    </TableSection>
+                   <TableSection Title="Length Stack">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
+                                <Editor x:Name="LengthStack" 
+                                    BackgroundColor="#B7B5CF"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand" />
+                                <Button Text="  Clear Result  "
+                                    BackgroundColor="#F8CE18" />
+                            </StackLayout>
+                       </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Running Total">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
+                               <Label x:Name="RunningTotal"
+                                            Text="Running Total" 
+                                            HorizontalOptions="FillAndExpand"
+                                            BackgroundColor="#B7B5CF" 
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>        
                     </TableSection>
                 </TableView>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
