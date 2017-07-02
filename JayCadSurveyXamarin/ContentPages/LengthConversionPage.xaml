@@ -47,8 +47,46 @@
                 <TableView Intent="Form">
                     <TableSection Title="Enter Convert From Units" >
                         <EntryCell x:Name="MainUnit" Label="Feet" Keyboard="Numeric" />
-                        <EntryCell x:Name="Inches" Label="Inches" Keyboard="Numeric" />
-                        <EntryCell x:Name="Fractions" Label="Fractions" Keyboard="Numeric" />
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
+                                 <Picker Title="Inches"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Picker.Items>
+                                        <x:String>1&quot;</x:String>
+                                        <x:String>2&quot;</x:String>
+                                        <x:String>3&quot;</x:String>
+                                        <x:String>4&quot;</x:String>
+                                        <x:String>5&quot;</x:String>
+                                        <x:String>6&quot;</x:String>
+                                        <x:String>7&quot;</x:String>
+                                        <x:String>8&quot;</x:String>
+                                        <x:String>9&quot;</x:String>
+                                        <x:String>10&quot;</x:String>
+                                        <x:String>11&quot;</x:String>
+                                    </Picker.Items>
+                                 </Picker>
+                                 <Picker Title="Fractions"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Picker.Items>
+                                        <x:String>1/16</x:String>
+                                        <x:String>2/16</x:String>
+                                        <x:String>3/16</x:String>
+                                        <x:String>4/16</x:String>
+                                        <x:String>5/16</x:String>
+                                        <x:String>6/16</x:String>
+                                        <x:String>7/16</x:String>
+                                        <x:String>8/16</x:String>
+                                        <x:String>9/16</x:String>
+                                        <x:String>10/16</x:String>
+                                        <x:String>11/16</x:String>
+                                        <x:String>12/16</x:String>
+                                        <x:String>13/16</x:String>
+                                        <x:String>14/16</x:String>
+                                        <x:String>15/16</x:String>
+                                     </Picker.Items>
+                                 </Picker>
+                            </StackLayout>
+                       </ViewCell>
                     </TableSection>
                     <TableSection Title="Select Convert To Units" >
                        <ViewCell>
@@ -56,11 +94,14 @@
                                  <Button Text="Convert"
                                     HorizontalOptions="FillAndExpand"
                                     BackgroundColor="#F8CE18"/>
-                                 <Picker Title="Convert Units" HorizontalOptions="FillAndExpand">
-                                    <x:String>Metres to Feet</x:String>
-                                    <x:String>Feet to Metres</x:String>
-                                    <x:String>Metres to Links</x:String>
-                                    <x:String>Links to Metres</x:String>
+                                 <Picker Title="Convert Units"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Picker.Items>
+                                        <x:String>Metres to Feet</x:String>
+                                        <x:String>Feet to Metres</x:String>
+                                        <x:String>Metres to Links</x:String>
+                                        <x:String>Links to Metres</x:String>
+                                    </Picker.Items>
                                  </Picker>
                             </StackLayout>
                        </ViewCell>
