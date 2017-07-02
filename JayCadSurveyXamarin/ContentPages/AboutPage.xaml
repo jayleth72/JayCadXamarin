@@ -43,7 +43,14 @@
                 Factor=1,
                 Constant=20}">
             <Label Text="About JayCad" Style="{StaticResource pageLabel}" />
-            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
                 <Button Text="Back" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" WidthRequest="150" />
             </StackLayout>

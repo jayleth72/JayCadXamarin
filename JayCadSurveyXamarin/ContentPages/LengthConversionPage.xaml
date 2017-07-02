@@ -10,44 +10,73 @@
         <OnPlatform x:TypeArguments="Thickness"
             iOS="0, 20, 0, 0"/>
     </ContentPage.Padding>
-    <RelativeLayout>
-       <BoxView BackgroundColor="{StaticResource bannerBackground}" x:Name="banner"
-            RelativeLayout.HeightConstraint="{ConstraintExpression 
-                Type=RelativeToParent,
-                Property=Height,
-                Factor=0.1}"
-            RelativeLayout.WidthConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Width,
-                Factor=1}" />
-       <Image Source="{local:EmbeddedImage JayCadSurveyXamarin.Images.top_banner.png}"
-            x:Name="bannerImageLogo"
-            RelativeLayout.HeightConstraint="{ConstraintExpression 
-                Type=RelativeToParent,
-                Property=Height,
-                Factor=0.1}"
-            RelativeLayout.WidthConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Width,
-                Factor=1}" />
-       <StackLayout Padding="30, 0, 30, 0" Spacing="30"
-            RelativeLayout.WidthConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Width,
-                Factor=1}"
-                
-            RelativeLayout.YConstraint="{ConstraintExpression
-                Type=RelativeToView,
-                ElementName=banner,
-                Property=Height,
-                Factor=1,
-                Constant=20}">
-            <Label Text="Length Conversion" Style="{StaticResource pageLabel}" />
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
-                <Button Text="Back" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" WidthRequest="150" />
-                <Button Text="Main Menu" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" WidthRequest="150" />
+    <ScrollView>
+        <RelativeLayout>
+           <BoxView BackgroundColor="{StaticResource bannerBackground}" x:Name="banner"
+                RelativeLayout.HeightConstraint="{ConstraintExpression 
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.1}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}" />
+           <Image Source="{local:EmbeddedImage JayCadSurveyXamarin.Images.top_banner.png}"
+                x:Name="bannerImageLogo"
+                RelativeLayout.HeightConstraint="{ConstraintExpression 
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.1}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}" />
+           <StackLayout Padding="30, 0, 30, 0" Spacing="10"
+                RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    
+                RelativeLayout.YConstraint="{ConstraintExpression
+                    Type=RelativeToView,
+                    ElementName=banner,
+                    Property=Height,
+                    Factor=1,
+                    Constant=20}">
+                <Label Text="Length Conversion" Style="{StaticResource pageLabel}" />
+                <TableView Intent="Form">
+                    <TableSection Title="Enter Convert From Units" >
+                        <EntryCell x:Name="MainUnit" Label="Feet" Keyboard="Numeric" />
+                        <EntryCell x:Name="Inches" Label="Inches" Keyboard="Numeric" />
+                        <EntryCell x:Name="Fractions" Label="Fractions" Keyboard="Numeric" />
+                    </TableSection>
+                    <TableSection Title="Select Convert To Units" >
+                       <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
+                                 <Button Text="Convert"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="#F8CE18"/>
+                                 <Picker Title="Convert Units" HorizontalOptions="FillAndExpand">
+                                    <x:String>Metres to Feet</x:String>
+                                    <x:String>Feet to Metres</x:String>
+                                    <x:String>Metres to Links</x:String>
+                                    <x:String>Links to Metres</x:String>
+                                 </Picker>
+                            </StackLayout>
+                       </ViewCell>
+                    </TableSection>
+                </TableView>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
+                    <Button Text="Back"
+                        Style="{StaticResource menuButton}"
+                        Clicked="Handle_Clicked"
+                        WidthRequest="150" />
+                    <Button Text="Main Menu"
+                        Style="{StaticResource menuButton}"
+                        Clicked="Handle_Clicked"
+                        WidthRequest="150" />
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 </ContentPage>
