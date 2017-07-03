@@ -90,7 +90,7 @@
                     <TableSection Title="Select Convert To Units" >
                        <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                 <Button x:Name="ConvertFromBtn" Text="Convert" Style="{StaticResource pageButton}" HorizontalOptions="FillAndExpand" />
+                                 <Button x:Name="ConvertFromBtn" Text="Convert" Style="{StaticResource pageButton}" HorizontalOptions="FillAndExpand" Clicked="Handle_Clicked" />
                                  <Picker x:Name="ConvertToPicker" Title="Convert Units" HorizontalOptions="FillAndExpand">
                                     <Picker.Items>
                                         <x:String>Metres to Feet</x:String>
