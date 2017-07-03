@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
+    xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
+    xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
     x:Class="JayCadSurveyXamarin.ContentPages.LengthConversionPage"
     BackgroundColor="{StaticResource mainColorBackground}"
     NavigationPage.HasNavigationBar="false"
@@ -91,14 +93,13 @@
                        <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                  <Button x:Name="ConvertFromBtn" Text="Convert" Style="{StaticResource pageButton}" HorizontalOptions="FillAndExpand" Clicked="Handle_Clicked" />
-                                 <Picker x:Name="ConvertToPicker" Title="Convert Units" HorizontalOptions="FillAndExpand">
-                                    <Picker.Items>
-                                        <x:String>Metres to Feet</x:String>
-                                        <x:String>Feet to Metres</x:String>
-                                        <x:String>Metres to Links</x:String>
-                                        <x:String>Links to Metres</x:String>
-                                    </Picker.Items>
-                                 </Picker>
+                                 <Picker x:Name="ConvertToUnit"
+                                    Title="Convert Units"
+                                    HorizontalOptions="FillAndExpand"
+                                    SelectedIndexChanged="Handle_SelectedIndexChanged"
+                                    ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
+                                    ItemDisplayBinding="{Binding ConvertName}"
+                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" />
                             </StackLayout>
                        </ViewCell>
                     </TableSection>

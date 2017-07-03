@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using JayCadSurveyXamarin.Model;
 using Xamarin.Forms;
 
 namespace JayCadSurveyXamarin.ContentPages
@@ -10,6 +10,9 @@ namespace JayCadSurveyXamarin.ContentPages
         public LengthConversionPage()
         {
             InitializeComponent();
+
+			//LengthConversion selectedConversion = (LengthConversion)ConvertToUnit.SelectedItem;
+			//MainUnitEntry.Label = selectedConversion.ConvertFrom;
         }
 
         async void Handle_Clicked(object sender, System.EventArgs e)
@@ -31,27 +34,74 @@ namespace JayCadSurveyXamarin.ContentPages
 					await Navigation.PopAsync();
 					break;
                 case "clear":
-                    await DisplayAlert("butt", "butt", "OK");
+                    // clear the units from user input
+                    Clear_ConvertFromUnits();
                     break;
 				case "convert":
-					await DisplayAlert("pressed convert", "pressed convert", "OK");
+                    Convert_Units();
 					break;
 				case "clearresult":
-					await DisplayAlert("pressed clear result", "clear result", "OK");
+                    Clear_Result();
 					break;
 				case "clearstack":
-					await DisplayAlert("pressed clear stack", "clear stack", "OK");
+                    Clear_Stack();
 					break;
 				case "showstack":
-					await DisplayAlert("pressed show stack", "show stack", "OK");
+                    Show_Stack(); 
 					break;
 				default:
 					break;
             }
 		}
 
-        private void Clear_ConvertFromUnits() {
-            
+		void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
+		{
+            LengthConversion selectedConversion = (LengthConversion)ConvertToUnit.SelectedItem;
+            MainUnitEntry.Label = selectedConversion.ConvertFrom;
+            // get the
+		}
+
+
+		/// <summary>
+		/// clear the units from user input
+		/// </summary>
+		private void Clear_ConvertFromUnits() {
+            MainUnitEntry.Text = "";
+            InchesPicker.SelectedItem = null;
+            FractionsPicker.SelectedItem = null;
         }
+
+        /// <summary>
+        /// Converts Value from User Input to selected units
+        /// </summary>
+		private void Convert_Units()
+		{
+			DisplayAlert("pressed convert", "pressed convert", "OK");
+		}
+
+		/// <summary>
+		/// Clear the result of the conversion
+		/// </summary>
+		private void Clear_Result()
+		{
+			DisplayAlert("pressed clear result", "clear result", "OK");
+		}
+
+		/// <summary>
+		/// Clear the stack that contains previous user conversions
+		/// </summary>
+		private void Clear_Stack()
+		{
+			DisplayAlert("pressed clear stack", "clear stack", "OK");
+		}
+
+		/// <summary>
+		/// Show the stack page with all previous user conversions
+		/// </summary>
+		private void Show_Stack()
+		{
+			DisplayAlert("pressed show stack", "show stack", "OK");
+		}
+
     }
 }
