@@ -26,7 +26,7 @@ namespace JayCadSurveyXamarin.ContentPages
 					break;
 				default:
 					break;
-			}
+            }
 		}
     }
 }

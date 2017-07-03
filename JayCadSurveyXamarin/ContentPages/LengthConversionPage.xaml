@@ -31,7 +31,7 @@
                     Type=RelativeToParent,
                     Property=Width,
                     Factor=1}" />
-           <StackLayout Padding="30, 0, 30, 0" Spacing="10"
+           <StackLayout Padding="30, 0, 30, 0" Spacing="10" 
                 RelativeLayout.WidthConstraint="{ConstraintExpression
                     Type=RelativeToParent,
                     Property=Width,
@@ -42,15 +42,14 @@
                     ElementName=banner,
                     Property=Height,
                     Factor=1,
-                    Constant=20}">
+                    Constant=15}">
                 <Label Text="Length Conversion" Style="{StaticResource pageLabel}" />
-                <TableView Intent="Form">
+                <TableView Intent="Form" HeightRequest="470"  >
                     <TableSection Title="Enter Convert From Units" >
-                        <EntryCell x:Name="MainUnit" Label="Feet" Keyboard="Numeric" />
+                        <EntryCell x:Name="MainUnitEntry" Label="Feet" Keyboard="Numeric" />
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                 <Picker Title="Inches"
-                                    HorizontalOptions="FillAndExpand">
+                                 <Picker x:Name="InchesPicker" Title="Inches" HorizontalOptions="FillAndExpand">
                                     <Picker.Items>
                                         <x:String>1&quot;</x:String>
                                         <x:String>2&quot;</x:String>
@@ -65,8 +64,7 @@
                                         <x:String>11&quot;</x:String>
                                     </Picker.Items>
                                  </Picker>
-                                 <Picker Title="Fractions"
-                                    HorizontalOptions="FillAndExpand">
+                                 <Picker x:Name="FractionsPicker" Title="Fractions" HorizontalOptions="FillAndExpand">
                                     <Picker.Items>
                                         <x:String>1/16</x:String>
                                         <x:String>2/16</x:String>
@@ -85,19 +83,15 @@
                                         <x:String>15/16</x:String>
                                      </Picker.Items>
                                  </Picker>
-                                 <Button Text="  Clear  "
-                                    BackgroundColor="#F8CE18" />
-                            </StackLayout>
+                                 <Button x:Name="ClearConvertFromBtn" Text="  Clear  " Style="{StaticResource pageButton}" Clicked="Handle_Clicked" />
+                           </StackLayout>
                        </ViewCell>
                     </TableSection>
                     <TableSection Title="Select Convert To Units" >
                        <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                 <Button Text="Convert"
-                                    HorizontalOptions="FillAndExpand"
-                                    BackgroundColor="#F8CE18"/>
-                                 <Picker Title="Convert Units"
-                                    HorizontalOptions="FillAndExpand">
+                                 <Button x:Name="ConvertFromBtn" Text="Convert" Style="{StaticResource pageButton}" HorizontalOptions="FillAndExpand" />
+                                 <Picker x:Name="ConvertToPicker" Title="Convert Units" HorizontalOptions="FillAndExpand">
                                     <Picker.Items>
                                         <x:String>Metres to Feet</x:String>
                                         <x:String>Feet to Metres</x:String>
@@ -111,39 +105,22 @@
                     <TableSection Title="Results of your conversion">
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                                <Label x:Name="ConvertTo"
-                                    Text="Metres" 
-                                    HorizontalOptions="FillAndExpand"
-                                    BackgroundColor="#B7B5CF" 
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center"/>
-                                <Button Text="  Clear Result  "
-                                    BackgroundColor="#F8CE18" />
+                                <Label x:Name="ConvertToResultLbl" Text="Metres" Style="{StaticResource pageDisplayLabel}" />
+                                <Button x:Name="ClearConvertToResultBtn" Text="  Clear Result  " Style="{StaticResource pageButton}" HorizontalOptions="End" Clicked="Handle_Clicked" />
                             </StackLayout>
                        </ViewCell>
                     </TableSection>
-                   <TableSection Title="Length Stack">
+                    <TableSection Title="Running Total and Stack" >
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                                <Editor x:Name="LengthStack" 
-                                    BackgroundColor="#B7B5CF"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand" />
-                                <Button Text="  Clear Result  "
-                                    BackgroundColor="#F8CE18" />
+                               <Label x:Name="RunningTotalLbl" Text="Running Total" Style="{StaticResource pageDisplayLabel}" />
                             </StackLayout>
-                       </ViewCell>
-                    </TableSection>
-                    <TableSection Title="Running Total">
+                        </ViewCell> 
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                               <Label x:Name="RunningTotal"
-                                            Text="Running Total" 
-                                            HorizontalOptions="FillAndExpand"
-                                            BackgroundColor="#B7B5CF" 
-                                            HorizontalTextAlignment="Center"
-                                            VerticalTextAlignment="Center"/>
-                            </StackLayout>
+                               <Button x:Name="ClearStackBtn" Text="Clear Stack" Style="{StaticResource pageButton}" Clicked="Handle_Clicked" />
+                               <Button x:Name="ShowStackBtn" Text="Show Stack" Style="{StaticResource pageButton}" Clicked="Handle_Clicked" />
+                           </StackLayout>
                         </ViewCell>        
                     </TableSection>
                 </TableView>
