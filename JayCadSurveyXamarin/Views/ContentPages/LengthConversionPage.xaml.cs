@@ -7,13 +7,16 @@ namespace JayCadSurveyXamarin.ContentPages
 {
     public partial class LengthConversionPage : ContentPage
     {
-        public LengthConversionPage()
+        LengthConversion selectedConversion;
+
+		public LengthConversionPage()
         {
             InitializeComponent();
-
-			//LengthConversion selectedConversion = (LengthConversion)ConvertToUnit.SelectedItem;
-			//MainUnitEntry.Label = selectedConversion.ConvertFrom;
-        }
+            ConvertToUnit.SelectedIndex = 0;
+            selectedConversion = (LengthConversion) ConvertToUnit.SelectedItem;
+            MainUnitEntry.Placeholder = selectedConversion.ConvertFrom;
+            ConvertToResultLbl.Text = selectedConversion.ConvertTo;
+		}
 
         async void Handle_Clicked(object sender, System.EventArgs e)
 		{
@@ -56,9 +59,20 @@ namespace JayCadSurveyXamarin.ContentPages
 
 		void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-            LengthConversion selectedConversion = (LengthConversion)ConvertToUnit.SelectedItem;
-            MainUnitEntry.Label = selectedConversion.ConvertFrom;
-            // get the
+            selectedConversion = (LengthConversion) ConvertToUnit.SelectedItem;
+            MainUnitEntry.Placeholder = selectedConversion.ConvertFrom;
+            ConvertToResultLbl.Text = selectedConversion.ConvertTo;
+
+            if(selectedConversion.ConvertFrom == "Feet")
+            {
+                InchesPicker.IsVisible = true;
+                FractionsPicker.IsVisible = true;
+            }
+            else
+            {
+                InchesPicker.IsVisible = false;
+                FractionsPicker.IsVisible = false;
+            }    
 		}
 
 

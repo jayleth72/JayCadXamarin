@@ -48,10 +48,27 @@
                 <Label Text="Length Conversion" Style="{StaticResource pageLabel}" />
                 <TableView Intent="Form" HeightRequest="470"  >
                     <TableSection Title="Enter Convert From Units" >
-                        <EntryCell x:Name="MainUnitEntry" Label="Feet" Keyboard="Numeric" />
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                 <Picker x:Name="InchesPicker" Title="Inches" HorizontalOptions="FillAndExpand">
+                                 <Entry x:Name="MainUnitEntry"
+                                    Placeholder="Metres"
+                                    Keyboard="Numeric" 
+                                    HorizontalOptions="FillAndExpand"
+                                    WidthRequest="140"/>
+                                 <Button x:Name="ClearConvertFromBtn"
+                                    Text="  Clear  "
+                                    Style="{StaticResource pageButton}"
+                                    Clicked="Handle_Clicked"
+                                    HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                                 <Picker x:Name="InchesPicker"
+                                    Title="Inches"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="false" >
                                     <Picker.Items>
                                         <x:String>1&quot;</x:String>
                                         <x:String>2&quot;</x:String>
@@ -66,7 +83,10 @@
                                         <x:String>11&quot;</x:String>
                                     </Picker.Items>
                                  </Picker>
-                                 <Picker x:Name="FractionsPicker" Title="Fractions" HorizontalOptions="FillAndExpand">
+                                 <Picker x:Name="FractionsPicker"
+                                    Title="Fractions"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="false" >
                                     <Picker.Items>
                                         <x:String>1/16</x:String>
                                         <x:String>2/16</x:String>
@@ -85,7 +105,7 @@
                                         <x:String>15/16</x:String>
                                      </Picker.Items>
                                  </Picker>
-                                 <Button x:Name="ClearConvertFromBtn" Text="  Clear  " Style="{StaticResource pageButton}" Clicked="Handle_Clicked" />
+                                
                            </StackLayout>
                        </ViewCell>
                     </TableSection>
@@ -99,14 +119,15 @@
                                     SelectedIndexChanged="Handle_SelectedIndexChanged"
                                     ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
                                     ItemDisplayBinding="{Binding ConvertName}"
-                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" />
+                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" >
+                                 </Picker>
                             </StackLayout>
                        </ViewCell>
                     </TableSection>
                     <TableSection Title="Results of your conversion">
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                                <Label x:Name="ConvertToResultLbl" Text="Metres" Style="{StaticResource pageDisplayLabel}" />
+                                <Label x:Name="ConvertToResultLbl" Text="Feet" Style="{StaticResource pageDisplayLabel}" />
                                 <Button x:Name="ClearConvertToResultBtn" Text="  Clear Result  " Style="{StaticResource pageButton}" HorizontalOptions="End" Clicked="Handle_Clicked" />
                             </StackLayout>
                        </ViewCell>

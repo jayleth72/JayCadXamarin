@@ -29,32 +29,32 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml" />
-    <EmbeddedResource Include="MenuPages\MainMenuPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Images\top_banner.png" />
-    <EmbeddedResource Include="MenuPages\ConversionsMenuPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentPages\AngleAddSubtractPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\AngleAddSubtractPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentPages\AboutPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\AreaConversionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentPages\LengthConversionPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\DecimalAngleConversionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentPages\AreaConversionPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\DegreesMinutesSecondsConversionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuPages\AngleConversionsMenuPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\LengthConversionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentPages\DecimalAngleConversionPage.xaml">
+    <EmbeddedResource Include="Views\MenuPages\AngleConversionsMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContentPages\DegreesMinutesSecondsConversionPage.xaml">
+    <EmbeddedResource Include="Views\MenuPages\ConversionsMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MenuPages\MainMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -63,37 +63,37 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MenuPages\MainMenuPage.xaml.cs">
-      <DependentUpon>MainMenuPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MarkupExtensions\EmbeddedImage.cs" />
-    <Compile Include="MenuPages\ConversionsMenuPage.xaml.cs">
-      <DependentUpon>ConversionsMenuPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentPages\AngleAddSubtractPage.xaml.cs">
-      <DependentUpon>AngleAddSubtractPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentPages\AboutPage.xaml.cs">
-      <DependentUpon>AboutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentPages\LengthConversionPage.xaml.cs">
-      <DependentUpon>LengthConversionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentPages\AreaConversionPage.xaml.cs">
-      <DependentUpon>AreaConversionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MenuPages\AngleConversionsMenuPage.xaml.cs">
-      <DependentUpon>AngleConversionsMenuPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentPages\DecimalAngleConversionPage.xaml.cs">
-      <DependentUpon>DecimalAngleConversionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ContentPages\DegreesMinutesSecondsConversionPage.xaml.cs">
-      <DependentUpon>DegreesMinutesSecondsConversionPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Behaviours\NumberValidationBehavior.cs" />
     <Compile Include="Model\LengthConversion.cs" />
     <Compile Include="ViewModel\ChosenLengthConversion.cs" />
+    <Compile Include="Views\ContentPages\AboutPage.xaml.cs">
+      <DependentUpon>..\..\ContentPages\AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\AngleAddSubtractPage.xaml.cs">
+      <DependentUpon>..\..\ContentPages\AngleAddSubtractPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\AreaConversionPage.xaml.cs">
+      <DependentUpon>..\..\ContentPages\AreaConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\DecimalAngleConversionPage.xaml.cs">
+      <DependentUpon>..\..\ContentPages\DecimalAngleConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\DegreesMinutesSecondsConversionPage.xaml.cs">
+      <DependentUpon>..\..\ContentPages\DegreesMinutesSecondsConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\LengthConversionPage.xaml.cs">
+      <DependentUpon>..\..\ContentPages\LengthConversionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuPages\AngleConversionsMenuPage.xaml.cs">
+      <DependentUpon>..\..\MenuPages\AngleConversionsMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuPages\ConversionsMenuPage.xaml.cs">
+      <DependentUpon>..\..\MenuPages\ConversionsMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuPages\MainMenuPage.xaml.cs">
+      <DependentUpon>..\..\MenuPages\MainMenuPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -110,13 +110,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MenuPages\" />
-    <Folder Include="ContentPages\" />
     <Folder Include="MarkupExtensions\" />
     <Folder Include="Images\" />
     <Folder Include="Behaviours\" />
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\ContentPages\" />
+    <Folder Include="Views\MenuPages\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
