@@ -3,12 +3,17 @@ using System.Collections.Generic;
 
 namespace JayCadSurveyXamarin.Model
 {
-    public class LengthConversion
+	/// <summary>
+	/// Length conversion.
+	/// Contains a list for use in the ConvertToUnit Picker in the LengthConversionPage
+    /// List contains conversions with display names and conversion factors 
+	/// </summary>
+	public class LengthConversion
     {
-        public string ConvertFrom { get; set; }
-		public string ConvertTo { get; set; }
-        public string ConvertName { get; set; }
-        public double ConversionFactor { get; set; }
+        public string ConvertFrom { get; set; }         // The Unit the user wants to convert
+		public string ConvertTo { get; set; }           // The Unit the user wants tp convert to
+        public string ConvertName { get; set; }         // The Name of the Unit
+        public double ConversionFactor { get; set; }    // Numeric conversion factor
 
         static List<LengthConversion> _conversionList;
         public static List<LengthConversion> AllLengthConversions

@@ -13,9 +13,7 @@ namespace JayCadSurveyXamarin.ContentPages
         {
             InitializeComponent();
             ConvertToUnit.SelectedIndex = 0;
-            selectedConversion = (LengthConversion) ConvertToUnit.SelectedItem;
-            MainUnitEntry.Placeholder = selectedConversion.ConvertFrom;
-            ConvertToResultLbl.Text = selectedConversion.ConvertTo;
+            UpdateLabels();
 		}
 
         async void Handle_Clicked(object sender, System.EventArgs e)
@@ -59,9 +57,7 @@ namespace JayCadSurveyXamarin.ContentPages
 
 		void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-            selectedConversion = (LengthConversion) ConvertToUnit.SelectedItem;
-            MainUnitEntry.Placeholder = selectedConversion.ConvertFrom;
-            ConvertToResultLbl.Text = selectedConversion.ConvertTo;
+            UpdateLabels();
 
             if(selectedConversion.ConvertFrom == "Feet")
             {
@@ -116,6 +112,16 @@ namespace JayCadSurveyXamarin.ContentPages
 		{
 			DisplayAlert("pressed show stack", "show stack", "OK");
 		}
+
+        /// <summary>
+        /// Change labels on Convert From and Convert To Placeholder and label
+        /// </summary>
+        private void UpdateLabels() 
+        {
+            selectedConversion = (LengthConversion) ConvertToUnit.SelectedItem;
+            MainUnitEntry.Placeholder = selectedConversion.ConvertFrom;
+            ConvertToResultLbl.Text = selectedConversion.ConvertTo;
+        }
 
     }
 }

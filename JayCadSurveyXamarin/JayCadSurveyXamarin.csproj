@@ -94,6 +94,8 @@
     <Compile Include="Views\MenuPages\MainMenuPage.xaml.cs">
       <DependentUpon>..\..\MenuPages\MainMenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Inches.cs" />
+    <Compile Include="Model\FractionInch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
