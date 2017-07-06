@@ -68,44 +68,19 @@
                                  <Picker x:Name="InchesPicker"
                                     Title="Inches"
                                     HorizontalOptions="FillAndExpand"
-                                    IsVisible="false" >
-                                    <Picker.Items>
-                                        <x:String>1&quot;</x:String>
-                                        <x:String>2&quot;</x:String>
-                                        <x:String>3&quot;</x:String>
-                                        <x:String>4&quot;</x:String>
-                                        <x:String>5&quot;</x:String>
-                                        <x:String>6&quot;</x:String>
-                                        <x:String>7&quot;</x:String>
-                                        <x:String>8&quot;</x:String>
-                                        <x:String>9&quot;</x:String>
-                                        <x:String>10&quot;</x:String>
-                                        <x:String>11&quot;</x:String>
-                                    </Picker.Items>
-                                 </Picker>
+                                    IsVisible="false" 
+                                    ItemsSource="{x:Static model:Inches.AllInches}"
+                                    ItemDisplayBinding="{Binding DisplayValue}"
+                                    SelectedItem="{Binding SelectedInches, Mode=TwoWay}" />
+                            
                                  <Picker x:Name="FractionsPicker"
                                     Title="Fractions"
                                     HorizontalOptions="FillAndExpand"
-                                    IsVisible="false" >
-                                    <Picker.Items>
-                                        <x:String>1/16</x:String>
-                                        <x:String>2/16</x:String>
-                                        <x:String>3/16</x:String>
-                                        <x:String>4/16</x:String>
-                                        <x:String>5/16</x:String>
-                                        <x:String>6/16</x:String>
-                                        <x:String>7/16</x:String>
-                                        <x:String>8/16</x:String>
-                                        <x:String>9/16</x:String>
-                                        <x:String>10/16</x:String>
-                                        <x:String>11/16</x:String>
-                                        <x:String>12/16</x:String>
-                                        <x:String>13/16</x:String>
-                                        <x:String>14/16</x:String>
-                                        <x:String>15/16</x:String>
-                                     </Picker.Items>
-                                 </Picker>
-                                
+                                    IsVisible="false" 
+                                    ItemsSource="{x:Static model:FractionInch.AllFractionInches}"
+                                    ItemDisplayBinding="{Binding DisplayValue}"
+                                    SelectedItem="{Binding SelectedFractionInches, Mode=TwoWay}" />
+                            
                            </StackLayout>
                        </ViewCell>
                     </TableSection>
