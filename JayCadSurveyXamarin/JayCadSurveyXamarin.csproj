@@ -98,6 +98,8 @@
     <Compile Include="ViewModel\InchesViewModel.cs" />
     <Compile Include="ViewModel\FractionInchesViewModel.cs" />
     <Compile Include="ViewModel\LengthConversionViewModel.cs" />
+    <Compile Include="ViewModel\IPageService.cs" />
+    <Compile Include="ViewModel\PageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

@@ -50,13 +50,13 @@
                     <TableSection Title="Enter Convert From Units" >
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                 <Entry x:Name="MainUnitEntry"
+                                 <Entry
                                     Text="{Binding ConvertFromUserInput, Mode=TwoWay }"
                                     Placeholder="{Binding SelectedLengthConversion.ConvertFrom}" 
                                     Keyboard="Numeric" 
                                     HorizontalOptions="FillAndExpand"
                                     WidthRequest="140" />
-                                 <Button x:Name="ClearConvertFromBtn"
+                                 <Button 
                                     Text="  Clear  "
                                     Style="{StaticResource pageButton}"
                                     Command="{Binding ClearInputFieldCommand}"
@@ -88,7 +88,12 @@
                     <TableSection Title="Select Convert To Units" >
                        <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                 <Button x:Name="ConvertFromBtn" Text="Convert" Style="{StaticResource pageButton}" HorizontalOptions="FillAndExpand" Clicked="Handle_Clicked" />
+                                 <Button
+                                    Text="Convert"
+                                    Style="{StaticResource pageButton}"
+                                    HorizontalOptions="FillAndExpand"
+                                    Command="{Binding ConvertUserInputCommand}" />
+                                
                                  <Picker x:Name="ConvertToUnit"
                                     Title="Convert Units"
                                     HorizontalOptions="FillAndExpand"
@@ -103,8 +108,13 @@
                     <TableSection Title="Results of your conversion">
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                                <Label x:Name="ConvertToResultLbl" Text="{Binding SelectedLengthConversion.ConvertTo}" Style="{StaticResource pageDisplayLabel}" />
-                                <Button x:Name="ClearConvertToResultBtn" Text="  Clear Result  " Style="{StaticResource pageButton}" HorizontalOptions="End" Clicked="Handle_Clicked" />
+                                <Label Text="{Binding SelectedLengthConversion.ConvertTo}"
+                                    Style="{StaticResource pageDisplayLabel}" />
+                                <Button
+                                    Text="  Clear Result  "
+                                    Style="{StaticResource pageButton}"
+                                    HorizontalOptions="End"
+                                    Command="{Binding ClearResultFieldCommand}" />
                             </StackLayout>
                        </ViewCell>
                     </TableSection>
@@ -116,18 +126,27 @@
                         </ViewCell> 
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                               <Button x:Name="ClearStackBtn" Text="Clear Stack" Style="{StaticResource pageButton}" Clicked="Handle_Clicked" />
-                               <Button x:Name="ShowStackBtn" Text="Show Stack" Style="{StaticResource pageButton}" Clicked="Handle_Clicked" />
+                               <Button
+                                    Text="Clear Stack"
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ClearStackCommand}" />
+                                
+                               <Button
+                                    Text="Show Stack"
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ShowStackCommand}" />
                            </StackLayout>
                         </ViewCell>        
                     </TableSection>
                 </TableView>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
-                    <Button Text="Back"
+                    <Button
+                        Text="Back"
                         Style="{StaticResource menuButton}"
                         Clicked="Handle_Clicked"
                         WidthRequest="150" />
-                    <Button Text="Main Menu"
+                    <Button
+                        Text="Main Menu"
                         Style="{StaticResource menuButton}"
                         Clicked="Handle_Clicked"
                         WidthRequest="150" />

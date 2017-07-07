@@ -5,12 +5,14 @@ using System.Windows.Input;
 using JayCadSurveyXamarin.Model;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JayCadSurveyXamarin.ViewModel
 {
     public class LengthConversionViewModel: INotifyPropertyChanged
     {
-        public LengthConversionViewModel()
+        private readonly IPageService _pageService;
+        public LengthConversionViewModel(IPageService pageService)
         {
             // Initialis buttons in View
             ClearInputFieldCommand = new Command(ClearInputField);
@@ -18,7 +20,11 @@ namespace JayCadSurveyXamarin.ViewModel
             ConvertUserInputCommand = new Command(ConvertUserInput);
             ClearStackCommand = new Command(ClearStack);
             ShowStackCommand = new Command(ShowStack);
+            BackToPreviousPageCommand = new Command(BackToPreviousPage);
+            BackToMainMenuCommand = new Command(BackToMainMenu);
 
+            // Enable navigation from View Model
+            _pageService = pageService;
         }
 
         private LengthConversion _selectedConversion;
@@ -190,6 +196,19 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		}
 
+		public ICommand BackToPreviousPageCommand { get; private set; }
+
+		private async  Task BackToPreviousPage()
+		{
+            await _pageService.PopAsync();
+		}
+
+		public ICommand BackToMainMenuCommand { get; private set; }
+
+		private async Task BackToMainMenu()
+		{
+            await _pageService.PopToRootAsync();
+		}
     }   
 
 }

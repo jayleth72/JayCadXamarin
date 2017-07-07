@@ -1,0 +1,14 @@
+﻿using System;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+namespace JayCadSurveyXamarin.ViewModel
+{
+    public interface IPageService
+    {
+        Task PushAsync(Page page);
+        Task PopToRootAsync();
+        Task PopAsync();
+        Task<bool> DisplayAlert(string title, string message, string ok, string cancel);
+    }
+}
