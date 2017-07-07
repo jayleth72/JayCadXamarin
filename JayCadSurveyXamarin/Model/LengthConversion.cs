@@ -15,6 +15,16 @@ namespace JayCadSurveyXamarin.Model
         public string ConvertName { get; set; }         // The Name of the Unit
         public double ConversionFactor { get; set; }    // Numeric conversion factor
 
+        public enum CONVERSION_TYPE
+        {
+            METRES_TO_FEET,
+            FEET_TO_METRES,
+            METRES_TO_LINKS,
+            LINKS_TO_METRES
+        }
+
+        public CONVERSION_TYPE conversionType { get; set; }
+
         static List<LengthConversion> _conversionList;
         public static List<LengthConversion> AllLengthConversions
         {
@@ -24,10 +34,10 @@ namespace JayCadSurveyXamarin.Model
                 {
                     _conversionList = new List<LengthConversion>
                     {
-                        new LengthConversion { ConvertFrom="Metres", ConvertTo="Feet", ConvertName="Metres to Feet", ConversionFactor=3.28084 },
-                        new LengthConversion { ConvertFrom="Feet", ConvertTo="Metres", ConvertName="Feet to Metres", ConversionFactor=0.3048 },
-                        new LengthConversion { ConvertFrom="Metres", ConvertTo="Links", ConvertName="Metres to Links", ConversionFactor=4.970969538 },
-                        new LengthConversion { ConvertFrom="Links", ConvertTo="Metres", ConvertName="Links to Metres", ConversionFactor=0.201168 }
+                        new LengthConversion { ConvertFrom="Metres", ConvertTo="Feet", ConvertName="Metres to Feet", conversionType=CONVERSION_TYPE.METRES_TO_FEET ,ConversionFactor=3.28084 },
+                        new LengthConversion { ConvertFrom="Feet", ConvertTo="Metres", ConvertName="Feet to Metres", conversionType=CONVERSION_TYPE.FEET_TO_METRES, ConversionFactor=0.3048 },
+                        new LengthConversion { ConvertFrom="Metres", ConvertTo="Links", ConvertName="Metres to Links", conversionType=CONVERSION_TYPE.METRES_TO_LINKS, ConversionFactor=4.970969538 },
+                        new LengthConversion { ConvertFrom="Links", ConvertTo="Metres", ConvertName="Links to Metres", conversionType=CONVERSION_TYPE.LINKS_TO_METRES, ConversionFactor=0.201168 }
                     };    
                 }
 

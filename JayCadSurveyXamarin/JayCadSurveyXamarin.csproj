@@ -66,7 +66,6 @@
     <Compile Include="MarkupExtensions\EmbeddedImage.cs" />
     <Compile Include="Behaviours\NumberValidationBehavior.cs" />
     <Compile Include="Model\LengthConversion.cs" />
-    <Compile Include="ViewModel\LengthConversionViewModel.cs" />
     <Compile Include="Views\ContentPages\AboutPage.xaml.cs">
       <DependentUpon>..\..\ContentPages\AboutPage.xaml</DependentUpon>
     </Compile>
@@ -98,6 +97,7 @@
     <Compile Include="Model\FractionInch.cs" />
     <Compile Include="ViewModel\InchesViewModel.cs" />
     <Compile Include="ViewModel\FractionInchesViewModel.cs" />
+    <Compile Include="ViewModel\LengthConversionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

@@ -51,10 +51,11 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                  <Entry x:Name="MainUnitEntry"
-                                    Placeholder="Metres"
+                                    Text="{Binding ConvertFromUserInput, Mode=OneWayToSource }"
+                                    Placeholder="{Binding SelectedLengthConversion.ConvertFrom}" 
                                     Keyboard="Numeric" 
                                     HorizontalOptions="FillAndExpand"
-                                    WidthRequest="140"/>
+                                    WidthRequest="140" />
                                  <Button x:Name="ClearConvertFromBtn"
                                     Text="  Clear  "
                                     Style="{StaticResource pageButton}"
@@ -91,7 +92,7 @@
                                  <Picker x:Name="ConvertToUnit"
                                     Title="Convert Units"
                                     HorizontalOptions="FillAndExpand"
-                                    SelectedIndexChanged="Handle_SelectedIndexChanged"
+                                    SelectedIndexChanged="Handle_SelectedIndexChanged_Conversion"
                                     ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
                                     ItemDisplayBinding="{Binding ConvertName}"
                                     SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" >
@@ -102,7 +103,7 @@
                     <TableSection Title="Results of your conversion">
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                                <Label x:Name="ConvertToResultLbl" Text="Feet" Style="{StaticResource pageDisplayLabel}" />
+                                <Label x:Name="ConvertToResultLbl" Text="{Binding SelectedLengthConversion.ConvertTo}" Style="{StaticResource pageDisplayLabel}" />
                                 <Button x:Name="ClearConvertToResultBtn" Text="  Clear Result  " Style="{StaticResource pageButton}" HorizontalOptions="End" Clicked="Handle_Clicked" />
                             </StackLayout>
                        </ViewCell>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using JayCadSurveyXamarin.Model;
+using JayCadSurveyXamarin.ViewModel;
 using Xamarin.Forms;
 
 namespace JayCadSurveyXamarin.ContentPages
@@ -9,11 +10,15 @@ namespace JayCadSurveyXamarin.ContentPages
     {
         LengthConversion selectedConversion;
 
+
 		public LengthConversionPage()
         {
             InitializeComponent();
-            ConvertToUnit.SelectedIndex = 0;
-            UpdateLabels();
+           
+            BindingContext = new LengthConversionViewModel();
+			ConvertToUnit.SelectedIndex = 0;
+            //UpdateLabels();
+
 		}
 
         async void Handle_Clicked(object sender, System.EventArgs e)
@@ -55,20 +60,21 @@ namespace JayCadSurveyXamarin.ContentPages
             }
 		}
 
-		void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
+		void Handle_SelectedIndexChanged_Conversion(object sender, System.EventArgs e)
 		{
-            UpdateLabels();
+            //UpdateLabels();
 
-            if(selectedConversion.ConvertFrom == "Feet")
-            {
-                InchesPicker.IsVisible = true;
-                FractionsPicker.IsVisible = true;
-            }
-            else
-            {
-                InchesPicker.IsVisible = false;
-                FractionsPicker.IsVisible = false;
-            }    
+            //if(selectedConversion.ConvertFrom == "Feet")
+            //{
+            //    InchesPicker.IsVisible = true;
+            //    FractionsPicker.IsVisible = true;
+            //}
+            //else
+            //{
+            //    InchesPicker.IsVisible = false;
+            //    FractionsPicker.IsVisible = false;
+            //}  
+            //MainUnitEntry.Placeholder = (BindingContext as LengthConversionViewModel).SelectedLengthConversion.ConvertFrom;
 		}
 
 
@@ -86,7 +92,11 @@ namespace JayCadSurveyXamarin.ContentPages
         /// </summary>
 		private void Convert_Units()
 		{
-			DisplayAlert("pressed convert", "pressed convert", "OK");
+            string conv = (BindingContext as LengthConversionViewModel).ass();
+			DisplayAlert("pressed convert", conv, "OK");
+            //double theValue = Convert.ToDouble(MainUnitEntry.Text);
+
+            //ConvertToResultLbl.Text = lengthConversionViewModel.Convert_Length_Measurement(theValue, selectedConversion); 
 		}
 
 		/// <summary>
@@ -118,9 +128,9 @@ namespace JayCadSurveyXamarin.ContentPages
         /// </summary>
         private void UpdateLabels() 
         {
-            selectedConversion = (LengthConversion) ConvertToUnit.SelectedItem;
-            MainUnitEntry.Placeholder = selectedConversion.ConvertFrom;
-            ConvertToResultLbl.Text = selectedConversion.ConvertTo;
+            //selectedConversion = (LengthConversion) ConvertToUnit.SelectedItem;
+            //MainUnitEntry.Placeholder = selectedConversion.ConvertFrom;
+            //ConvertToResultLbl.Text = selectedConversion.ConvertTo;
         }
 
     }
