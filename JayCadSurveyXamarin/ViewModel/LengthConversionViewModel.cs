@@ -1,14 +1,26 @@
 ﻿﻿﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using JayCadSurveyXamarin.Model;
+using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace JayCadSurveyXamarin.ViewModel
 {
     public class LengthConversionViewModel: INotifyPropertyChanged
     {
+        public LengthConversionViewModel()
+        {
+            // Initialis buttons in View
+            ClearInputFieldCommand = new Command(ClearInputField);
+            ClearResultFieldCommand = new Command(ClearResultField);
+            ConvertUserInputCommand = new Command(ConvertUserInput);
+            ClearStackCommand = new Command(ClearStack);
+            ShowStackCommand = new Command(ShowStack);
 
-        //public LengthConversion SelectedLengthConversion { get; set; }
+        }
+
         private LengthConversion _selectedConversion;
         public LengthConversion SelectedLengthConversion
         {
@@ -22,7 +34,8 @@ namespace JayCadSurveyXamarin.ViewModel
                 {
                     _selectedConversion = value;
                     OnPropertyChanged();
-                }
+                    setFeetPickersVisibility();
+				}
             }
         }
 
@@ -80,6 +93,28 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
+        private bool _isFeetPickersVisible;
+		public bool IsFeetPickersVisible
+		{
+			get
+			{
+				return _isFeetPickersVisible;
+			}
+			set
+			{
+				_isFeetPickersVisible = value;
+				OnPropertyChanged();
+			}
+		}
+
+        private void setFeetPickersVisibility()
+        {
+            if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+                IsFeetPickersVisible = true;
+            else
+                IsFeetPickersVisible = false;
+
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -118,11 +153,42 @@ namespace JayCadSurveyXamarin.ViewModel
             return ConvertFromUserInput;
         }
 
-        public string Set_New_Placeholder()
+        public ICommand ClearInputFieldCommand { get; private set; }
+
+        private void ClearInputField()
         {
-            this._userInputPlaceholder = SelectedLengthConversion.ConvertFrom;
-            return _userInputPlaceholder;
+            _convertFromUserInput = "";
+            OnPropertyChanged(ConvertFromUserInput);
         }
+
+        public ICommand ClearResultFieldCommand { get; private set; }
+
+		private void ClearResultField()
+		{
+			_conversionResult = "";
+			OnPropertyChanged(ConversionResult);
+		}
+
+        public ICommand ConvertUserInputCommand { get; private set; }
+
+        private void ConvertUserInput()
+        {
+            
+        }
+
+		public ICommand ClearStackCommand { get; private set; }
+
+		private void ClearStack()
+		{
+
+		}
+
+		public ICommand ShowStackCommand { get; private set; }
+
+		private void ShowStack()
+		{
+
+		}
 
     }   
 
