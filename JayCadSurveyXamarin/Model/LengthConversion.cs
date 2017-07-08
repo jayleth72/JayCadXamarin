@@ -10,6 +10,7 @@ namespace JayCadSurveyXamarin.Model
 	/// </summary>
 	public class LengthConversion
     {
+        public int id { get; set; }
         public string ConvertFrom { get; set; }         // The Unit the user wants to convert
 		public string ConvertTo { get; set; }           // The Unit the user wants tp convert to
         public string ConvertName { get; set; }         // The Name of the Unit
@@ -34,10 +35,10 @@ namespace JayCadSurveyXamarin.Model
                 {
                     _conversionList = new List<LengthConversion>
                     {
-                        new LengthConversion { ConvertFrom="Metres", ConvertTo="Feet", ConvertName="Metres to Feet", conversionType=CONVERSION_TYPE.METRES_TO_FEET ,ConversionFactor=3.28084 },
-                        new LengthConversion { ConvertFrom="Feet", ConvertTo="Metres", ConvertName="Feet to Metres", conversionType=CONVERSION_TYPE.FEET_TO_METRES, ConversionFactor=0.3048 },
-                        new LengthConversion { ConvertFrom="Metres", ConvertTo="Links", ConvertName="Metres to Links", conversionType=CONVERSION_TYPE.METRES_TO_LINKS, ConversionFactor=4.970969538 },
-                        new LengthConversion { ConvertFrom="Links", ConvertTo="Metres", ConvertName="Links to Metres", conversionType=CONVERSION_TYPE.LINKS_TO_METRES, ConversionFactor=0.201168 }
+                        new LengthConversion { id =0, ConvertFrom="Metres", ConvertTo="Feet", ConvertName="Metres to Feet", conversionType=CONVERSION_TYPE.METRES_TO_FEET ,ConversionFactor=3.28084 },
+                        new LengthConversion { id =1, ConvertFrom="Feet", ConvertTo="Metres", ConvertName="Feet to Metres", conversionType=CONVERSION_TYPE.FEET_TO_METRES, ConversionFactor=0.3048 },
+                        new LengthConversion { id =2, ConvertFrom="Metres", ConvertTo="Links", ConvertName="Metres to Links", conversionType=CONVERSION_TYPE.METRES_TO_LINKS, ConversionFactor=4.970969538 },
+                        new LengthConversion { id =3, ConvertFrom="Links", ConvertTo="Metres", ConvertName="Links to Metres", conversionType=CONVERSION_TYPE.LINKS_TO_METRES, ConversionFactor=0.201168 }
                     };    
                 }
 

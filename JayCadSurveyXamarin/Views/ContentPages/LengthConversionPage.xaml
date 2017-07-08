@@ -60,7 +60,8 @@
                                     Text="  Clear  "
                                     Style="{StaticResource pageButton}"
                                     Command="{Binding ClearInputFieldCommand}"
-                                    HorizontalOptions="FillAndExpand" />
+                                    HorizontalOptions="FillAndExpand"
+                                     />
                             </StackLayout>
                         </ViewCell>
 
@@ -95,19 +96,22 @@
                                     Command="{Binding ConvertUserInputCommand}" />
                                 
                                  <Picker 
+                                    x:Name="ConversionPicker"
                                     Title="Select Conversion"
                                     HorizontalOptions="FillAndExpand"
                                     ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
                                     ItemDisplayBinding="{Binding ConvertName}"
-                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" />
+                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" >
                                    
+                                 </Picker>    
                             </StackLayout>
                        </ViewCell>
                     </TableSection>
                     <TableSection Title="Results of your conversion">
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                                <Label Text="{Binding SelectedLengthConversion.ConvertTo}"
+                                <Label
+                                    Text="{Binding ConversionResult}"
                                     Style="{StaticResource pageDisplayLabel}" />
                                 <Button
                                     Text="  Clear Result  "

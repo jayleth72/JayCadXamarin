@@ -13,11 +13,17 @@ namespace JayCadSurveyXamarin.ViewModel
     {
         private readonly IPageService _pageService;
         private LengthConversion _selectedConversion;
-        private string _conversionResult;   // Result from a user selected conversion
-        private string _convertFromUserInput;   // User entered value to be converted
-        private string _userInputPlaceholder;   // Placeholder for userInput value to be converted
-        private bool _isFeetPickersVisible;     // Visibility modifier for Inches and FractionInches pickers
-       
+        private string _conversionResult = "";              // Result from a user selected conversion
+        private string _convertFromUserInput = "";          // User entered value to be converted
+        private string _userInputPlaceholder;               // Placeholder for userInput value to be converted
+        private bool _isFeetPickersVisible;                 // Visibility modifier for Inches and FractionInches pickers
+        private int _feetInput = 0;                         // Variable to hold value of user input value when converting from feet to metres
+        private double _numericalDoubleInput = 0.0;         // Variable to hold value of user input value when converting from other conversions
+
+        /// <summary>
+        /// Gets or sets the selected length conversion from the Conversion Picker on the LengthConversion View.
+        /// </summary>
+        /// <value>The selected length conversion. For examle Metres to Feet</value>
 		public LengthConversion SelectedLengthConversion
 		{
 			get
@@ -35,7 +41,10 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
-
+        /// <summary>
+        /// Gets or sets the conversion result for the Selected Conversion.
+        /// </summary>
+        /// <value>The conversion result.</value>
 		public string ConversionResult
 		{
 			get
@@ -52,6 +61,10 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
+        /// <summary>
+        /// Gets the User enterded value that is to be converted.
+        /// </summary>
+        /// <value>The convert from user input.</value>
 		public string ConvertFromUserInput
 		{
 			get
@@ -68,6 +81,10 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
+        /// <summary>
+        /// Gets or sets the user input placeholder.
+        /// </summary>
+        /// <value>The user input placeholder.</value>
 		public string UserInputPlaceholder
 		{
 
@@ -87,6 +104,11 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this
+        /// <see cref="T:JayCadSurveyXamarin.ViewModel.LengthConversionViewModel"/> is feet pickers visible.
+        /// </summary>
+        /// <value><c>true</c> if is feet pickers visible; otherwise, <c>false</c>.</value>
 		public bool IsFeetPickersVisible
 		{
 			get
@@ -116,11 +138,12 @@ namespace JayCadSurveyXamarin.ViewModel
             ConvertUserInputCommand = new Command(ConvertUserInput);
             ClearStackCommand = new Command(ClearStack);
             ShowStackCommand = new Command(ShowStack);
-            BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());
-            BackToMainMenuCommand = new Command(async () => await BackToMainMenu());
+            BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());    // Navigation Back Buttom
+            BackToMainMenuCommand = new Command(async () => await BackToMainMenu());            // Navigation for Button to Main Menu
 
             // Enable navigation from View Model
             _pageService = pageService;
+            			
         }
 				
         public event PropertyChangedEventHandler PropertyChanged;
@@ -129,38 +152,8 @@ namespace JayCadSurveyXamarin.ViewModel
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
-
-        public String Convert_Length_Measurement(double convertValue, LengthConversion chosenLengthConversion)
-        {
-            string result = "";
-
-            switch (chosenLengthConversion.conversionType)
-            {
-                case LengthConversion.CONVERSION_TYPE.METRES_TO_FEET:
-                    result = Convert_Metres_to_Feet(convertValue, chosenLengthConversion);
-                    break;
-                default:
-                    break;
-            }
-
-            return result;
-        }
-
-        private String Convert_Metres_to_Feet(double convertValue, LengthConversion chosenLengthConversion)
-        {
-            double result;
-
-            result = convertValue * chosenLengthConversion.ConversionFactor;
-            return result.ToString() + " " + chosenLengthConversion.ConvertTo;
-        }
-
-        public string ass()
-        {
-            LengthConversion selected = SelectedLengthConversion;
-            return ConvertFromUserInput;
-        }
                
-
+               
         private void ClearInputField()
         {
             _convertFromUserInput = "";
@@ -174,12 +167,47 @@ namespace JayCadSurveyXamarin.ViewModel
 		}
           
 
-        private void ConvertUserInput()
+        private async void ConvertUserInput()
         {
-            
-        }
+            string userInput = this.ConvertFromUserInput;
+            string result = "";
+           
+            // Check if they have entered anything at all
+            if (userInput.Equals(null) || userInput.Length == 0)
+            {
+                // No data entered display error message
+                await _pageService.DisplayAlert("Input Error", "No data entered, please enter numerical value", "ok"); 
+                return;
+            }
 
-		
+			// check for valid numerical input
+            if (!InputCheckValid(userInput))
+            {
+                // Check if user input is valid for Feet to Metres to conversion - only enter integer values and no-decimal values
+                if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+                    await _pageService.DisplayAlert("Input Error", "You must enter an integer value with no decimals", "ok");
+                else
+                    await _pageService.DisplayAlert("Input Error", "You must enter a numerical value", "ok");
+                
+                return;
+			}
+
+            if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+            {
+                result = (CalculateDecimalFeet() * SelectedLengthConversion.ConversionFactor).ToString();
+            }
+            else
+            {
+                result = ((_numericalDoubleInput * SelectedLengthConversion.ConversionFactor).ToString()) + " " + SelectedLengthConversion.ConvertTo; 
+
+            }
+                
+            _conversionResult = "shit";
+			// await _pageService.DisplayAlert("Input succes", _conversionResult, "ok");
+            OnPropertyChanged(ConvertFromUserInput);
+
+		}
+        		
 		private void ClearStack()
 		{
 
@@ -201,6 +229,9 @@ namespace JayCadSurveyXamarin.ViewModel
             await _pageService.PopToRootAsync();
 		}
 
+        /// <summary>
+        /// Sets the feet pickers visibility.  Visibility is true when converting from feet to metres otherwise false.
+        /// </summary>
 		private void setFeetPickersVisibility()
 		{
 			if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
@@ -209,6 +240,35 @@ namespace JayCadSurveyXamarin.ViewModel
 				IsFeetPickersVisible = false;
 
 		}
+
+        private bool InputCheckValid(string input)
+        {
+            bool isValid = false;
+           
+            // Check for Selected Conversion
+            if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+            {
+                // Input for Feet to Metres should be an int (no decimal place etc)
+                if (Int32.TryParse(input, out _feetInput))
+                {
+                    isValid = true;
+                }    
+            }    
+            else
+            {
+                if (Double.TryParse(input, out _numericalDoubleInput))
+                {
+                    isValid = true;
+                }    
+            }  
+
+            return isValid;
+        }
+
+        private double CalculateDecimalFeet()
+        {
+            return 0.0;
+        }
     }   
 
 }
