@@ -94,14 +94,13 @@
                                     HorizontalOptions="FillAndExpand"
                                     Command="{Binding ConvertUserInputCommand}" />
                                 
-                                 <Picker x:Name="ConvertToUnit"
-                                    Title="Convert Units"
+                                 <Picker 
+                                    Title="Select Conversion"
                                     HorizontalOptions="FillAndExpand"
-                                    SelectedIndexChanged="Handle_SelectedIndexChanged_Conversion"
                                     ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
                                     ItemDisplayBinding="{Binding ConvertName}"
-                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" >
-                                 </Picker>
+                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" />
+                                   
                             </StackLayout>
                        </ViewCell>
                     </TableSection>
@@ -143,12 +142,12 @@
                     <Button
                         Text="Back"
                         Style="{StaticResource menuButton}"
-                        Clicked="Handle_Clicked"
+                        Command="{Binding BackToPreviousPageCommand}"
                         WidthRequest="150" />
                     <Button
                         Text="Main Menu"
                         Style="{StaticResource menuButton}"
-                        Clicked="Handle_Clicked"
+                        Command="{Binding BackToMainMenuCommand}"
                         WidthRequest="150" />
                 </StackLayout>
             </StackLayout>

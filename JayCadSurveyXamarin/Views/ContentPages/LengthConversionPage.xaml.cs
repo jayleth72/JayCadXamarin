@@ -13,8 +13,8 @@ namespace JayCadSurveyXamarin.ContentPages
         {
             InitializeComponent();
            
-            BindingContext = new LengthConversionViewModel();
-			ConvertToUnit.SelectedIndex = 0;
+            BindingContext = new LengthConversionViewModel(new PageService());
+			//ConvertToUnit.SelectedIndex = 0;
 
 		}
 

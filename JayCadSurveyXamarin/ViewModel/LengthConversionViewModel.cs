@@ -12,62 +12,51 @@ namespace JayCadSurveyXamarin.ViewModel
     public class LengthConversionViewModel: INotifyPropertyChanged
     {
         private readonly IPageService _pageService;
-        public LengthConversionViewModel(IPageService pageService)
-        {
-            // Initialis buttons in View
-            ClearInputFieldCommand = new Command(ClearInputField);
-            ClearResultFieldCommand = new Command(ClearResultField);
-            ConvertUserInputCommand = new Command(ConvertUserInput);
-            ClearStackCommand = new Command(ClearStack);
-            ShowStackCommand = new Command(ShowStack);
-            BackToPreviousPageCommand = new Command(BackToPreviousPage);
-            BackToMainMenuCommand = new Command(BackToMainMenu);
-
-            // Enable navigation from View Model
-            _pageService = pageService;
-        }
-
         private LengthConversion _selectedConversion;
-        public LengthConversion SelectedLengthConversion
-        {
-            get
-            {
-                return _selectedConversion;
-            }
-            set
-            {
-                if (_selectedConversion != value)
-                {
-                    _selectedConversion = value;
-                    OnPropertyChanged();
-                    setFeetPickersVisibility();
-				}
-            }
-        }
-
         private string _conversionResult;   // Result from a user selected conversion
-        public string ConversionResult
-        { 
-            get 
-            {
-                return _conversionResult;
-            }
-            set
-            {
-                if (_conversionResult != value)
-                {
-                    _conversionResult = value;
-                    OnPropertyChanged();
-                }    
-            }
-        }
+        private string _convertFromUserInput;   // User entered value to be converted
+        private string _userInputPlaceholder;   // Placeholder for userInput value to be converted
+        private bool _isFeetPickersVisible;     // Visibility modifier for Inches and FractionInches pickers
+       
+		public LengthConversion SelectedLengthConversion
+		{
+			get
+			{
+				return _selectedConversion;
+			}
+			set
+			{
+				if (_selectedConversion != value)
+				{
+					_selectedConversion = value;
+					OnPropertyChanged();
+					setFeetPickersVisibility();
+				}
+			}
+		}
 
-		private string _convertFromUserInput;   // User entered value to be converted
+
+		public string ConversionResult
+		{
+			get
+			{
+				return _conversionResult;
+			}
+			set
+			{
+				if (_conversionResult != value)
+				{
+					_conversionResult = value;
+					OnPropertyChanged();
+				}
+			}
+		}
+
 		public string ConvertFromUserInput
 		{
 			get
 			{
-                return _convertFromUserInput;
+				return _convertFromUserInput;
 			}
 			set
 			{
@@ -79,19 +68,18 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
-		private string _userInputPlaceholder;   // Placeholder for userInput value to be converted
 		public string UserInputPlaceholder
 		{
-            
+
 			get
 			{
-                return _userInputPlaceholder;
+				return _userInputPlaceholder;
 			}
 			set
 			{
 				if (_userInputPlaceholder != value)
 				{
-                    
+
 					_userInputPlaceholder = value;
 					OnPropertyChanged();
 
@@ -99,7 +87,6 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
-        private bool _isFeetPickersVisible;
 		public bool IsFeetPickersVisible
 		{
 			get
@@ -113,15 +100,29 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
-        private void setFeetPickersVisibility()
+       	public ICommand ClearInputFieldCommand { get; private set; }
+        public ICommand ClearResultFieldCommand { get; private set; }
+		public ICommand ConvertUserInputCommand { get; private set; }
+        public ICommand ClearStackCommand { get; private set; }
+        public ICommand ShowStackCommand { get; private set; }
+        public ICommand BackToPreviousPageCommand { get; private set; }
+        public ICommand BackToMainMenuCommand { get; private set; }
+
+		public LengthConversionViewModel(IPageService pageService)
         {
-            if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
-                IsFeetPickersVisible = true;
-            else
-                IsFeetPickersVisible = false;
+            // Initialis buttons in View
+            ClearInputFieldCommand = new Command(ClearInputField);
+            ClearResultFieldCommand = new Command(ClearResultField);
+            ConvertUserInputCommand = new Command(ConvertUserInput);
+            ClearStackCommand = new Command(ClearStack);
+            ShowStackCommand = new Command(ShowStack);
+            BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());
+            BackToMainMenuCommand = new Command(async () => await BackToMainMenu());
 
+            // Enable navigation from View Model
+            _pageService = pageService;
         }
-
+				
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -158,8 +159,7 @@ namespace JayCadSurveyXamarin.ViewModel
             LengthConversion selected = SelectedLengthConversion;
             return ConvertFromUserInput;
         }
-
-        public ICommand ClearInputFieldCommand { get; private set; }
+               
 
         private void ClearInputField()
         {
@@ -167,47 +167,47 @@ namespace JayCadSurveyXamarin.ViewModel
             OnPropertyChanged(ConvertFromUserInput);
         }
 
-        public ICommand ClearResultFieldCommand { get; private set; }
-
 		private void ClearResultField()
 		{
 			_conversionResult = "";
 			OnPropertyChanged(ConversionResult);
 		}
-
-        public ICommand ConvertUserInputCommand { get; private set; }
+          
 
         private void ConvertUserInput()
         {
             
         }
 
-		public ICommand ClearStackCommand { get; private set; }
-
+		
 		private void ClearStack()
 		{
 
 		}
-
-		public ICommand ShowStackCommand { get; private set; }
+        	
 
 		private void ShowStack()
 		{
 
 		}
 
-		public ICommand BackToPreviousPageCommand { get; private set; }
-
-		private async  Task BackToPreviousPage()
+        private async Task BackToPreviousPage()
 		{
             await _pageService.PopAsync();
 		}
-
-		public ICommand BackToMainMenuCommand { get; private set; }
-
+        		
 		private async Task BackToMainMenu()
 		{
             await _pageService.PopToRootAsync();
+		}
+
+		private void setFeetPickersVisibility()
+		{
+			if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+				IsFeetPickersVisible = true;
+			else
+				IsFeetPickersVisible = false;
+
 		}
     }   
 
