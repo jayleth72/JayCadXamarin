@@ -23,7 +23,9 @@ namespace JayCadSurveyXamarin.ViewModel
         private int _feetInput = 0;                         // Variable to hold value of user input value when converting from feet to metres
         private double _numericalDoubleInput = 0.0;         // Variable to hold value of user input value when converting from other conversions
         private double _runningTotalDouble = 0.0;           // Displays running total for conversions as a double
-       
+        private int _fractionInchPickerSelectedIndex;        
+        private int _inchPickerSelectedIndex;
+
 		/// <summary>
 		/// Gets or sets the selected length conversion from the Conversion Picker on the LengthConversion View.
 		/// </summary>
@@ -164,6 +166,9 @@ namespace JayCadSurveyXamarin.ViewModel
 			set
 			{
 				_isFeetPickersVisible = value;
+
+                _fractionInchPickerSelectedIndex = 0;
+                _inchPickerSelectedIndex = 0;
 				OnPropertyChanged();
 			}
 		}
@@ -186,6 +191,45 @@ namespace JayCadSurveyXamarin.ViewModel
 
                     _runningTotal = value;
 					OnPropertyChanged();
+
+				}
+			}
+		}
+
+		
+		public int FractionInchPickerIndex
+		{
+			get
+			{
+				return _fractionInchPickerSelectedIndex;
+			}
+			set
+			{
+				if (_fractionInchPickerSelectedIndex != value)
+				{
+					_fractionInchPickerSelectedIndex = value;
+
+					
+					OnPropertyChanged(nameof(FractionInchPickerIndex));
+					
+				}
+			}
+		}
+
+		public int InchPickerIndex
+		{
+			get
+			{
+				return _inchPickerSelectedIndex;
+			}
+			set
+			{
+				if (_inchPickerSelectedIndex != value)
+				{
+					_inchPickerSelectedIndex = value;
+
+
+					OnPropertyChanged(nameof(FractionInchPickerIndex));
 
 				}
 			}
@@ -213,7 +257,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
             // Enable navigation from View Model
             _pageService = pageService;
-            			
+		
         }
 				
         public event PropertyChangedEventHandler PropertyChanged;
@@ -227,7 +271,11 @@ namespace JayCadSurveyXamarin.ViewModel
         private void ClearInputField()
         {
             _convertFromUserInput = "";
+			_fractionInchPickerSelectedIndex = 0;
+			_inchPickerSelectedIndex = 0;
+
             OnPropertyChanged(ConvertFromUserInput);
+
         }
 
 		private void ClearResultField()

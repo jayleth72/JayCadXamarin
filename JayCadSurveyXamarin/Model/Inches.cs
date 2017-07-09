@@ -23,7 +23,7 @@ namespace JayCadSurveyXamarin.Model
 				{
 					_inchesList = new List<Inches>
 					{
-                        new Inches { DisplayValue="0\"", InchValue=0.0 },
+                        new Inches { DisplayValue="0 inches", InchValue=0.0 },
 						new Inches { DisplayValue="1\"", InchValue=1.0 },
                         new Inches { DisplayValue="2\"", InchValue=2.0  },
 						new Inches { DisplayValue="3\"", InchValue=3.0  },

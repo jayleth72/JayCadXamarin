@@ -21,7 +21,7 @@ namespace JayCadSurveyXamarin.Model
 				{ 
 					_fractionInchesList = new List<FractionInch>
 					{
-                        new FractionInch { DisplayValue="0", FractionInchValue=0},
+                        new FractionInch { DisplayValue="0/16 of an Inch", FractionInchValue=0},
 						new FractionInch { DisplayValue="1/16", FractionInchValue=1.0 },
 						new FractionInch { DisplayValue="2/16", FractionInchValue=2.0 },
 						new FractionInch { DisplayValue="3/16", FractionInchValue=3.0 },
@@ -36,7 +36,7 @@ namespace JayCadSurveyXamarin.Model
 						new FractionInch { DisplayValue="12/16", FractionInchValue=12.0},
 						new FractionInch { DisplayValue="13/16", FractionInchValue=13.0 },
 						new FractionInch { DisplayValue="14/16", FractionInchValue=14.0 },
-						new FractionInch { DisplayValue="15/16", FractionInchValue=15.0 }
+						new FractionInch { DisplayValue="15/16 of an Inch", FractionInchValue=15.0 }
 
 					};
 				}

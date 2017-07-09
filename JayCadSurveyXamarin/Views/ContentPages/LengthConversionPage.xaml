@@ -73,7 +73,8 @@
                                     IsVisible="{Binding IsFeetPickersVisible}" 
                                     ItemsSource="{x:Static model:Inches.AllInches}"
                                     ItemDisplayBinding="{Binding DisplayValue}"
-                                    SelectedItem="{Binding SelectedInches, Mode=TwoWay}" />
+                                    SelectedItem="{Binding SelectedInches, Mode=TwoWay}"
+                                    SelectedIndex="{Binding InchPickerIndex, Mode=TwoWay}"/>
                             
                                  <Picker
                                     x:Name="FractionsPicker"
@@ -82,7 +83,8 @@
                                     IsVisible="{Binding IsFeetPickersVisible}"  
                                     ItemsSource="{x:Static model:FractionInch.AllFractionInches}"
                                     ItemDisplayBinding="{Binding DisplayValue}"
-                                    SelectedItem="{Binding SelectedFractionInch, Mode=TwoWay}" />
+                                    SelectedItem="{Binding SelectedFractionInch, Mode=TwoWay}"
+                                    SelectedIndex="{Binding FractionInchPickerIndex, Mode=TwoWay}"/>
                             
                            </StackLayout>
                        </ViewCell>
