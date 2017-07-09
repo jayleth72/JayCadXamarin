@@ -57,38 +57,14 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// <value>The selected inches.</value>
 		public FractionInch SelectedFractionInch
 		{
-			get
-			{
-				return _selectedFractionInch;
-			}
-			set
-			{
-				if (_selectedFractionInch != value)
-				{
-
-					_selectedFractionInch = value;
-					OnPropertyChanged();
-
-				}
-			}
+			get	{ return _selectedFractionInch; }
+		    set { SetValue(ref _selectedFractionInch, value); }
 		}
 
 		public Inches SelectedInches
 		{
-			get
-			{
-				return _selectedInches;
-			}
-			set
-			{
-				if (_selectedInches != value)
-				{
-
-					_selectedInches = value;
-					OnPropertyChanged();
-
-				}
-			}
+			get	{ return _selectedInches; }
+			set { SetValue(ref _selectedInches, value); }
 		}
 
 		/// <summary>
@@ -97,18 +73,8 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// <value>The conversion result.</value>
 		public string ConversionResult
 		{
-			get
-			{
-				return _conversionResult;
-			}
-			set
-			{
-				if (_conversionResult != value)
-				{
-					_conversionResult = value;
-					OnPropertyChanged();
-				}
-			}
+			get { return _conversionResult; }
+			set { SetValue(ref _conversionResult, value); }
 		}
 
         /// <summary>
@@ -117,18 +83,8 @@ namespace JayCadSurveyXamarin.ViewModel
         /// <value>The convert from user input.</value>
 		public string ConvertFromUserInput
 		{
-			get
-			{
-				return _convertFromUserInput;
-			}
-			set
-			{
-				if (_convertFromUserInput != value)
-				{
-					_convertFromUserInput = value;
-					OnPropertyChanged();
-				}
-			}
+			get	{ return _convertFromUserInput; }
+			set { SetValue(ref _convertFromUserInput, value); }
 		}
 
         /// <summary>
@@ -138,20 +94,8 @@ namespace JayCadSurveyXamarin.ViewModel
 		public string UserInputPlaceholder
 		{
 
-			get
-			{
-				return _userInputPlaceholder;
-			}
-			set
-			{
-				if (_userInputPlaceholder != value)
-				{
-
-					_userInputPlaceholder = value;
-					OnPropertyChanged();
-
-				}
-			}
+			get { return _userInputPlaceholder; }
+			set { SetValue(ref _userInputPlaceholder, value); }
 		}
 
         /// <summary>
@@ -167,11 +111,15 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 			set
 			{
-				_isFeetPickersVisible = value;
+				if (_isFeetPickersVisible != value)
+				{
+                    _isFeetPickersVisible = value;
+					_fractionInchPickerSelectedIndex = 0;
+					_inchPickerSelectedIndex = 0;
+					OnPropertyChanged();
 
-                _fractionInchPickerSelectedIndex = 0;
-                _inchPickerSelectedIndex = 0;
-				OnPropertyChanged();
+				}
+
 			}
 		}
 
