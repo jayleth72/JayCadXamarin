@@ -124,7 +124,9 @@
                     <TableSection Title="Running Total and Stack" >
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="5">
-                               <Label x:Name="RunningTotalLbl" Text="Running Total" Style="{StaticResource pageDisplayLabel}" />
+                               <Label 
+                                   Text="{Binding RunningTotal}"
+                                   Style="{StaticResource pageDisplayLabel}" />
                             </StackLayout>
                         </ViewCell> 
                         <ViewCell>

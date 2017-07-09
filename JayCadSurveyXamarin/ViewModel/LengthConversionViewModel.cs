@@ -12,18 +12,21 @@ namespace JayCadSurveyXamarin.ViewModel
     public class LengthConversionViewModel: INotifyPropertyChanged
     {
         private readonly IPageService _pageService;
-        private LengthConversion _selectedConversion;
-        private string _conversionResult = "";              // Result from a user selected conversion
+        private LengthConversion _selectedConversion;       // Selected Conversion from Conversion picker
+        private Inches _selectedInches;                     // Selected Inch from Inch picker
+		private FractionInch _selectedFractionInch;         // Selected FractionInch from FractionInch picker
+		private string _conversionResult = "";              // Result from a user selected conversion
         private string _convertFromUserInput = "";          // User entered value to be converted
         private string _userInputPlaceholder;               // Placeholder for userInput value to be converted
+        private string _runningTotal;                       // Displays running total for conversions as a string
         private bool _isFeetPickersVisible;                 // Visibility modifier for Inches and FractionInches pickers
         private int _feetInput = 0;                         // Variable to hold value of user input value when converting from feet to metres
         private double _numericalDoubleInput = 0.0;         // Variable to hold value of user input value when converting from other conversions
-
-        /// <summary>
-        /// Gets or sets the selected length conversion from the Conversion Picker on the LengthConversion View.
-        /// </summary>
-        /// <value>The selected length conversion. For examle Metres to Feet</value>
+        private double _runningTotalDouble = 0.0;                 // Displays running total for conversions as a double
+		/// <summary>
+		/// Gets or sets the selected length conversion from the Conversion Picker on the LengthConversion View.
+		/// </summary>
+		/// <value>The selected length conversion. For examle Metres to Feet</value>
 		public LengthConversion SelectedLengthConversion
 		{
 			get
@@ -36,7 +39,9 @@ namespace JayCadSurveyXamarin.ViewModel
 				{
 					_selectedConversion = value;
 					OnPropertyChanged();
-					setFeetPickersVisibility();
+					SetFeetPickersVisibility();
+                    ClearResultField();
+                    ClearRunningTotalField();
 				}
 			}
 		}
@@ -122,6 +127,73 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
+		/// <summary>
+        /// The running total of user entered conversions
+        /// </summary>
+        /// <value>The running total.</value>
+        public string RunningTotal
+		{
+
+			get
+			{
+				return _runningTotal;
+			}
+			set
+			{
+				if (_runningTotal != value)
+				{
+
+                    _runningTotal = value;
+					OnPropertyChanged();
+
+				}
+			}
+		}
+
+        /// <summary>
+        /// Gets or sets the selected inches from the Inch Picker.
+        /// </summary>
+        /// <value>The selected inches.</value>
+        public Inches SelectedInches
+        {
+			get
+			{
+				return _selectedInches;
+			}
+			set
+			{
+				if (_selectedInches != value)
+				{
+
+					_selectedInches = value;
+					OnPropertyChanged();
+
+				}
+			}
+        }
+
+		/// <summary>
+		/// Gets or sets the selected fraction inches from the Fraction Inch Picker.
+		/// </summary>
+		/// <value>The selected inches.</value>
+		public FractionInch SelectedFractionInch
+		{
+			get
+			{
+				return _selectedFractionInch;
+			}
+			set
+			{
+				if (_selectedFractionInch != value)
+				{
+
+					_selectedFractionInch = value;
+					OnPropertyChanged();
+
+				}
+			}
+		}
+
        	public ICommand ClearInputFieldCommand { get; private set; }
         public ICommand ClearResultFieldCommand { get; private set; }
 		public ICommand ConvertUserInputCommand { get; private set; }
@@ -165,12 +237,19 @@ namespace JayCadSurveyXamarin.ViewModel
 			_conversionResult = "";
 			OnPropertyChanged(ConversionResult);
 		}
+
+		private void ClearRunningTotalField()
+		{
+			_runningTotal = "";
+            _runningTotalDouble = 0.0;
+			OnPropertyChanged(RunningTotal);
+		}
           
 
         private async void ConvertUserInput()
         {
             string userInput = this.ConvertFromUserInput;
-            string result = "";
+            double result = 0.0;
            
             // Check if they have entered anything at all
             if (userInput.Equals(null) || userInput.Length == 0)
@@ -194,18 +273,20 @@ namespace JayCadSurveyXamarin.ViewModel
 
             if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
             {
-                result = (CalculateDecimalFeet() * SelectedLengthConversion.ConversionFactor).ToString();
+                result = CalculateDecimalFeet() * SelectedLengthConversion.ConversionFactor;
             }
             else
             {
-                result = ((_numericalDoubleInput * SelectedLengthConversion.ConversionFactor).ToString()) + " " + SelectedLengthConversion.ConvertTo; 
+                result = _numericalDoubleInput * SelectedLengthConversion.ConversionFactor; 
 
             }
                 
-            _conversionResult = "shit";
-			// await _pageService.DisplayAlert("Input succes", _conversionResult, "ok");
-            OnPropertyChanged(ConvertFromUserInput);
+            _conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
 
+            // calculate and show running total
+            _runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
+
+            ClearInputField();		
 		}
         		
 		private void ClearStack()
@@ -232,7 +313,7 @@ namespace JayCadSurveyXamarin.ViewModel
         /// <summary>
         /// Sets the feet pickers visibility.  Visibility is true when converting from feet to metres otherwise false.
         /// </summary>
-		private void setFeetPickersVisibility()
+		private void SetFeetPickersVisibility()
 		{
 			if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
 				IsFeetPickersVisible = true;
@@ -267,7 +348,13 @@ namespace JayCadSurveyXamarin.ViewModel
 
         private double CalculateDecimalFeet()
         {
-            return 0.0;
+            return Convert.ToDouble(_feetInput) + SelectedInches.DecimalFeetValue + SelectedFractionInch.DecimalFeetValue;
+        }
+
+        private string CalculateRunningTotal(double result)
+        {
+            _runningTotalDouble += result;
+            return _runningTotalDouble.ToString();
         }
     }   
 
