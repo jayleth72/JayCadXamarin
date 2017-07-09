@@ -67,7 +67,7 @@
 
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                 <Picker x:Name="InchesPicker"
+                                 <Picker 
                                     Title="Inches"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsFeetPickersVisible}" 
@@ -77,7 +77,6 @@
                                     SelectedIndex="{Binding InchPickerIndex, Mode=TwoWay}"/>
                             
                                  <Picker
-                                    x:Name="FractionsPicker"
                                     Title="Fractions"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsFeetPickersVisible}"  
@@ -99,13 +98,12 @@
                                     Command="{Binding ConvertUserInputCommand}" />
                                 
                                  <Picker 
-                                    x:Name="ConversionPicker"
                                     Title="Select Conversion"
                                     HorizontalOptions="FillAndExpand"
                                     ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
                                     ItemDisplayBinding="{Binding ConvertName}"
-                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}" >
-                                   
+                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}"
+                                    SelectedIndex="{Binding SelectedLengthConversionIndex, Mode=TwoWay}">
                                  </Picker>    
                             </StackLayout>
                        </ViewCell>

@@ -14,8 +14,7 @@ namespace JayCadSurveyXamarin.ContentPages
             InitializeComponent();
            
             BindingContext = new LengthConversionViewModel(new PageService());
-            ConversionPicker.SelectedIndex = 0;
-   
+              
 		}
 
 

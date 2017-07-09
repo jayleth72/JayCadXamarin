@@ -25,6 +25,7 @@ namespace JayCadSurveyXamarin.ViewModel
         private double _runningTotalDouble = 0.0;           // Displays running total for conversions as a double
         private int _fractionInchPickerSelectedIndex;        
         private int _inchPickerSelectedIndex;
+        private int _selectedLengthConversionIndex = -1;
 
 		/// <summary>
 		/// Gets or sets the selected length conversion from the Conversion Picker on the LengthConversion View.
@@ -242,8 +243,32 @@ namespace JayCadSurveyXamarin.ViewModel
 				}
 			}
 		}
+
+		/// <summary>
+		/// Gets or sets the index of the Length Conversion Picker.
+		/// </summary>
+		/// <value>The index of the inch picker.</value>
+		public int SelectedLengthConversionIndex
+		{
+			get
+			{
+				return _selectedLengthConversionIndex;
+			}
+			set
+			{
+				if (_selectedLengthConversionIndex != value)
+				{
+					_selectedLengthConversionIndex = value;
+
+
+					OnPropertyChanged(nameof(SelectedLengthConversionIndex));
+
+				}
+			}
+		}
              
 		
+
        	public ICommand ClearInputFieldCommand { get; private set; }
         public ICommand ClearResultFieldCommand { get; private set; }
 		public ICommand ConvertUserInputCommand { get; private set; }
@@ -265,9 +290,12 @@ namespace JayCadSurveyXamarin.ViewModel
 
             // Enable navigation from View Model
             _pageService = pageService;
-		
+            _selectedLengthConversionIndex = 0;
+
+           
         }
-				
+		
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -308,10 +336,18 @@ namespace JayCadSurveyXamarin.ViewModel
         {
             string userInput = this.ConvertFromUserInput;
             double result = 0.0;
-           
-            // Check if they have entered anything at all
-            // No entry is allowed for Feet to Metres conversion as user may only select inches or fraction  Inches to convert
-            if (userInput.Equals(null) || (userInput.Length == 0 && SelectedLengthConversion.conversionType != LengthConversion.CONVERSION_TYPE.FEET_TO_METRES))
+
+            // Check user has enterd a converion
+            if (_selectedLengthConversionIndex < 0)
+            {
+                await _pageService.DisplayAlert("Selection Error", "No conversion chosen.  Please choose a conversion", "ok");
+                return; 
+            }    
+               
+
+			// Check if they have entered anything at all
+			// No entry is allowed for Feet to Metres conversion as user may only select inches or fraction  Inches to convert
+			if (userInput.Equals(null) || (userInput.Length == 0 && SelectedLengthConversion.conversionType != LengthConversion.CONVERSION_TYPE.FEET_TO_METRES))
             {
                 // No data entered display error message
                 await _pageService.DisplayAlert("Input Error", "No data entered, please enter numerical value", "ok"); 
