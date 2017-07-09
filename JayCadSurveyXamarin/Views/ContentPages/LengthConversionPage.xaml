@@ -75,13 +75,14 @@
                                     ItemDisplayBinding="{Binding DisplayValue}"
                                     SelectedItem="{Binding SelectedInches, Mode=TwoWay}" />
                             
-                                 <Picker x:Name="FractionsPicker"
+                                 <Picker
+                                    x:Name="FractionsPicker"
                                     Title="Fractions"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="{Binding IsFeetPickersVisible}"  
                                     ItemsSource="{x:Static model:FractionInch.AllFractionInches}"
                                     ItemDisplayBinding="{Binding DisplayValue}"
-                                    SelectedItem="{Binding SelectedFractionInches, Mode=TwoWay}" />
+                                    SelectedItem="{Binding SelectedFractionInch, Mode=TwoWay}" />
                             
                            </StackLayout>
                        </ViewCell>

@@ -15,6 +15,8 @@ namespace JayCadSurveyXamarin.ContentPages
            
             BindingContext = new LengthConversionViewModel(new PageService());
             ConversionPicker.SelectedIndex = 0;
+            InchesPicker.SelectedIndex = 0;
+            FractionsPicker.SelectedIndex = 0;
 		}
 
 
