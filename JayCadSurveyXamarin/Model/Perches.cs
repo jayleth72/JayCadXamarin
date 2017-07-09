@@ -57,8 +57,8 @@ namespace JayCadSurveyXamarin.Model
                         new Perches { DisplayValue="36 Perches", perchesValue=36.0 },
                         new Perches { DisplayValue="37 Perches", perchesValue=37.0 },
                         new Perches { DisplayValue="38 Perches", perchesValue=38.0 },
-                        new Perches { DisplayValue="39 Perches", perchesValue=39.0 },
-                        new Perches { DisplayValue="40 Perches", perchesValue=40.0 }
+                        new Perches { DisplayValue="39 Perches", perchesValue=39.0 }
+
 					};
 				}
 

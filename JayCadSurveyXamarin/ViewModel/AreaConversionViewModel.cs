@@ -12,26 +12,26 @@ namespace JayCadSurveyXamarin.ViewModel
     public class AreaConversionViewModel: BaseViewModel
     {
 		private readonly IPageService _pageService;         // This is here to enable Page Navigation and DispalyAlerts
-		private LengthConversion _selectedConversion;       // Selected Conversion from Conversion picker
-		private FractionInch _selectedFractionInch;         // Selected Conversion from FractionInches picker
-		private Inches _selectedInches;                     // Selected Inch from Inch picker
+		private AreaConversion _selectedConversion;         // Selected Conversion from Conversion picker
+		private Roods _selectedRood;                        // Selected Conversion from Roods picker
+		private Perches _selectedPerches;                   // Selected Perch from Perch picker
 		private string _conversionResult = "";              // Result from a user selected conversion
 		private string _convertFromUserInput = "";          // User entered value to be converted
 		private string _userInputPlaceholder;               // Placeholder for userInput value to be converted
 		private string _runningTotal;                       // Displays running total for conversions as a string
-		private bool _isFeetPickersVisible;                 // Visibility modifier for Inches and FractionInches pickers
-		private int _feetInput = 0;                         // Variable to hold value of user input value when converting from feet to metres
+		private bool _isAcresPickersVisible;                // Visibility modifier for Perches and Roods pickers
+		private int _acresInput = 0;                        // Variable to hold value of user input value when converting from Acres to Hectares
 		private double _numericalDoubleInput = 0.0;         // Variable to hold value of user input value when converting from other conversions
 		private double _runningTotalDouble = 0.0;           // Displays running total for conversions as a double
-		private int _fractionInchPickerSelectedIndex;
-		private int _inchPickerSelectedIndex;
-		private int _selectedLengthConversionIndex = -1;
+		private int _PerchesPickerSelectedIndex;
+		private int _roodsPickerSelectedIndex;
+		private int _selectedAreaConversionIndex = -1;
 
 		/// <summary>
-		/// Gets or sets the selected length conversion from the Conversion Picker on the LengthConversion View.
+		/// Gets or sets the selected length conversion from the Conversion Picker on the AreaConversion View.
 		/// </summary>
 		/// <value>The selected length conversion. For examle Metres to Feet</value>
-		public LengthConversion SelectedLengthConversion
+		public AreaConversion SelectedAreaConversion
 		{
 			get
 			{
@@ -43,7 +43,7 @@ namespace JayCadSurveyXamarin.ViewModel
 				if (_selectedConversion != value)
 				{
 					_selectedConversion = value;
-					SetFeetPickersVisibility();
+					SetAcresPickersVisibility();
 					ClearResultField();
 					ClearRunningTotalField();
 					ClearInputField();
@@ -55,16 +55,16 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// Gets or sets the selected fraction inches from the Fraction Inch Picker.
 		/// </summary>
 		/// <value>The selected inches.</value>
-		public FractionInch SelectedFractionInch
+		public Roods SelectedRoods
 		{
-			get { return _selectedFractionInch; }
-			set { SetValue(ref _selectedFractionInch, value); }
+			get { return _selectedRood; }
+			set { SetValue(ref _selectedRood, value); }
 		}
 
-		public Inches SelectedInches
+        public Perches SelectedPerches
 		{
-			get { return _selectedInches; }
-			set { SetValue(ref _selectedInches, value); }
+			get { return _selectedPerches; }
+			set { SetValue(ref _selectedPerches, value); }
 		}
 
 		/// <summary>
@@ -100,22 +100,22 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		/// <summary>
 		/// Gets or sets a value indicating whether this
-		/// <see cref="T:JayCadSurveyXamarin.ViewModel.LengthConversionViewModel"/> is feet pickers visible.
+		/// <see cref="T:JayCadSurveyXamarin.ViewModel.AreaConversionViewModel"/> is feet pickers visible.
 		/// </summary>
 		/// <value><c>true</c> if is feet pickers visible; otherwise, <c>false</c>.</value>
-		public bool IsFeetPickersVisible
+		public bool IsAcresPickersVisible
 		{
 			get
 			{
-				return _isFeetPickersVisible;
+				return _isAcresPickersVisible;
 			}
 			set
 			{
-				if (_isFeetPickersVisible != value)
+				if (_isAcresPickersVisible != value)
 				{
-					_isFeetPickersVisible = value;
-					_fractionInchPickerSelectedIndex = 0;
-					_inchPickerSelectedIndex = 0;
+					_isAcresPickersVisible = value;
+					_PerchesPickerSelectedIndex = 0;
+					_roodsPickerSelectedIndex = 0;
 					OnPropertyChanged();
 
 				}
@@ -138,30 +138,30 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// Gets or sets the index of the fraction inch picker.
 		/// </summary>
 		/// <value>The index of the fraction inch picker.</value>
-		public int FractionInchPickerIndex
+		public int PerchesPickerIndex
 		{
-			get { return _fractionInchPickerSelectedIndex; }
-			set { SetValue(ref _fractionInchPickerSelectedIndex, value); }
+			get { return _PerchesPickerSelectedIndex; }
+			set { SetValue(ref _PerchesPickerSelectedIndex, value); }
 		}
 
 		/// <summary>
 		/// Gets or sets the index of the inch picker.
 		/// </summary>
 		/// <value>The index of the inch picker.</value>
-		public int InchPickerIndex
+		public int RoodsPickerIndex
 		{
-			get { return _inchPickerSelectedIndex; }
-			set { SetValue(ref _inchPickerSelectedIndex, value); }
+			get { return _roodsPickerSelectedIndex; }
+			set { SetValue(ref _roodsPickerSelectedIndex, value); }
 		}
 
 		/// <summary>
 		/// Gets or sets the index of the Length Conversion Picker.
 		/// </summary>
 		/// <value>The index of the inch picker.</value>
-		public int SelectedLengthConversionIndex
+		public int SelectedAreaConversionIndex
 		{
-			get { return _selectedLengthConversionIndex; }
-			set { SetValue(ref _selectedLengthConversionIndex, value); }
+			get { return _selectedAreaConversionIndex; }
+			set { SetValue(ref _selectedAreaConversionIndex, value); }
 		}
 
 
@@ -192,8 +192,8 @@ namespace JayCadSurveyXamarin.ViewModel
 		private void ClearInputField()
 		{
 			_convertFromUserInput = "";
-			_fractionInchPickerSelectedIndex = 0;
-			_inchPickerSelectedIndex = 0;
+			_PerchesPickerSelectedIndex = 0;
+			_roodsPickerSelectedIndex = 0;
 
 			OnPropertyChanged(ConvertFromUserInput);
 
@@ -223,7 +223,7 @@ namespace JayCadSurveyXamarin.ViewModel
 			double result = 0.0;
 
 			// Check user has enterd a converion
-			if (_selectedLengthConversionIndex < 0)
+			if (_selectedAreaConversionIndex < 0)
 			{
 				await _pageService.DisplayAlert("Selection Error", "No conversion chosen.  Please choose a conversion", "ok");
 				return;
@@ -231,8 +231,8 @@ namespace JayCadSurveyXamarin.ViewModel
 
 
 			// Check if they have entered anything at all
-			// No entry is allowed for Feet to Metres conversion as user may only select inches or fraction  Inches to convert
-			if (userInput.Equals(null) || (userInput.Length == 0 && SelectedLengthConversion.conversionType != LengthConversion.CONVERSION_TYPE.FEET_TO_METRES))
+			// No entry is allowed for Acres to Hectares conversion as user may only select Roods or Perches to convert
+			if (userInput.Equals(null) || (userInput.Length == 0 && SelectedAreaConversion.conversionType != AreaConversion.CONVERSION_TYPE.ACRES_TO_HECTARES))
 			{
 				// No data entered display error message
 				await _pageService.DisplayAlert("Input Error", "No data entered, please enter numerical value", "ok");
@@ -242,8 +242,8 @@ namespace JayCadSurveyXamarin.ViewModel
 			// check for valid numerical input
 			if (!InputCheckValid(userInput))
 			{
-				// Check if user input is valid for Feet to Metres to conversion - only enter integer values and no-decimal values
-				if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+				// Check if user input is valid for Acres to Hectares conversion - only enter integer values and no-decimal values
+				if (SelectedAreaConversion.conversionType == AreaConversion.CONVERSION_TYPE.ACRES_TO_HECTARES)
 					await _pageService.DisplayAlert("Input Error", "You must enter an integer value with no decimals", "ok");
 				else
 					await _pageService.DisplayAlert("Input Error", "You must enter a numerical value", "ok");
@@ -251,33 +251,33 @@ namespace JayCadSurveyXamarin.ViewModel
 				return;
 			}
 
-			if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+			if (SelectedAreaConversion.conversionType == AreaConversion.CONVERSION_TYPE.ACRES_TO_HECTARES)
 			{
-				result = CalculateDecimalFeet() * SelectedLengthConversion.ConversionFactor;
+				result = CalculateDecimalFeet() * SelectedAreaConversion.ConversionFactor;
 
 			}
 			else
 			{
-				result = _numericalDoubleInput * SelectedLengthConversion.ConversionFactor;
+				result = _numericalDoubleInput * SelectedAreaConversion.ConversionFactor;
 
 			}
 
-			_conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
+			_conversionResult = result.ToString() + " " + SelectedAreaConversion.ConvertTo;
 
 			// calculate and show running total
-			_runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
+			_runningTotal = CalculateRunningTotal(result) + " " + SelectedAreaConversion.ConvertTo;
 
 
 			string temp = _convertFromUserInput;
-			int temp1 = _inchPickerSelectedIndex;
-			int temp2 = _fractionInchPickerSelectedIndex;
+			int temp1 = _roodsPickerSelectedIndex;
+			int temp2 = _PerchesPickerSelectedIndex;
 
 			ClearInputField();  // This is here for the Conversion to show in the result field ??? - need to fix in future versions
 
 			// Re-initalise User input fields
 			_convertFromUserInput = temp;
-			_inchPickerSelectedIndex = temp1;
-			_fractionInchPickerSelectedIndex = temp2;
+			_roodsPickerSelectedIndex = temp1;
+			_PerchesPickerSelectedIndex = temp2;
 
 			OnPropertyChanged();
 		}
@@ -306,12 +306,12 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// <summary>
 		/// Sets the feet pickers visibility.  Visibility is true when converting from feet to metres otherwise false.
 		/// </summary>
-		private void SetFeetPickersVisibility()
+		private void SetAcresPickersVisibility()
 		{
-			if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
-				IsFeetPickersVisible = true;
+			if (SelectedAreaConversion.conversionType == AreaConversion.CONVERSION_TYPE.ACRES_TO_HECTARES)
+				IsAcresPickersVisible = true;
 			else
-				IsFeetPickersVisible = false;
+				IsAcresPickersVisible = false;
 
 		}
 
@@ -320,14 +320,14 @@ namespace JayCadSurveyXamarin.ViewModel
 			bool isValid = false;
 
 			// Check for Selected Conversion
-			if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+			if (SelectedAreaConversion.conversionType == AreaConversion.CONVERSION_TYPE.ACRES_TO_HECTARES)
 			{
 				// allow no input when converting feet to metres as user may just select inches or fractions
 				if (input.Length == 0)
 					input = "0";
 
 				// Input for Feet to Metres should be an int (no decimal place etc)
-				if (Int32.TryParse(input, out _feetInput))
+				if (Int32.TryParse(input, out _acresInput))
 				{
 					isValid = true;
 				}
@@ -345,7 +345,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private double CalculateDecimalFeet()
 		{
-			return Convert.ToDouble(_feetInput) + (SelectedInches.InchValue * 1 / 12) + (SelectedFractionInch.FractionInchValue * 1 / 192);
+			return Convert.ToDouble(_acresInput) + (SelectedPerches.perchesValue * 1 / 12) + (SelectedRoods.RoodsValue * 1 / 192);
 		}
 
 		private string CalculateRunningTotal(double result)

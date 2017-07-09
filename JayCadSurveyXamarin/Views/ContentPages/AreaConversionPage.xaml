@@ -68,22 +68,22 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                  <Picker 
-                                    Title="Inches"
+                                    Title="Roods"
                                     HorizontalOptions="FillAndExpand"
-                                    IsVisible="{Binding IsFeetPickersVisible}" 
-                                    ItemsSource="{x:Static model:Inches.AllInches}"
+                                    IsVisible="{Binding IsAcresPickersVisible}" 
+                                    ItemsSource="{x:Static model:Roods.AllRoods}"
                                     ItemDisplayBinding="{Binding DisplayValue}"
-                                    SelectedItem="{Binding SelectedInches, Mode=TwoWay}"
-                                    SelectedIndex="{Binding InchPickerIndex, Mode=TwoWay}"/>
+                                    SelectedItem="{Binding SelectedRoods, Mode=TwoWay}"
+                                    SelectedIndex="{Binding RoodsPickerIndex, Mode=TwoWay}"/>
                             
                                  <Picker
-                                    Title="Fractions"
+                                    Title="Perches"
                                     HorizontalOptions="FillAndExpand"
-                                    IsVisible="{Binding IsFeetPickersVisible}"  
-                                    ItemsSource="{x:Static model:FractionInch.AllFractionInches}"
+                                    IsVisible="{Binding IsAcresPickersVisible}"  
+                                    ItemsSource="{x:Static model:Perches.AllPerches}"
                                     ItemDisplayBinding="{Binding DisplayValue}"
-                                    SelectedItem="{Binding SelectedFractionInch, Mode=TwoWay}"
-                                    SelectedIndex="{Binding FractionInchPickerIndex, Mode=TwoWay}"/>
+                                    SelectedItem="{Binding SelectedPerches, Mode=TwoWay}"
+                                    SelectedIndex="{Binding PerchesPickerIndex, Mode=TwoWay}"/>
                             
                            </StackLayout>
                        </ViewCell>
@@ -100,10 +100,10 @@
                                  <Picker 
                                     Title="Select Conversion"
                                     HorizontalOptions="FillAndExpand"
-                                    ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
+                                    ItemsSource="{x:Static model:AreaConversion.AllAreaConversions}"
                                     ItemDisplayBinding="{Binding ConvertName}"
-                                    SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}"
-                                    SelectedIndex="{Binding SelectedLengthConversionIndex, Mode=TwoWay}">
+                                    SelectedItem="{Binding SelectedAreaConversion, Mode=TwoWay}"
+                                    SelectedIndex="{Binding SelectedAreaConversionIndex, Mode=TwoWay}">
                                  </Picker>    
                             </StackLayout>
                        </ViewCell>

@@ -46,8 +46,5 @@ namespace JayCadSurveyXamarin.Model
             }
         }
 
-        public LengthConversion()
-        {
-        }
     }
 }

@@ -22,10 +22,10 @@ namespace JayCadSurveyXamarin.Model
 				{
 					_roodsList = new List<Roods>
 					{
-						new Roods { DisplayValue="0/16 of an Inch", RoodsValue=0},
-						new Roods { DisplayValue="1/16 of an Inch", RoodsValue=1.0 },
-						new Roods { DisplayValue="2/16 of an Inch", RoodsValue=2.0 },
-					
+						new Roods { DisplayValue="0 Roods", RoodsValue=0},
+						new Roods { DisplayValue="1 Roods", RoodsValue=1.0 },
+						new Roods { DisplayValue="2 Roods", RoodsValue=2.0 },
+					    new Roods { DisplayValue="3 Roods", RoodsValue=3.0 },
 					};
 				}
 
