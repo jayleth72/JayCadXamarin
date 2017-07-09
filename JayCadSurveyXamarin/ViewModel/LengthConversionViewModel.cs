@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JayCadSurveyXamarin.ViewModel
 {
-    public class LengthConversionViewModel: INotifyPropertyChanged
+    public class LengthConversionViewModel: BaseViewModel
     {
         private readonly IPageService _pageService;         // This is here to enable Page Navigation and DispalyAlerts
         private LengthConversion _selectedConversion;       // Selected Conversion from Conversion picker
@@ -39,14 +39,14 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 			set
 			{
+
 				if (_selectedConversion != value)
 				{
 					_selectedConversion = value;
-					OnPropertyChanged();
-					SetFeetPickersVisibility();
-                    ClearResultField();
-                    ClearRunningTotalField();
-                    ClearInputField();
+					 SetFeetPickersVisibility();
+                     ClearResultField();
+                     ClearRunningTotalField();
+                     ClearInputField();
 				}
 			}
 		}
@@ -295,15 +295,6 @@ namespace JayCadSurveyXamarin.ViewModel
            
         }
 		
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-               
-               
         private void ClearInputField()
         {
             _convertFromUserInput = "";

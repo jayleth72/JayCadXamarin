@@ -100,6 +100,7 @@
     <Compile Include="ViewModel\PageService.cs" />
     <Compile Include="Model\Roods.cs" />
     <Compile Include="Model\Perches.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
