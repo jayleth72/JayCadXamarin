@@ -95,11 +95,11 @@
     </Compile>
     <Compile Include="Model\Inches.cs" />
     <Compile Include="Model\FractionInch.cs" />
-    <Compile Include="ViewModel\InchesViewModel.cs" />
-    <Compile Include="ViewModel\FractionInchesViewModel.cs" />
     <Compile Include="ViewModel\LengthConversionViewModel.cs" />
     <Compile Include="ViewModel\IPageService.cs" />
     <Compile Include="ViewModel\PageService.cs" />
+    <Compile Include="Model\Roods.cs" />
+    <Compile Include="Model\Perches.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

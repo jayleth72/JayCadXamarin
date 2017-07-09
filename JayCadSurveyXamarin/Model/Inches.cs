@@ -24,17 +24,17 @@ namespace JayCadSurveyXamarin.Model
 					_inchesList = new List<Inches>
 					{
                         new Inches { DisplayValue="0 inches", InchValue=0.0 },
-						new Inches { DisplayValue="1\"", InchValue=1.0 },
-                        new Inches { DisplayValue="2\"", InchValue=2.0  },
-						new Inches { DisplayValue="3\"", InchValue=3.0  },
-						new Inches { DisplayValue="4\"", InchValue=4.0  },
-						new Inches { DisplayValue="5\"", InchValue=5.0  },
-						new Inches { DisplayValue="6\"", InchValue=6.0  },
-						new Inches { DisplayValue="7\"", InchValue=7.0  },
-						new Inches { DisplayValue="8\"", InchValue=8.0  },
-						new Inches { DisplayValue="9\"", InchValue=9.0  },
-						new Inches { DisplayValue="10\"", InchValue=10.0  },
-						new Inches { DisplayValue="11\"", InchValue=11.0  }
+						new Inches { DisplayValue="1 inches", InchValue=1.0 },
+                        new Inches { DisplayValue="2 inches", InchValue=2.0  },
+						new Inches { DisplayValue="3 inches", InchValue=3.0  },
+						new Inches { DisplayValue="4 inches", InchValue=4.0  },
+						new Inches { DisplayValue="5 inches", InchValue=5.0  },
+						new Inches { DisplayValue="6 inches", InchValue=6.0  },
+						new Inches { DisplayValue="7 inches", InchValue=7.0  },
+						new Inches { DisplayValue="8 inches", InchValue=8.0  },
+						new Inches { DisplayValue="9 inches", InchValue=9.0  },
+						new Inches { DisplayValue="10 inches", InchValue=10.0  },
+						new Inches { DisplayValue="11 inches", InchValue=11.0  }
 											
 					};
 				}
