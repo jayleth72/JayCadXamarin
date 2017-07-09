@@ -45,6 +45,7 @@ namespace JayCadSurveyXamarin.ViewModel
 					SetFeetPickersVisibility();
                     ClearResultField();
                     ClearRunningTotalField();
+                    ClearInputField();
 				}
 			}
 		}
@@ -196,7 +197,10 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
-		
+		/// <summary>
+        /// Gets or sets the index of the fraction inch picker.
+        /// </summary>
+        /// <value>The index of the fraction inch picker.</value>
 		public int FractionInchPickerIndex
 		{
 			get
@@ -216,6 +220,10 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
+        /// <summary>
+        /// Gets or sets the index of the inch picker.
+        /// </summary>
+        /// <value>The index of the inch picker.</value>
 		public int InchPickerIndex
 		{
 			get
@@ -291,14 +299,19 @@ namespace JayCadSurveyXamarin.ViewModel
 			OnPropertyChanged(RunningTotal);
 		}
           
-
+        /// <summary>
+        /// 1.  Checks data has been entered - display alert if no data entered.
+        /// 2.  Check numerical input entered, also check integer value entered for feet - display alert for string values.
+        /// 3.  Perform conversion and show in results and running total field
+        /// </summary>
         private async void ConvertUserInput()
         {
             string userInput = this.ConvertFromUserInput;
             double result = 0.0;
            
             // Check if they have entered anything at all
-            if (userInput.Equals(null) || userInput.Length == 0)
+            // No entry is allowed for Feet to Metres conversion as user may only select inches or fraction  Inches to convert
+            if (userInput.Equals(null) || (userInput.Length == 0 && SelectedLengthConversion.conversionType != LengthConversion.CONVERSION_TYPE.FEET_TO_METRES))
             {
                 // No data entered display error message
                 await _pageService.DisplayAlert("Input Error", "No data entered, please enter numerical value", "ok"); 
@@ -333,7 +346,19 @@ namespace JayCadSurveyXamarin.ViewModel
             // calculate and show running total
             _runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
 
-            ClearInputField();		
+
+            string temp = _convertFromUserInput;
+            int temp1 = _inchPickerSelectedIndex;
+            int temp2 = _fractionInchPickerSelectedIndex;
+
+            ClearInputField();  // This is here for the Conversion to show in the result field ??? - need to fix in future versions
+
+            // Re-initalise User input fields
+            _convertFromUserInput = temp;
+            _inchPickerSelectedIndex = temp1;
+            _fractionInchPickerSelectedIndex = temp2;
+
+            OnPropertyChanged();
 		}
         		
 		private void ClearStack()
@@ -376,6 +401,10 @@ namespace JayCadSurveyXamarin.ViewModel
             // Check for Selected Conversion
             if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
             {
+                // allow no input when converting feet to metres as user may just select inches or fractions
+                if (input.Length == 0)
+                    input = "0";
+                
                 // Input for Feet to Metres should be an int (no decimal place etc)
                 if (Int32.TryParse(input, out _feetInput))
                 {
