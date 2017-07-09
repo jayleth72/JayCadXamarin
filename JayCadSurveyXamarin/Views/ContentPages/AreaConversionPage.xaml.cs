@@ -10,7 +10,7 @@ namespace JayCadSurveyXamarin.ContentPages
         public AreaConversionPage()
         {
             InitializeComponent();
-            BindingContext = new LengthConversionViewModel(new PageService());
+            BindingContext = new AreaConversionViewModel(new PageService());
 
         }
 

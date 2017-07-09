@@ -101,6 +101,7 @@
     <Compile Include="Model\Roods.cs" />
     <Compile Include="Model\Perches.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\AreaConversionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

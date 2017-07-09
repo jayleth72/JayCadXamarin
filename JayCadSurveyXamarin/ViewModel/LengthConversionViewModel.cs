@@ -130,20 +130,8 @@ namespace JayCadSurveyXamarin.ViewModel
         public string RunningTotal
 		{
 
-			get
-			{
-				return _runningTotal;
-			}
-			set
-			{
-				if (_runningTotal != value)
-				{
-
-                    _runningTotal = value;
-					OnPropertyChanged();
-
-				}
-			}
+			get { return _runningTotal; }
+			set { SetValue(ref _runningTotal, value); }
 		}
 
 		/// <summary>
@@ -152,21 +140,8 @@ namespace JayCadSurveyXamarin.ViewModel
         /// <value>The index of the fraction inch picker.</value>
 		public int FractionInchPickerIndex
 		{
-			get
-			{
-				return _fractionInchPickerSelectedIndex;
-			}
-			set
-			{
-				if (_fractionInchPickerSelectedIndex != value)
-				{
-					_fractionInchPickerSelectedIndex = value;
-
-					
-					OnPropertyChanged(nameof(FractionInchPickerIndex));
-					
-				}
-			}
+			get	{ return _fractionInchPickerSelectedIndex; }
+			set { SetValue(ref _fractionInchPickerSelectedIndex, value); }
 		}
 
         /// <summary>
@@ -175,21 +150,8 @@ namespace JayCadSurveyXamarin.ViewModel
         /// <value>The index of the inch picker.</value>
 		public int InchPickerIndex
 		{
-			get
-			{
-				return _inchPickerSelectedIndex;
-			}
-			set
-			{
-				if (_inchPickerSelectedIndex != value)
-				{
-					_inchPickerSelectedIndex = value;
-
-
-					OnPropertyChanged(nameof(FractionInchPickerIndex));
-
-				}
-			}
+			get { return _inchPickerSelectedIndex; }
+			set { SetValue(ref _inchPickerSelectedIndex, value); }
 		}
 
 		/// <summary>
@@ -198,25 +160,11 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// <value>The index of the inch picker.</value>
 		public int SelectedLengthConversionIndex
 		{
-			get
-			{
-				return _selectedLengthConversionIndex;
-			}
-			set
-			{
-				if (_selectedLengthConversionIndex != value)
-				{
-					_selectedLengthConversionIndex = value;
-
-
-					OnPropertyChanged(nameof(SelectedLengthConversionIndex));
-
-				}
-			}
+			get { return _selectedLengthConversionIndex; }
+			set { SetValue(ref _selectedLengthConversionIndex, value); }
 		}
              
 		
-
        	public ICommand ClearInputFieldCommand { get; private set; }
         public ICommand ClearResultFieldCommand { get; private set; }
 		public ICommand ConvertUserInputCommand { get; private set; }
@@ -238,9 +186,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
             // Enable navigation from View Model
             _pageService = pageService;
-            _selectedLengthConversionIndex = 0;
-
-           
+                       
         }
 		
         private void ClearInputField()
