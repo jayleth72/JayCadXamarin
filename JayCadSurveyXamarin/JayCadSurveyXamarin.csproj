@@ -103,6 +103,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\AreaConversionViewModel.cs" />
     <Compile Include="Model\AreaConversion.cs" />
+    <Compile Include="ViewModel\DecimalAngleConversionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

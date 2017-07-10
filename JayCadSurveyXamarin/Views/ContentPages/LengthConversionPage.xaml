@@ -44,7 +44,7 @@
                     ElementName=banner,
                     Property=Height,
                     Factor=1,
-                    Constant=15}">
+                    Constant=10}">
                 <Label Text="Length Conversion" Style="{StaticResource pageLabel}" />
                 <TableView Intent="Form" HeightRequest="470"  >
                     <TableSection Title="Enter Convert From Units" >

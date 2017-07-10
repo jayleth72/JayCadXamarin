@@ -34,7 +34,7 @@
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             </Style>
-          
+
         </ResourceDictionary>
 	</Application.Resources>
 </Application>

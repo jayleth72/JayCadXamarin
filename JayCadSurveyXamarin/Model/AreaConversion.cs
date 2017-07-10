@@ -29,7 +29,9 @@ namespace JayCadSurveyXamarin.Model
                     _conversionList = new List<AreaConversion>
                     {
                         new AreaConversion { id =0, ConvertFrom="Hectares", ConvertTo="Acres", ConvertName="Hectares to Acres", conversionType=CONVERSION_TYPE.HECTARES_TO_ACRES, ConversionFactor=2.47105 },
-                        new AreaConversion { id =1, ConvertFrom="Acres", ConvertTo="Hectares", ConvertName="Acres to Hectares", conversionType=CONVERSION_TYPE.ACRES_TO_HECTARES, ConversionFactor=0.404686 }
+                        new AreaConversion { id =1, ConvertFrom="Acres", ConvertTo="Hectares", ConvertName="Acres to Hectares", conversionType=CONVERSION_TYPE.ACRES_TO_HECTARES, ConversionFactor=0.404686 },
+                        new AreaConversion { id =2, ConvertFrom="Hectares", ConvertTo="Acres, Roods, Perches", ConvertName="Hectares to Acres, Roods, Perches", conversionType=CONVERSION_TYPE.HECTARES_TO_ACRES, ConversionFactor=2.47105 },
+						new AreaConversion { id =3, ConvertFrom="Acres, Roods, Perches", ConvertTo="Hectares", ConvertName="Acres, Roods, Perches to Hectares", conversionType=CONVERSION_TYPE.ACRES_TO_HECTARES, ConversionFactor=0.404686 }
                     };	
 				}
 
