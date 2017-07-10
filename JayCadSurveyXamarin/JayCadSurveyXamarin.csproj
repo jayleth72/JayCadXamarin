@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -39,10 +38,10 @@
     <EmbeddedResource Include="Views\ContentPages\AreaConversionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\DecimalAngleConversionPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\DegreesMinutesSecondsConversionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\DegreesMinutesSecondsConversionPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\DecimalAngleConversionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ContentPages\LengthConversionPage.xaml">
@@ -104,6 +103,7 @@
     <Compile Include="ViewModel\AreaConversionViewModel.cs" />
     <Compile Include="Model\AreaConversion.cs" />
     <Compile Include="ViewModel\DecimalAngleConversionViewModel.cs" />
+    <Compile Include="ViewModel\DegreesMinutesSecondsConversionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
