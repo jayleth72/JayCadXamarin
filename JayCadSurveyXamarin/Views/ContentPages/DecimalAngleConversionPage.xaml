@@ -52,21 +52,17 @@
                         <TableSection Title="Enter Degrees" >
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                    <Label
-                                        Text="{Binding Source={x:Reference degrees}, Path=Value}"
-                                        Style="{StaticResource pageDisplayLabel}" 
-                                        WidthRequest="75"/>
-                                    <Stepper
-                                        x:Name="degrees"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Minimum="0"
-                                        Maximum="359" />
-
+                                  <Entry
+                                        Placeholder="degrees"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding DegreesInput, Mode=TwoWay}"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric" />
                                      <Button 
-                                        Text="    Clear    "
+                                        Text="Clear"
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ClearInputFieldCommand}"
-                                        HorizontalOptions="End" />
+                                        Command="{Binding ResetDegreesCommand}"
+                                        />
                                 </StackLayout>
                             </ViewCell>
 
@@ -75,21 +71,18 @@
                          <TableSection Title="Enter Minutes" >
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                    <Label
-                                        Text="{Binding Source={x:Reference minutes}, Path=Value}"
-                                        Style="{StaticResource pageDisplayLabel}"
-                                        WidthRequest="75"/>
-                                    <Stepper
-                                        x:Name="minutes"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Minimum="0"
-                                        Maximum="59"/>
-
+                                    <Entry
+                                        Placeholder="minutes"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding MinutesInput, Mode=TwoWay}"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric" />
+                                    
                                      <Button 
-                                        Text="    Clear    "
+                                        Text="Clear"
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ClearInputFieldCommand}"
-                                        HorizontalOptions="End" />
+                                        Command="{Binding ResetMinutesCommand}"
+                                        />
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
@@ -97,21 +90,18 @@
                         <TableSection Title="Enter Seconds" >
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                    <Label
-                                        Text="{Binding Source={x:Reference seconds}, Path=Value}"
-                                        Style="{StaticResource pageDisplayLabel}"
-                                        WidthRequest="75"/>
-                                    <Stepper
-                                        x:Name="seconds"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Minimum="0"
-                                        Maximum="59" />
+                                    <Entry
+                                        Placeholder="seconds"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding SecondsInput, Mode=TwoWay}"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Numeric" />
 
                                      <Button 
-                                        Text="    Clear    "
+                                        Text= "Clear"
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ClearInputFieldCommand}"
-                                        HorizontalOptions="End" />
+                                        Command="{Binding ResetSecondsCommand}" />
+
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
@@ -121,14 +111,14 @@
                                 <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                     
                                      <Label
-                                        Text=""
+                                        Text="{Binding DecimalConversionResult}"
                                         Style="{StaticResource pageDisplayLabel}"
-                                        HorizontalOptions="FillAndExpand" />
+                                        WidthRequest="85" />
                                     <Button 
-                                        Text="    Clear    "
+                                        Text="Clear"
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ClearInputFieldCommand}"
-                                        HorizontalOptions="Start" />
+                                        Command="{Binding ClearResultCommand}" />
+
                                  </StackLayout>
 
                             </ViewCell>
@@ -137,7 +127,7 @@
                                     <Button 
                                         Text="Convert to Decimal"
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ClearInputFieldCommand}"
+                                        Command="{Binding ConvertToDecimalCommand}"
                                         HorizontalOptions="FillAndExpand" />
                                      
                                  </StackLayout>
