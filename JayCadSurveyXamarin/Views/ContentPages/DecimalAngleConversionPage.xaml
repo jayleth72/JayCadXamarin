@@ -149,7 +149,7 @@
                             </ViewCell>
                         </TableSection>
                        
-                    </TableView>
+                </TableView>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
                     <Button
                         Text="Back"
