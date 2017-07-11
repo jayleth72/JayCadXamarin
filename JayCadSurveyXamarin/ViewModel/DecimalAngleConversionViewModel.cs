@@ -120,9 +120,10 @@ namespace JayCadSurveyXamarin.ViewModel
 	         // Check Degrees Field is a integer if the field is not empty
 	         if (!(Int32.TryParse(_degreesInput, out _degreesIntegerInput)) && !(String.IsNullOrEmpty(_degreesInput)))
 	         {
-	             await _pageService.DisplayAlert("Data Input Error", "Please enter Integer numerical data (No decimals) in Degrees Field", "Ok");
+	            await _pageService.DisplayAlert("Data Input Error", "Please enter Integer numerical data (No decimals) in Degrees Field", "Ok");
 		        return;
 	         }
+            else
 
             // Check Minutes Field is a integer if the field is not empty
             if (!(Int32.TryParse(_minutesInput, out _minutesIntegerInput)) && !(String.IsNullOrEmpty(_minutesInput)))
@@ -131,13 +132,28 @@ namespace JayCadSurveyXamarin.ViewModel
             	return;
             }
 
-                     // Check Seconds Field is Numerical (Doubles Allowed) if the field is not empty
+            // Check Seconds Field is Numerical (Doubles Allowed) if the field is not empty
             if (!(Double.TryParse(_secondsInput, out _secondsDoubleInput)) && !(String.IsNullOrEmpty(_secondsInput)))
             {
             	await _pageService.DisplayAlert("Data Input Error", "Please enter numerical data in Seconds Field", "Ok");
             	return;
             }
 
+  			// Check that minutes numbers are in range
+			if (NumberOutOfRange(59, 0, _minutesIntegerInput))
+			{
+				await _pageService.DisplayAlert("Data Input Error", "Minutes need to be a Numerical value between 0 and 60", "Ok");
+				return;
+			}
+
+            // Check that seconds numbers are in range
+            if (NumberOutOfRange(59, 0, ((int)_secondsDoubleInput)))
+            {
+                await _pageService.DisplayAlert("Data Input Error", "Seconds need to be a Numerical value between 0 and 60", "Ok");
+                return;
+            }
+
+            // Data entered and in correct format and in specified ranges if we get to here
             // Assign zero to empty fields
             _degreesIntegerInput = String.IsNullOrEmpty(_degreesInput) ? 0 : _degreesIntegerInput;
             _minutesIntegerInput = String.IsNullOrEmpty(_minutesInput) ? 0 : _minutesIntegerInput;
@@ -152,7 +168,6 @@ namespace JayCadSurveyXamarin.ViewModel
 
             OnPropertyChanged(DecimalConversionResult);
 
-
 		}
 
 		private async Task BackToPreviousPage()
@@ -165,6 +180,10 @@ namespace JayCadSurveyXamarin.ViewModel
 			await _pageService.PopToRootAsync();
 		}
 
+        /// <summary>
+        /// Test if any data entered by user.
+        /// </summary>
+        /// <returns><c>true</c>, if data entered was noed, <c>false</c> otherwise.</returns>
         private bool NoDataEntered()
         {
             if (String.IsNullOrEmpty(_degreesInput) && String.IsNullOrEmpty(_minutesInput) && String.IsNullOrEmpty(_secondsInput))
@@ -174,7 +193,7 @@ namespace JayCadSurveyXamarin.ViewModel
         }
 
         /// <summary>
-        /// Only Integer values should be entered for Degrees and Minutes
+        /// Only Integer values should be entered for Degrees and Minutes.
         /// </summary>
         /// <returns><c>True</c>, if Integer values entered for Degrees and Minutes Fields, <c>false</c> otherwise.</returns>
         private bool DataFormatError(string input)
@@ -182,6 +201,20 @@ namespace JayCadSurveyXamarin.ViewModel
            return !(Int32.TryParse(input, out _degreesIntegerInput));
         }
 
+        /// <summary>
+        /// Test for input between max and min numbers
+        /// </summary>
+        /// <returns><c>true</c>, if input out of range, <c>false</c> otherwise.</returns>
+        /// <param name="max">Max.</param>
+        /// <param name="min">Minimum.</param>
+        /// <param name="input">Input.</param>
+        private bool NumberOutOfRange(int max, int min, int input)
+        {
+            if (input < min || input > max)
+                return true;
+            else
+                return false;    
+        }
 
     }
 }

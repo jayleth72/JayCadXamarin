@@ -1,8 +1,8 @@
 ﻿﻿using System;
 using Xamarin.Forms;
-namespace JayCadSurveyXamarin.Behaviours
+namespace JayCadSurveyXamarin.Behaviors
 {
-	public class NumberValidationBehavior : Behavior<Entry>
+	public class NumberIntegerValidationBehavior : Behavior<Entry>
 	{
 		protected override void OnAttachedTo(Entry entry)
 		{

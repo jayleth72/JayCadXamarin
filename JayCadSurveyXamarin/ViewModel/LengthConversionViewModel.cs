@@ -262,23 +262,12 @@ namespace JayCadSurveyXamarin.ViewModel
 
             }
                 
-            ClearResultField();  // This is here for the Conversion to show in the result field ??? - need to fix in future versions
+            ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
 			_conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
 
             // calculate and show running total
             _runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
-
-            //string temp = _convertFromUserInput;
-            //int temp1 = _inchPickerSelectedIndex;
-            //int temp2 = _fractionInchPickerSelectedIndex;
-
-
-
-            // Re-initalise User input fields
-            //_convertFromUserInput = temp;
-            //_inchPickerSelectedIndex = temp1;
-            //_fractionInchPickerSelectedIndex = temp2;
 
             OnPropertyChanged(ConversionResult);
 		}

@@ -63,7 +63,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MarkupExtensions\EmbeddedImage.cs" />
-    <Compile Include="Behaviours\NumberValidationBehavior.cs" />
+    <Compile Include="Behaviors\NumberIntegerValidationBehavior.cs" />
     <Compile Include="Model\LengthConversion.cs" />
     <Compile Include="Views\ContentPages\AboutPage.xaml.cs">
       <DependentUpon>..\..\ContentPages\AboutPage.xaml</DependentUpon>
@@ -104,6 +104,10 @@
     <Compile Include="Model\AreaConversion.cs" />
     <Compile Include="ViewModel\DecimalAngleConversionViewModel.cs" />
     <Compile Include="ViewModel\DegreesMinutesSecondsConversionViewModel.cs" />
+    <Compile Include="Behaviors\TextFieldLengthRestrictorBehavior.cs" />
+    <Compile Include="Behaviors\MaxNumberFieldValidationBehavior.cs" />
+    <Compile Include="Behaviors\MinNumberFieldValidationBehavior.cs" />
+    <Compile Include="Behaviors\NumberDoubleValidationBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -122,7 +126,7 @@
   <ItemGroup>
     <Folder Include="MarkupExtensions\" />
     <Folder Include="Images\" />
-    <Folder Include="Behaviours\" />
+    <Folder Include="Behaviors\" />
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Views\" />

@@ -4,6 +4,7 @@
     xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
     xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
     xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
+    xmlns:behaviors="clr-namespace:JayCadSurveyXamarin.Behaviors"
     x:Class="JayCadSurveyXamarin.ContentPages.DecimalAngleConversionPage"
     BackgroundColor="{StaticResource mainColorBackground}"
     NavigationPage.HasNavigationBar="false"
@@ -57,7 +58,12 @@
                                         HorizontalOptions="FillAndExpand"
                                         Text="{Binding DegreesInput, Mode=TwoWay}"
                                         HorizontalTextAlignment="Center"
-                                        Keyboard="Numeric" />
+                                        Keyboard="Numeric" >
+                                        <Entry.Behaviors>
+                                            <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                                            <behaviors:NumberIntegerValidationBehavior />
+                                         </Entry.Behaviors>
+                                  </Entry>  
                                      <Button 
                                         Text="Clear"
                                         Style="{StaticResource pageButton}"
@@ -76,9 +82,13 @@
                                         HorizontalOptions="FillAndExpand"
                                         Text="{Binding MinutesInput, Mode=TwoWay}"
                                         HorizontalTextAlignment="Center"
-                                        Keyboard="Numeric" />
-                                    
-                                     <Button 
+                                        Keyboard="Numeric" >
+                                        <Entry.Behaviors>
+                                            <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
+                                            <behaviors:NumberIntegerValidationBehavior />
+                                         </Entry.Behaviors>
+                                    </Entry>
+                                    <Button 
                                         Text="Clear"
                                         Style="{StaticResource pageButton}"
                                         Command="{Binding ResetMinutesCommand}"
@@ -95,13 +105,17 @@
                                         HorizontalOptions="FillAndExpand"
                                         Text="{Binding SecondsInput, Mode=TwoWay}"
                                         HorizontalTextAlignment="Center"
-                                        Keyboard="Numeric" />
-
+                                        Keyboard="Numeric" >
+                                         <Entry.Behaviors>
+                                            <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="4" />
+                                            <behaviors:NumberDoubleValidationBehavior />
+                                         </Entry.Behaviors>
+                                     </Entry>
                                      <Button 
                                         Text= "Clear"
                                         Style="{StaticResource pageButton}"
                                         Command="{Binding ResetSecondsCommand}" />
-
+                                   
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
