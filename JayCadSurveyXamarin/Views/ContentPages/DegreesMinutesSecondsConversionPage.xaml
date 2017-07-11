@@ -54,34 +54,33 @@
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                     <Entry
-                                        Placeholder="seconds"
+                                        Placeholder="Decimal Degrees"
                                         HorizontalOptions="FillAndExpand"
-                                        Text="{Binding SecondsInput, Mode=TwoWay}"
+                                        Text="{Binding DecimalInput, Mode=TwoWay}"
                                         HorizontalTextAlignment="Center"
                                         Keyboard="Numeric" >
                                          <Entry.Behaviors>
-                                            <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="4" />
                                             <behaviors:NumberDoubleValidationBehavior />
                                          </Entry.Behaviors>
                                      </Entry>
                                      <Button 
                                         Text= "   Clear   "
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ResetSecondsCommand}"
+                                        Command="{Binding ClearInputCommand}"
                                         HorizontalOptions="End"/>
                                    
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
 
-                        <TableSection Title="Presss Button to Convert" >
+                        <TableSection Title="Press Button to Convert" >
                             
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                     <Button 
                                         Text="Convert to Degees/Minutes/Seconds"
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ConvertToDecimalCommand}"
+                                        Command="{Binding ConvertResultCommand}"
                                         HorizontalOptions="FillAndExpand" />
                                      
                                  </StackLayout>
@@ -105,7 +104,7 @@
                                     <Button 
                                         Text="  Clear Result  "
                                         Style="{StaticResource pageButton}"
-                                        Command="{Binding ConvertToDecimalCommand}"
+                                        Command="{Binding ClearResultCommand}"
                                         HorizontalOptions="CenterAndExpand" />
                                      
                                  </StackLayout>

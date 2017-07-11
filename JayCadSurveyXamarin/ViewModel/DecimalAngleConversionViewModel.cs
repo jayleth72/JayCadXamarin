@@ -109,7 +109,7 @@ namespace JayCadSurveyXamarin.ViewModel
             OnPropertyChanged(DecimalConversionResult);
         }
 
-       async private void ConvertToDecimal()
+        private async void ConvertToDecimal()
         {
              ClearConversionResult();
 
