@@ -80,6 +80,10 @@ namespace JayCadSurveyXamarin.ViewModel
 				await _pageService.DisplayAlert("Data Input Error", "Please enter numerical data in Decimal Degrees Field", "Ok");
 				return;
 			}
+
+            _conversionResult = ConvertDecimalToDegMinSec(_decimalDoubleInput);
+
+            OnPropertyChanged(ConversionResult);
 		}
 
         /// <summary>
@@ -121,5 +125,25 @@ namespace JayCadSurveyXamarin.ViewModel
 		{
 			return !(Double.TryParse(input, out _decimalDoubleInput));
 		}
+
+        /// <summary>
+        /// Converts the decimal degrees to degrees, minutes and second.
+        /// </summary>
+        /// <returns>Degrees, minutes & seconds as a string.</returns>
+        /// <param name="input">Double User Input</param>
+        private string ConvertDecimalToDegMinSec(double input)
+        {
+			// Get the whole degrees value from the decimal value
+			int degrees = (int)input;
+
+			// Get the whole minutes value from the decimal value
+			double calcMinutesValue = ((input - (double)degrees) * 60);
+			int minutes = (int)calcMinutesValue;
+
+			// Calculate seconds
+			double theSeconds = ((calcMinutesValue - (double)minutes) * 60);
+
+            return degrees.ToString() + "\u00B0 " + minutes.ToString() + "\' " + theSeconds.ToString() + "\"";
+        }
     }
 }

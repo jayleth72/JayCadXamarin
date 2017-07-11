@@ -92,7 +92,7 @@
                                 <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                     
                                     <Label
-                                        Text="{Binding DecimalConversionResult}"
+                                        Text="{Binding ConversionResult}"
                                         Style="{StaticResource pageDisplayLabel}"
                                         WidthRequest="85" />
                                   
