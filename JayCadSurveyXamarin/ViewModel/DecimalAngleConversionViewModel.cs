@@ -106,35 +106,52 @@ namespace JayCadSurveyXamarin.ViewModel
         {
             _decimalConversionResult = "";
 
-            OnPropertyChanged();
+            OnPropertyChanged(DecimalConversionResult);
         }
 
-        async private void ConvertToDecimal()
+       async private void ConvertToDecimal()
         {
-            if (NoDataEntered())
-            {
-				await _pageService.DisplayAlert("Data Input Error", "Nothing to convert, please enter some data", "Ok");
-                return;
-            }
+	         if (NoDataEntered())
+	         {
+		        await _pageService.DisplayAlert("Data Input Error", "Nothing to convert, please enter some data", "Ok");
+	             return;
+	         }
 
-            // Check Degrees Field is a integer if the field is not empty
-            if (!(Int32.TryParse(_degreesInput, out _degreesIntegerInput)) && !(String.IsNullOrEmpty(_degreesInput)))
-            {
-                await _pageService.DisplayAlert("Data Input Error", "Please enter Integer numerical data (No decimals) in Degrees Field", "Ok");
-				return;
-            }
+	         // Check Degrees Field is a integer if the field is not empty
+	         if (!(Int32.TryParse(_degreesInput, out _degreesIntegerInput)) && !(String.IsNullOrEmpty(_degreesInput)))
+	         {
+	             await _pageService.DisplayAlert("Data Input Error", "Please enter Integer numerical data (No decimals) in Degrees Field", "Ok");
+		        return;
+	         }
 
+            // Check Minutes Field is a integer if the field is not empty
             if (!(Int32.TryParse(_minutesInput, out _minutesIntegerInput)) && !(String.IsNullOrEmpty(_minutesInput)))
-			{
-				await _pageService.DisplayAlert("Data Input Error", "Please enter Integer numerical data (No decimals) in Minutes Field", "Ok");
-				return;
-			}
+            {
+            	await _pageService.DisplayAlert("Data Input Error", "Please enter Integer numerical data (No decimals) in Minutes Field", "Ok");
+            	return;
+            }
 
+                     // Check Seconds Field is Numerical (Doubles Allowed) if the field is not empty
             if (!(Double.TryParse(_secondsInput, out _secondsDoubleInput)) && !(String.IsNullOrEmpty(_secondsInput)))
-			{
-				await _pageService.DisplayAlert("Data Input Error", "Please enter numerical data in Seconds Field", "Ok");
-				return;
-			}
+            {
+            	await _pageService.DisplayAlert("Data Input Error", "Please enter numerical data in Seconds Field", "Ok");
+            	return;
+            }
+
+            // Assign zero to empty fields
+            _degreesIntegerInput = String.IsNullOrEmpty(_degreesInput) ? 0 : _degreesIntegerInput;
+            _minutesIntegerInput = String.IsNullOrEmpty(_minutesInput) ? 0 : _minutesIntegerInput;
+            _secondsDoubleInput = String.IsNullOrEmpty(_secondsInput) ? 0 : _secondsDoubleInput;
+
+            // Converts Deg Min Second to decimal degrees
+            Double result = (double)_degreesIntegerInput + ((double)_minutesIntegerInput / 60) + (_secondsDoubleInput / 3600);
+
+
+            ClearConversionResult();    // This is here to enable display of result
+            _decimalConversionResult = result.ToString();
+
+            OnPropertyChanged(DecimalConversionResult);
+
 
 		}
 
@@ -164,5 +181,7 @@ namespace JayCadSurveyXamarin.ViewModel
         {
            return !(Int32.TryParse(input, out _degreesIntegerInput));
         }
+
+
     }
 }
