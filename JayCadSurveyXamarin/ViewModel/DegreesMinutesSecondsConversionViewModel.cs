@@ -7,7 +7,6 @@ namespace JayCadSurveyXamarin.ViewModel
 {
     public class DegreesMinutesSecondsConversionViewModel : BaseViewModel
     {
-        private readonly IPageService _pageService;         // This is here to enable Page Navigation and DispalyAlerts.
         private string _decimalInput;                       // User Input. 
         private string _conversionResult;                   // calculated conversion result.
         private double _decimalDoubleInput;                 // User Input converted to double after check.
@@ -31,25 +30,19 @@ namespace JayCadSurveyXamarin.ViewModel
 			set { SetValue(ref _conversionResult, value); }
 		}
 
-		public DegreesMinutesSecondsConversionViewModel(IPageService pageService)
+		public DegreesMinutesSecondsConversionViewModel(IPageService pageService) : base(pageService)
         {
             ClearInputCommand = new Command(ClearInput);                                        // Clear User Input
             ConvertResultCommand = new Command(ConvertResult);                                  // Convert User Input to Degrees, Minutes and Seconds
             ClearResultCommand = new Command(ClearResult);                                    // Clear Conversion Results
-			BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());    // Navigation Back Buttom
-			BackToMainMenuCommand = new Command(async () => await BackToMainMenu());            // Navigation for Button to Main Menu
-
-			// Enable navigation from View Model
-			_pageService = pageService;
-
+		
 		}
 
         // Buttons on View
         public ICommand ClearInputCommand{ get; private set; }
         public ICommand ConvertResultCommand { get; private set; }
         public ICommand ClearResultCommand { get; private set; }
-		public ICommand BackToPreviousPageCommand { get; private set; }
-		public ICommand BackToMainMenuCommand { get; private set; }
+		
 
         /// <summary>
         /// Clears the input.
@@ -94,17 +87,7 @@ namespace JayCadSurveyXamarin.ViewModel
             _conversionResult = "";
             OnPropertyChanged(ConversionResult);
 		}
-
-		private async Task BackToPreviousPage()
-		{
-			await _pageService.PopAsync();
-		}
-
-		private async Task BackToMainMenu()
-		{
-			await _pageService.PopToRootAsync();
-		}
-
+        		
 		/// <summary>
 		/// Test if any data entered by user.
 		/// </summary>

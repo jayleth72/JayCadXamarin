@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using JayCadSurveyXamarin.ViewModel;
 using Xamarin.Forms;
 
 namespace JayCadSurveyXamarin.ContentPages
@@ -10,11 +10,9 @@ namespace JayCadSurveyXamarin.ContentPages
         public AngleAddSubtractPage()
         {
             InitializeComponent();
-        }
 
-		async void Handle_Clicked(object sender, System.EventArgs e)
-		{
-			await Navigation.PopAsync();
-		}
+            BindingContext = new AngleAddSubtractViewModel(new PageService());
+        }
+        		
     }
 }

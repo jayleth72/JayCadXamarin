@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -11,7 +11,6 @@ namespace JayCadSurveyXamarin.ViewModel
 {
     public class AreaConversionViewModel: BaseViewModel
     {
-		private readonly IPageService _pageService;         // This is here to enable Page Navigation and DispalyAlerts
 		private AreaConversion _selectedConversion;         // Selected Conversion from Conversion picker
 		private Roods _selectedRood;                        // Selected Conversion from Roods picker
 		private Perches _selectedPerches;                   // Selected Perch from Perch picker
@@ -170,10 +169,9 @@ namespace JayCadSurveyXamarin.ViewModel
 		public ICommand ConvertUserInputCommand { get; private set; }
 		public ICommand ClearStackCommand { get; private set; }
 		public ICommand ShowStackCommand { get; private set; }
-		public ICommand BackToPreviousPageCommand { get; private set; }
-		public ICommand BackToMainMenuCommand { get; private set; }
+	
 
-		public AreaConversionViewModel(IPageService pageService)
+		public AreaConversionViewModel(IPageService pageService) : base(pageService)
 		{
 			// Initialis buttons in View
 			ClearInputFieldCommand = new Command(ClearInputField);
@@ -181,12 +179,8 @@ namespace JayCadSurveyXamarin.ViewModel
 			ConvertUserInputCommand = new Command(ConvertUserInput);
 			ClearStackCommand = new Command(ClearStack);
 			ShowStackCommand = new Command(ShowStack);
-			BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());    // Navigation Back Buttom
-			BackToMainMenuCommand = new Command(async () => await BackToMainMenu());            // Navigation for Button to Main Menu
-
-			// Enable navigation from View Model
-			_pageService = pageService;
-
+			
+		
 		}
 
 		private void ClearInputField()
@@ -291,16 +285,6 @@ namespace JayCadSurveyXamarin.ViewModel
 		private void ShowStack()
 		{
 
-		}
-
-		private async Task BackToPreviousPage()
-		{
-			await _pageService.PopAsync();
-		}
-
-		private async Task BackToMainMenu()
-		{
-			await _pageService.PopToRootAsync();
 		}
 
 		/// <summary>

@@ -11,8 +11,7 @@ namespace JayCadSurveyXamarin.ViewModel
 {
     public class LengthConversionViewModel: BaseViewModel
     {
-        private readonly IPageService _pageService;         // This is here to enable Page Navigation and DispalyAlerts
-        private LengthConversion _selectedConversion;       // Selected Conversion from Conversion picker
+       private LengthConversion _selectedConversion;       // Selected Conversion from Conversion picker
         private FractionInch _selectedFractionInch;         // Selected Conversion from FractionInches picker
         private Inches _selectedInches;                     // Selected Inch from Inch picker
 		private string _conversionResult = "";              // Result from a user selected conversion
@@ -170,10 +169,9 @@ namespace JayCadSurveyXamarin.ViewModel
 		public ICommand ConvertUserInputCommand { get; private set; }
         public ICommand ClearStackCommand { get; private set; }
         public ICommand ShowStackCommand { get; private set; }
-        public ICommand BackToPreviousPageCommand { get; private set; }
-        public ICommand BackToMainMenuCommand { get; private set; }
+       
 
-		public LengthConversionViewModel(IPageService pageService)
+		public LengthConversionViewModel(IPageService pageService) : base(pageService)
         {
             // Initialis buttons in View
             ClearInputFieldCommand = new Command(ClearInputField);
@@ -181,12 +179,7 @@ namespace JayCadSurveyXamarin.ViewModel
             ConvertUserInputCommand = new Command(ConvertUserInput);
             ClearStackCommand = new Command(ClearStack);
             ShowStackCommand = new Command(ShowStack);
-            BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());    // Navigation Back Buttom
-            BackToMainMenuCommand = new Command(async () => await BackToMainMenu());            // Navigation for Button to Main Menu
-
-            // Enable navigation from View Model
-            _pageService = pageService;
-                       
+          
         }
 		
         private void ClearInputField()
@@ -282,17 +275,7 @@ namespace JayCadSurveyXamarin.ViewModel
 		{
 
 		}
-
-        private async Task BackToPreviousPage()
-		{
-            await _pageService.PopAsync();
-		}
-        		
-		private async Task BackToMainMenu()
-		{
-            await _pageService.PopToRootAsync();
-		}
-
+            
         /// <summary>
         /// Sets the feet pickers visibility.  Visibility is true when converting from feet to metres otherwise false.
         /// </summary>

@@ -7,7 +7,6 @@ namespace JayCadSurveyXamarin.ViewModel
 {
     public class DecimalAngleConversionViewModel:BaseViewModel
     {
-		private readonly IPageService _pageService;            // This is here to enable Page Navigation and DispalyAlerts.
 		private string _degreesInput;                          // Binding to stepper for degrees user input. 
         private string _minutesInput;                          // Binding to stepper for minutes user input.
         private string _secondsInput;                          // Binding to stepper for minutes user input.
@@ -61,24 +60,16 @@ namespace JayCadSurveyXamarin.ViewModel
 		public ICommand ResetSecondsCommand { get; private set; }
 		public ICommand ClearResultCommand { get; private set; }
 		public ICommand ConvertToDecimalCommand { get; private set; }
-		public ICommand BackToPreviousPageCommand { get; private set; }
-		public ICommand BackToMainMenuCommand { get; private set; }
+		
 
-
-		public DecimalAngleConversionViewModel(IPageService pageService)
+		public DecimalAngleConversionViewModel(IPageService pageService) : base(pageService)
         {
             ResetDegreesCommand = new Command(ResetDegreesStepper);                                    // Reset Degrees Stepper
             ResetMinutesCommand = new Command(ResetMinutesStepper);                                    // Reset Minutes Stepper
             ResetSecondsCommand = new Command(ResetSecondsStepper);                                    // Reset Seconds Stepper
             ClearResultCommand = new Command(ClearConversionResult);                                   // Clear Result of conversionn field
 			ConvertToDecimalCommand = new Command(ConvertToDecimal);                                   // Clear Result of conversionn field
-			BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());    // Navigation Back Buttom
-            BackToMainMenuCommand = new Command(async () => await BackToMainMenu());            // Navigation for Button to Main Menu
-
-			// Enable navigation from View Model
-			_pageService = pageService;
-
-
+					
         }
 
         // Button Methods
@@ -176,17 +167,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		}
 
-		private async Task BackToPreviousPage()
-		{
-			await _pageService.PopAsync();
-		}
-
-		private async Task BackToMainMenu()
-		{
-			await _pageService.PopToRootAsync();
-		}
-
-        /// <summary>
+	    /// <summary>
         /// Test if any data entered by user.
         /// </summary>
         /// <returns><c>true</c>, if data entered was noed, <c>false</c> otherwise.</returns>
