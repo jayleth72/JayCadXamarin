@@ -111,6 +111,8 @@ namespace JayCadSurveyXamarin.ViewModel
 
        async private void ConvertToDecimal()
         {
+             ClearConversionResult();
+
 	         if (NoDataEntered())
 	         {
 		        await _pageService.DisplayAlert("Data Input Error", "Nothing to convert, please enter some data", "Ok");
@@ -160,10 +162,14 @@ namespace JayCadSurveyXamarin.ViewModel
             _secondsDoubleInput = String.IsNullOrEmpty(_secondsInput) ? 0 : _secondsDoubleInput;
 
             // Converts Deg Min Second to decimal degrees
-            Double result = (double)_degreesIntegerInput + ((double)_minutesIntegerInput / 60) + (_secondsDoubleInput / 3600);
+            // Allow for negative values
+            Double result;
+            if (_degreesIntegerInput >= 0)
+               result= (double)_degreesIntegerInput + ((double)_minutesIntegerInput / 60) + (_secondsDoubleInput / 3600);
+            else
+               result = (double)_degreesIntegerInput - ((double)_minutesIntegerInput / 60) - (_secondsDoubleInput / 3600);
 
 
-            ClearConversionResult();    // This is here to enable display of result
             _decimalConversionResult = result.ToString();
 
             OnPropertyChanged(DecimalConversionResult);

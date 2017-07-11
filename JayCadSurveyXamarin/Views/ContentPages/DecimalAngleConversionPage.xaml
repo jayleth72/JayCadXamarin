@@ -60,7 +60,7 @@
                                         HorizontalTextAlignment="Center"
                                         Keyboard="Numeric" >
                                         <Entry.Behaviors>
-                                            <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                                            <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="4" />
                                             <behaviors:NumberIntegerValidationBehavior />
                                          </Entry.Behaviors>
                                   </Entry>  
