@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
+    xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
+    xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
+    xmlns:behaviors="clr-namespace:JayCadSurveyXamarin.Behaviors"
     x:Class="JayCadSurveyXamarin.ContentPages.AngleAddSubtractPage"
     BackgroundColor="{StaticResource mainColorBackground}"
     NavigationPage.HasNavigationBar="false"
@@ -10,54 +13,199 @@
         <OnPlatform x:TypeArguments="Thickness"
             iOS="0, 20, 0, 0"/>
     </ContentPage.Padding>
-    <RelativeLayout>
-       <BoxView BackgroundColor="{StaticResource bannerBackground}" x:Name="banner"
-            RelativeLayout.HeightConstraint="{ConstraintExpression 
-                Type=RelativeToParent,
-                Property=Height,
-                Factor=0.1}"
-            RelativeLayout.WidthConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Width,
-                Factor=1}" />
-       <Image Source="{local:EmbeddedImage JayCadSurveyXamarin.Images.top_banner.png}"
-            x:Name="bannerImageLogo"
-            RelativeLayout.HeightConstraint="{ConstraintExpression 
-                Type=RelativeToParent,
-                Property=Height,
-                Factor=0.1}"
-            RelativeLayout.WidthConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Width,
-                Factor=1}" />
-       <StackLayout Padding="30, 0, 30, 0" Spacing="30"
-            RelativeLayout.WidthConstraint="{ConstraintExpression
-                Type=RelativeToParent,
-                Property=Width,
-                Factor=1}"
+    <ScrollView>
+        <RelativeLayout>
+           <BoxView BackgroundColor="{StaticResource bannerBackground}" x:Name="banner"
+                RelativeLayout.HeightConstraint="{ConstraintExpression 
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.1}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}" />
+           <Image Source="{local:EmbeddedImage JayCadSurveyXamarin.Images.top_banner.png}"
+                x:Name="bannerImageLogo"
+                RelativeLayout.HeightConstraint="{ConstraintExpression 
+                    Type=RelativeToParent,
+                    Property=Height,
+                    Factor=0.1}"
+                RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}" />
+           <StackLayout Padding="30, 0, 30, 0" Spacing="15"
+                RelativeLayout.WidthConstraint="{ConstraintExpression
+                    Type=RelativeToParent,
+                    Property=Width,
+                    Factor=1}"
+                    
+                RelativeLayout.YConstraint="{ConstraintExpression
+                    Type=RelativeToView,
+                    ElementName=banner,
+                    Property=Height,
+                    Factor=1,
+                    Constant=20}">
+                <Label Text="Angle Add/Subtract" Style="{StaticResource pageLabel}" />
+
+                <TableView Intent="Form" HeightRequest="430"  >
+                        
+                    <TableSection Title="Enter Angle1 AND angle2 data" >
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                              <Entry
+                                    Placeholder="degrees1"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    HorizontalTextAlignment="Center"
+                                    Keyboard="Numeric" >
+                                    <Entry.Behaviors>
+                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                                        <behaviors:NumberIntegerValidationBehavior />
+                                     </Entry.Behaviors>
+                              </Entry>  
+                              <Button 
+                                    Text="Clear"
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ResetDegreesCommand}"
+                                    />
+                               <Entry
+                                    Placeholder="degrees2"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    HorizontalTextAlignment="Center"
+                                    Keyboard="Numeric" >
+                                    <Entry.Behaviors>
+                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                                        <behaviors:NumberIntegerValidationBehavior />
+                                     </Entry.Behaviors>
+                              </Entry>    
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                              <Entry
+                                    Placeholder="minutes1"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    HorizontalTextAlignment="Center"
+                                    Keyboard="Numeric" >
+                                    <Entry.Behaviors>
+                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
+                                        <behaviors:NumberIntegerValidationBehavior />
+                                     </Entry.Behaviors>
+                              </Entry>  
+                              <Button 
+                                    Text="Clear"
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ResetDegreesCommand}" />
+                               <Entry
+                                    Placeholder="minutes2"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    HorizontalTextAlignment="Center"
+                                    Keyboard="Numeric" >
+                                    <Entry.Behaviors>
+                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
+                                        <behaviors:NumberIntegerValidationBehavior />
+                                     </Entry.Behaviors>
+                              </Entry>    
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                              <Entry
+                                    Placeholder="seconds1"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    HorizontalTextAlignment="Center"
+                                    Keyboard="Numeric" >
+                                    <Entry.Behaviors>
+                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
+                                        <behaviors:NumberIntegerValidationBehavior />
+                                     </Entry.Behaviors>
+                              </Entry>  
+                              <Button 
+                                    Text=" Clear "
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ResetDegreesCommand}" />
+                               <Entry
+                                    Placeholder="seconds2"
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    HorizontalTextAlignment="Center"
+                                    Keyboard="Numeric" >
+                                    <Entry.Behaviors>
+                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
+                                        <behaviors:NumberIntegerValidationBehavior />
+                                     </Entry.Behaviors>
+                              </Entry>    
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+
+                     <TableSection Title="Add or subtract angles" >
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                                  <Button 
+                                    Text="   Add   "
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ResetMinutesCommand}"
+                                    HorizontalOptions="FillAndExpand"/>
+                                
+                                <Button 
+                                    Text="Subtract"
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ResetMinutesCommand}"
+                                    HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+
+                  
+                     <TableSection Title="Results" >
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                                
+                                 <Label
+                                    Text="{Binding DecimalConversionResult}"
+                                    Style="{StaticResource pageDisplayLabel}"
+                                    WidthRequest="85" />
+                              
+                             </StackLayout>
+
+                        </ViewCell>
+                         <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                                  <Button 
+                                    Text="    Clear Result    "
+                                    Style="{StaticResource pageButton}"
+                                    Command="{Binding ClearResultCommand}"
+                                    HorizontalOptions="CenterAndExpand"/>
+                                 
+                             </StackLayout>
+
+                        </ViewCell>
+                    </TableSection>
+                           
+                </TableView>
                 
-            RelativeLayout.YConstraint="{ConstraintExpression
-                Type=RelativeToView,
-                ElementName=banner,
-                Property=Height,
-                Factor=1,
-                Constant=20}">
-            <Label Text="Angle Add/Subtract" Style="{StaticResource pageLabel}" />
-           
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
-                    <Button
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
+
+                <Button
                         Text="Back"
                         Style="{StaticResource menuButton}"
                         Command="{Binding BackToPreviousPageCommand}"
                         WidthRequest="150" />
-                    <Button
+                <Button
                         Text="Main Menu"
                         Style="{StaticResource menuButton}"
                         Command="{Binding BackToMainMenuCommand}"
                         WidthRequest="150" />
+                </StackLayout>
+                   
             </StackLayout>
-               
-        </StackLayout>
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>    
 </ContentPage>

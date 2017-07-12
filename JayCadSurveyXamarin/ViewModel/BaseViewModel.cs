@@ -16,8 +16,8 @@ namespace JayCadSurveyXamarin.ViewModel
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		// View Buttons
-		public ICommand BackToPreviousPageCommand { get; private set; }
-		public ICommand BackToMainMenuCommand { get; private set; }
+		public ICommand BackToPreviousPageCommand { get; private set; }     // Enable Back navigation on pages
+		public ICommand BackToMainMenuCommand { get; private set; }         // Enable Back navigation on pages
 
 		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
