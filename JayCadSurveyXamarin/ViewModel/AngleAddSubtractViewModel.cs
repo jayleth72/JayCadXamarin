@@ -24,6 +24,8 @@ namespace JayCadSurveyXamarin.ViewModel
 		private int _minutesInt2;                // Hold Valid Integer Input for minutes2.
 		private int _secondsInt1;                // Hold Valid Integer Input for seconds1.   
 		private int _secondsInt2;                // Hold Valid Integer Input for seconds2.
+        private Angle _angle1;                    // angle object to hold degrees, minutes and second data.
+        private Angle _angle2;                    // angle object to hold degrees, minutes and second data.
 
 		private enum INPUT_VALIDATION_FLAG
         {
@@ -161,21 +163,7 @@ namespace JayCadSurveyXamarin.ViewModel
 			OnPropertyChanged(Result);
 
 		}
-
-        /// <summary>
-        /// Clear the specified input and caller.
-        /// </summary>
-        /// <param name="input">Input.</param>
-        /// <param name="caller">Caller.</param>
-        private void clear(ref string input, string caller)
-        {
-            // Have to press button twice for this to work.
-            // Haven't got time to figure out why have to press button twice
-            // SO not using this method for now
-            input = "";
-            OnPropertyChanged(caller);
-        }
-	    
+        	    
         /// <summary>
         /// Check for null input entry.
         /// </summary>
@@ -259,29 +247,36 @@ namespace JayCadSurveyXamarin.ViewModel
             return INPUT_VALIDATION_FLAG.INPUT_OK;
         }
 
-        private async void AddAngle()
+        private void AddAngle()
         {
-            
-            // Check for no entry of data
-            if (CheckAllInput() == INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED)
-            {
-				await _pageService.DisplayAlert("No Data Entered", "Please enter some data", "Ok");
-				return;
-            }
+            // Check data input, create Angle Objects
+            AnglePrepartionAndChecking();
+            _result = _angle1.AddAngle(_angle2);
 
-            // Check for Numeric data errors
-			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED)
-			{
-				await _pageService.DisplayAlert("Numerical Data Error", "Please enter Integer numerical data (No decimals)", "Ok");
-				return;
-			}
-
-            // Data has passed all tests
-
+            OnPropertyChanged(Result);
         }
 
-		private async void SubtractAngle()
+		private  void SubtractAngle()
 		{
+			// Check data input, create Angle Objects
+			AnglePrepartionAndChecking();
+            _result = _angle1.SubtractAngle(_angle2);
+
+            OnPropertyChanged(Result);
+        }
+
+
+        /// <summary>
+        /// Angles the prepartion and checking.
+        /// 1. Perform Null entry checking.
+        /// 2. Perform Numerical entry checking.
+        /// 3. Convert Null entries to zeros.
+        /// 4. Create Angle Onjects.
+        /// </summary>
+        private async void AnglePrepartionAndChecking()
+        {
+            ClearResults();
+
 			// Check for no entry of data
 			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED)
 			{
@@ -296,15 +291,37 @@ namespace JayCadSurveyXamarin.ViewModel
 				return;
 			}
 
-			// Data has passed all tests
+			// Data has passed all no-data entered and numerical tests
 
-		}
+			// Convert empty fields to zero
+			ConvertNullToZero();
 
-        private double ConvertToDecimalAngle()
-        {
-
-            return 0.0;
+			// Create angle objects so we can do angular subtraction or addition
+			CreateAngles();
         }
 
+
+        /// <summary>
+        /// Converts empty fields to zero so we can create Angle Objects
+        /// </summary>
+        private void ConvertNullToZero()
+        {
+			// Assign zero to empty fields
+			_degreesInt1 = String.IsNullOrEmpty(_degrees1) ? 0 : _degreesInt1;
+			_degreesInt2 = String.IsNullOrEmpty(_degrees2) ? 0 : _degreesInt2;
+
+			_minutesInt1 = String.IsNullOrEmpty(_minutes1) ? 0 : _minutesInt1;
+			_minutesInt2 = String.IsNullOrEmpty(_minutes2) ? 0 : _minutesInt2;
+
+			_secondsInt1 = String.IsNullOrEmpty(_seconds1) ? 0 : _secondsInt1;
+			_secondsInt2 = String.IsNullOrEmpty(_seconds2) ? 0 : _secondsInt2;
+        }
+
+        private void CreateAngles()
+        {
+			_angle1 = new Angle(_degreesInt1, _minutesInt1, _secondsInt1);
+			_angle2 = new Angle(_degreesInt2, _minutesInt2, _secondsInt2);
+        }
+       
 	}
 }

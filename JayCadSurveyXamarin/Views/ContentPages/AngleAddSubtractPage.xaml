@@ -179,7 +179,7 @@
                                   <Button 
                                     Text="    Clear Result    "
                                     Style="{StaticResource pageButton}"
-                                    Command="{Binding ClearResultCommand}"
+                                    Command="{Binding ClearResultsCommand}"
                                     HorizontalOptions="CenterAndExpand"/>
                                  
                              </StackLayout>
