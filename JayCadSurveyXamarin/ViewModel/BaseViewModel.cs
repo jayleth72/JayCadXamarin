@@ -51,6 +51,7 @@ namespace JayCadSurveyXamarin.ViewModel
 		{
 			await _pageService.PopToRootAsync();
 		}
+              
 	}
 
 }

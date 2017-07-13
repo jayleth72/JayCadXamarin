@@ -56,7 +56,7 @@
                               <Entry
                                     Placeholder="degrees1"
                                     HorizontalOptions="FillAndExpand"
-                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    Text="{Binding Degrees1Input, Mode=TwoWay}"
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric" >
                                     <Entry.Behaviors>
@@ -67,12 +67,11 @@
                               <Button 
                                     Text="Clear"
                                     Style="{StaticResource pageButton}"
-                                    Command="{Binding ResetDegreesCommand}"
-                                    />
+                                    Command="{Binding ClearDegreesInputCommand}" />
                                <Entry
                                     Placeholder="degrees2"
                                     HorizontalOptions="FillAndExpand"
-                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    Text="{Binding Degrees2Input, Mode=TwoWay}"
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric" >
                                     <Entry.Behaviors>
@@ -87,7 +86,7 @@
                               <Entry
                                     Placeholder="minutes1"
                                     HorizontalOptions="FillAndExpand"
-                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    Text="{Binding Minutes1Input, Mode=TwoWay}"
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric" >
                                     <Entry.Behaviors>
@@ -98,11 +97,11 @@
                               <Button 
                                     Text="Clear"
                                     Style="{StaticResource pageButton}"
-                                    Command="{Binding ResetDegreesCommand}" />
+                                    Command="{Binding ClearMinutesInputCommand}" />
                                <Entry
                                     Placeholder="minutes2"
                                     HorizontalOptions="FillAndExpand"
-                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    Text="{Binding Minutes2Input, Mode=TwoWay}"
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric" >
                                     <Entry.Behaviors>
@@ -117,7 +116,7 @@
                               <Entry
                                     Placeholder="seconds1"
                                     HorizontalOptions="FillAndExpand"
-                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                    Text="{Binding Seconds1Input, Mode=TwoWay}"
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric" >
                                     <Entry.Behaviors>
@@ -128,11 +127,11 @@
                               <Button 
                                     Text=" Clear "
                                     Style="{StaticResource pageButton}"
-                                    Command="{Binding ResetDegreesCommand}" />
+                                    Command="{Binding ClearSecondsInputCommand}" />
                                <Entry
                                     Placeholder="seconds2"
                                     HorizontalOptions="FillAndExpand"
-                                    Text="{Binding DegreesInput, Mode=TwoWay}"
+                                   Text="{Binding Seconds2Input, Mode=TwoWay}"
                                     HorizontalTextAlignment="Center"
                                     Keyboard="Numeric" >
                                     <Entry.Behaviors>
@@ -168,7 +167,7 @@
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                 
                                  <Label
-                                    Text="{Binding DecimalConversionResult}"
+                                    Text="{Binding Result}"
                                     Style="{StaticResource pageDisplayLabel}"
                                     WidthRequest="85" />
                               
