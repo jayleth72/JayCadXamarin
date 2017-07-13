@@ -109,6 +109,7 @@
     <Compile Include="Behaviors\MinNumberFieldValidationBehavior.cs" />
     <Compile Include="Behaviors\NumberDoubleValidationBehavior.cs" />
     <Compile Include="ViewModel\AngleAddSubtractViewModel.cs" />
+    <Compile Include="Model\Angle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

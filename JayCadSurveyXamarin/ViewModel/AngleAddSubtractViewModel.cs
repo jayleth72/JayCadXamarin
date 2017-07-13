@@ -191,6 +191,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
         /// <summary>
         /// Check for no data entry on an angle.
+        /// Returns true if no data entered for degrees, minutes or seconds fields.
         /// </summary>
         /// <returns><c>true</c>, if no data entered for an angle, <c>false</c> otherwise.</returns>
         /// <param name="input1">Input1.</param>
@@ -204,6 +205,13 @@ namespace JayCadSurveyXamarin.ViewModel
                 return false;
         }
 
+        /// <summary>
+        /// Check for no data entered in one field
+        /// If valid numerical data is entered, private integer  variable is initialised  with valid integer.
+        /// </summary>
+        /// <returns><c>true</c>, if numerical data entered was noned, <c>false</c> otherwise.</returns>
+        /// <param name="input">Input.</param>
+        /// <param name="outputNum">Output number.</param>
         private bool NonNumericalDataEntered(string input, ref int outputNum)
         {
             if (int.TryParse(input, out outputNum))
@@ -292,7 +300,11 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		}
 
+        private double ConvertToDecimalAngle()
+        {
 
+            return 0.0;
+        }
 
 	}
 }
