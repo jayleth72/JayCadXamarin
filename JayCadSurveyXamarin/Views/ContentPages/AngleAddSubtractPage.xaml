@@ -149,13 +149,13 @@
                                   <Button 
                                     Text="   Add   "
                                     Style="{StaticResource pageButton}"
-                                    Command="{Binding ResetMinutesCommand}"
+                                    Command="{Binding AddAngleCommand}"
                                     HorizontalOptions="FillAndExpand"/>
                                 
                                 <Button 
                                     Text="Subtract"
                                     Style="{StaticResource pageButton}"
-                                    Command="{Binding ResetMinutesCommand}"
+                                    Command="{Binding SubtractAngleCommand}"
                                     HorizontalOptions="FillAndExpand"/>
                             </StackLayout>
                         </ViewCell>
