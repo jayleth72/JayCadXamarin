@@ -24,16 +24,9 @@ namespace JayCadSurveyXamarin.ViewModel
 		private int _minutesInt2;                // Hold Valid Integer Input for minutes2.
 		private int _secondsInt1;                // Hold Valid Integer Input for seconds1.   
 		private int _secondsInt2;                // Hold Valid Integer Input for seconds2.
-        private Angle _angle1;                    // angle object to hold degrees, minutes and second data.
-        private Angle _angle2;                    // angle object to hold degrees, minutes and second data.
-
-		private enum INPUT_VALIDATION_FLAG
-        {
-            NO_INPUT_ENTERED,
-            NON_NUMERICAL_DATA_ENTERED,
-            INPUT_OK
-        }
-
+        private Angle _angle1;                   // angle object to hold degrees, minutes and second data.
+        private Angle _angle2;                   // angle object to hold degrees, minutes and second data.
+		
 		/// <summary>
 		/// Gets or sets Degrees1 field.
 		/// </summary>
@@ -165,19 +158,6 @@ namespace JayCadSurveyXamarin.ViewModel
 		}
         	    
         /// <summary>
-        /// Check for null input entry.
-        /// </summary>
-        /// <returns><c>true</c>, if no data entered, <c>false</c> otherwise.</returns>
-        /// <param name="input">Input.</param>
-        private bool NoDataEntered (string input)
-        {
-            if (String.IsNullOrEmpty(input))
-                return true;
-            else
-                return false;
-        }
-
-        /// <summary>
         /// Check for no data entry on an angle.
         /// Returns true if no data entered for degrees, minutes or seconds fields.
         /// </summary>
@@ -193,21 +173,7 @@ namespace JayCadSurveyXamarin.ViewModel
                 return false;
         }
 
-        /// <summary>
-        /// Check for no data entered in one field
-        /// If valid numerical data is entered, private integer  variable is initialised  with valid integer.
-        /// </summary>
-        /// <returns><c>true</c>, if numerical data entered was noned, <c>false</c> otherwise.</returns>
-        /// <param name="input">Input.</param>
-        /// <param name="outputNum">Output number.</param>
-        private bool NonNumericalDataEntered(string input, ref int outputNum)
-        {
-            if (int.TryParse(input, out outputNum))
-                return false;
-            else
-                return true;
-        }
-
+       
 		/// <summary>
 		/// Checks all input for Null entry data and Non-numerical data.
 		/// Returns INPUT_VALIDATION_FLAG enum to indicate the status of the input
@@ -216,66 +182,48 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// <returns>INPUT_VALIDATION_FLAG.</returns>
 		private INPUT_VALIDATION_FLAG CheckAllInput()
         {
+            INPUT_VALIDATION_FLAG inputFlag = INPUT_VALIDATION_FLAG.INPUT_OK;
+
             // check for no data entered
             if (NoDataEnteredAngle(_degrees1, _minutes1, _seconds1) && NoDataEnteredAngle(_degrees2, _minutes2, _seconds2))
                 return INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED;
 
-            // Check degrees1 if data has been entered
-            if (NonNumericalDataEntered(_degrees1, ref _degreesInt1 ) && !NoDataEntered(_degrees1))
-                return INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED;
+            inputFlag = CheckInputForErrors(_degrees1, ref _degreesInt1, 0, 360);
 
-			// Check degrees2 if data has been entered
-			if (NonNumericalDataEntered(_degrees2, ref _degreesInt2) && !NoDataEntered(_degrees2))
-				return INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED;
+            if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+                return inputFlag;
 
-			// Check minutes1 if data has been entered
-			if (NonNumericalDataEntered(_minutes1, ref _minutesInt1) && !NoDataEntered(_minutes1))
-				return INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED;
+            inputFlag = CheckInputForErrors(_degrees2, ref _degreesInt2, 0, 360);
 
-			// Check minutes2 if data has been entered
-			if (NonNumericalDataEntered(_minutes2, ref _minutesInt2) && !NoDataEntered(_minutes2))
-				return INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED;
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
 
-			// Check seconds1 if data has been entered
-			if (NonNumericalDataEntered(_seconds1, ref _secondsInt1) && !NoDataEntered(_seconds1))
-				return INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED;
+			inputFlag = CheckInputForErrors(_minutes1, ref _minutesInt1, 0, 60);
 
-			// Check seconds2 if data has been entered
-			if (NonNumericalDataEntered(_seconds2, ref _secondsInt2) && !NoDataEntered(_seconds2))
-				return INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED;
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
             
-            return INPUT_VALIDATION_FLAG.INPUT_OK;
+            inputFlag = CheckInputForErrors(_minutes2, ref _minutesInt2, 0, 60);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+			inputFlag = CheckInputForErrors(_seconds1, ref _secondsInt1, 0, 60);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+			inputFlag = CheckInputForErrors(_seconds2, ref _secondsInt2, 0, 60);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+            
+            return inputFlag;
         }
 
-        private void AddAngle()
+        private async void AddAngle()
         {
-            // Check data input, create Angle Objects
-            AnglePrepartionAndChecking();
-            _result = _angle1.AddAngle(_angle2);
-
-            OnPropertyChanged(Result);
-        }
-
-		private  void SubtractAngle()
-		{
-			// Check data input, create Angle Objects
-			AnglePrepartionAndChecking();
-            _result = _angle1.SubtractAngle(_angle2);
-
-            OnPropertyChanged(Result);
-        }
-
-
-        /// <summary>
-        /// Angles the prepartion and checking.
-        /// 1. Perform Null entry checking.
-        /// 2. Perform Numerical entry checking.
-        /// 3. Convert Null entries to zeros.
-        /// 4. Create Angle Onjects.
-        /// </summary>
-        private async void AnglePrepartionAndChecking()
-        {
-            ClearResults();
+			ClearResults();
 
 			// Check for no entry of data
 			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED)
@@ -298,9 +246,42 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			// Create angle objects so we can do angular subtraction or addition
 			CreateAngles();
+            _result = _angle1.AddAngle(_angle2);
+
+            OnPropertyChanged(Result);
         }
 
+		private async void SubtractAngle()
+		{
+			ClearResults();
 
+			// Check for no entry of data
+			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED)
+			{
+				await _pageService.DisplayAlert("No Data Entered", "Please enter some data", "Ok");
+				return;
+			}
+
+			// Check for Numeric data errors
+			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED)
+			{
+				await _pageService.DisplayAlert("Numerical Data Error", "Please enter Integer numerical data (No decimals)", "Ok");
+				return;
+			}
+
+			// Data has passed all no-data entered and numerical tests
+
+			// Convert empty fields to zero
+			ConvertNullToZero();
+
+			// Create angle objects so we can do angular subtraction or addition
+			CreateAngles();
+
+            _result = _angle1.SubtractAngle(_angle2);
+
+            OnPropertyChanged(Result);
+        }
+       
         /// <summary>
         /// Converts empty fields to zero so we can create Angle Objects
         /// </summary>
@@ -323,5 +304,7 @@ namespace JayCadSurveyXamarin.ViewModel
 			_angle2 = new Angle(_degreesInt2, _minutesInt2, _secondsInt2);
         }
        
+         
+
 	}
 }

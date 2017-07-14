@@ -187,21 +187,6 @@ namespace JayCadSurveyXamarin.ViewModel
         {
            return !(Int32.TryParse(input, out _degreesIntegerInput));
         }
-
-        /// <summary>
-        /// Test for input between max and min numbers
-        /// </summary>
-        /// <returns><c>true</c>, if input out of range, <c>false</c> otherwise.</returns>
-        /// <param name="max">Max.</param>
-        /// <param name="min">Minimum.</param>
-        /// <param name="input">Input.</param>
-        private bool NumberOutOfRange(int max, int min, int input)
-        {
-            if (input < min || input > max)
-                return true;
-            else
-                return false;    
-        }
-
+               
     }
 }
