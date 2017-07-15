@@ -16,9 +16,19 @@ namespace JayCadSurveyXamarin.ViewModel
 		{
 			NO_INPUT_ENTERED,
 			NON_NUMERICAL_DATA_ENTERED,
-			NUMBER_OUT_OF_RANGE,
+            NUMBER_OUT_OF_RANGE,
+			NUMBER_OUT_OF_RANGE_DEGREES,
+            NUMBER_OUT_OF_RANGE_MINUTES,
+            NUMBER_OUT_OF_RANGE_SECONDS,
 			INPUT_OK
 		}
+
+        protected enum INPUT_FIELD     // Used to specify the Input Entry Field                        
+        {
+            DEGREES,
+            MINUTES,
+            SECONDS
+        }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -126,7 +136,7 @@ namespace JayCadSurveyXamarin.ViewModel
         /// <param name="outputNum">Output number is the number that gets initialised if input is an integer.</param>
         /// <param name="minNum">Minimum number.</param>
         /// <param name="maxNum">Max number.</param>
-        protected INPUT_VALIDATION_FLAG CheckInputForErrors(string input, ref int outputNum, int minNum, int maxNum)
+        protected INPUT_VALIDATION_FLAG CheckInputForErrors(string input, ref int outputNum, int minNum, int maxNum, INPUT_FIELD inputField)
         {
             INPUT_VALIDATION_FLAG inputFlag = INPUT_VALIDATION_FLAG.INPUT_OK;
 
@@ -139,7 +149,12 @@ namespace JayCadSurveyXamarin.ViewModel
                 }
                 else if (NumberOutOfRange(maxNum, minNum, outputNum))
                 {
-                    inputFlag = INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE;
+                    if (inputField == INPUT_FIELD.DEGREES)
+                        inputFlag = INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_DEGREES;
+                    else if (inputField == INPUT_FIELD.MINUTES)
+                        inputFlag = INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_MINUTES;
+                    else
+                        inputFlag = INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_SECONDS;
                 }
                
             }

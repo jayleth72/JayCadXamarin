@@ -157,136 +157,103 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		}
         	    
-        /// <summary>
-        /// Check for no data entry on an angle.
-        /// Returns true if no data entered for degrees, minutes or seconds fields.
-        /// </summary>
-        /// <returns><c>true</c>, if no data entered for an angle, <c>false</c> otherwise.</returns>
-        /// <param name="input1">Input1.</param>
-        /// <param name="input2">Input2.</param>
-        /// <param name="input3">Input3.</param>
-        private bool NoDataEnteredAngle(string input1, string input2, string input3)
+
+
+        private void AddAngle()
         {
-            if (NoDataEntered(input1) && NoDataEntered(input2) && NoDataEntered(input3))
-                return true;
-            else
-                return false;
-        }
-
-       
-		/// <summary>
-		/// Checks all input for Null entry data and Non-numerical data.
-		/// Returns INPUT_VALIDATION_FLAG enum to indicate the status of the input
-		/// If data passes all the tests then INPUT_OK is returned
-		/// </summary>
-		/// <returns>INPUT_VALIDATION_FLAG.</returns>
-		private INPUT_VALIDATION_FLAG CheckAllInput()
-        {
-            INPUT_VALIDATION_FLAG inputFlag = INPUT_VALIDATION_FLAG.INPUT_OK;
-
-            // check for no data entered
-            if (NoDataEnteredAngle(_degrees1, _minutes1, _seconds1) && NoDataEnteredAngle(_degrees2, _minutes2, _seconds2))
-                return INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED;
-
-            inputFlag = CheckInputForErrors(_degrees1, ref _degreesInt1, 0, 360);
-
-            if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
-                return inputFlag;
-
-            inputFlag = CheckInputForErrors(_degrees2, ref _degreesInt2, 0, 360);
-
-			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
-				return inputFlag;
-
-			inputFlag = CheckInputForErrors(_minutes1, ref _minutesInt1, 0, 60);
-
-			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
-				return inputFlag;
-            
-            inputFlag = CheckInputForErrors(_minutes2, ref _minutesInt2, 0, 60);
-
-			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
-				return inputFlag;
-
-			inputFlag = CheckInputForErrors(_seconds1, ref _secondsInt1, 0, 60);
-
-			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
-				return inputFlag;
-
-			inputFlag = CheckInputForErrors(_seconds2, ref _secondsInt2, 0, 60);
-
-			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
-				return inputFlag;
-            
-            return inputFlag;
-        }
-
-        private async void AddAngle()
-        {
-			ClearResults();
-
-			// Check for no entry of data
-			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED)
-			{
-				await _pageService.DisplayAlert("No Data Entered", "Please enter some data", "Ok");
-				return;
-			}
-
-			// Check for Numeric data errors
-			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED)
-			{
-				await _pageService.DisplayAlert("Numerical Data Error", "Please enter Integer numerical data (No decimals)", "Ok");
-				return;
-			}
-
-			// Data has passed all no-data entered and numerical tests
-
-			// Convert empty fields to zero
-			ConvertNullToZero();
-
-			// Create angle objects so we can do angular subtraction or addition
-			CreateAngles();
-            _result = _angle1.AddAngle(_angle2);
+            // Check Input for Errors
+            // Convert Null entries to zero values
+            // Create Angles
+            AngleOperationPreparation("add");
 
             OnPropertyChanged(Result);
         }
 
-		private async void SubtractAngle()
+		private void SubtractAngle()
 		{
-			ClearResults();
-
-			// Check for no entry of data
-			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED)
-			{
-				await _pageService.DisplayAlert("No Data Entered", "Please enter some data", "Ok");
-				return;
-			}
-
-			// Check for Numeric data errors
-			if (CheckAllInput() == INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED)
-			{
-				await _pageService.DisplayAlert("Numerical Data Error", "Please enter Integer numerical data (No decimals)", "Ok");
-				return;
-			}
-
-			// Data has passed all no-data entered and numerical tests
-
-			// Convert empty fields to zero
-			ConvertNullToZero();
-
-			// Create angle objects so we can do angular subtraction or addition
-			CreateAngles();
-
-            _result = _angle1.SubtractAngle(_angle2);
+			// Check Input for Errors
+			// Convert Null entries to zero values
+			// Create Angles
+			AngleOperationPreparation("subtract");
 
             OnPropertyChanged(Result);
         }
-       
-        /// <summary>
-        /// Converts empty fields to zero so we can create Angle Objects
-        /// </summary>
-        private void ConvertNullToZero()
+              
+		/// <summary>
+		/// Prepare for Anglular addition or Subtraction.
+		/// This method performs the following actions.
+		/// 1. ClearResults Field.
+		/// 2. Checks Input for errors.
+		/// 3. Convert Null entries to zero and Create Angles if there is no input errors.
+        /// 4. Performs addition or subtraction of angles according to operation parameter passed
+		/// </summary>
+		private async void AngleOperationPreparation(string operation)
         {
+			INPUT_VALIDATION_FLAG inputFlag;
+
+			ClearResults();
+
+			// Check input for errors
+			inputFlag = CheckAllInput();
+
+            if (inputFlag == INPUT_VALIDATION_FLAG.INPUT_OK)
+            {
+				// Convert empty fields to zero
+				ConvertNullToZero();
+
+				// Create angle objects so we can do angular subtraction or addition
+				CreateAngles();
+
+                if (operation == "add")
+                    _result = _angle1.AddAngle(_angle2);
+                else
+                    _result = _angle1.SubtractAngle(_angle2);
+            }
+            else
+            {
+				// Check for no entry of data
+				if (inputFlag == INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED)
+				{
+					await _pageService.DisplayAlert("No Data Entered", "Please enter some data", "Ok");
+					return;
+				}
+
+				// Check for Numeric data errors
+				if (inputFlag == INPUT_VALIDATION_FLAG.NON_NUMERICAL_DATA_ENTERED)
+				{
+					await _pageService.DisplayAlert("Numerical Data Error", "Please enter Integer numerical data (No decimals)", "Ok");
+					return;
+				}
+
+				// Check for Degrees out of range  errors
+				if (inputFlag == INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_DEGREES)
+				{
+					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 360 in the degrees field", "Ok");
+					return;
+				}
+
+				// Check for Degrees out of range  errors
+				if (inputFlag == INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_MINUTES)
+				{
+					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 60 in the minutes field", "Ok");
+					return;
+				}
+
+				// Check for Degrees out of range  errors
+				if (inputFlag == INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_SECONDS)
+				{
+					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 360 in the seconds field", "Ok");
+					return;
+				}
+			}        
+					
+        }
+
+		/// <summary>
+		/// Converts empty fields to zero so we can create Angle Objects
+		/// </summary>
+		private void ConvertNullToZero()
+		{
 			// Assign zero to empty fields
 			_degreesInt1 = String.IsNullOrEmpty(_degrees1) ? 0 : _degreesInt1;
 			_degreesInt2 = String.IsNullOrEmpty(_degrees2) ? 0 : _degreesInt2;
@@ -296,15 +263,75 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			_secondsInt1 = String.IsNullOrEmpty(_seconds1) ? 0 : _secondsInt1;
 			_secondsInt2 = String.IsNullOrEmpty(_seconds2) ? 0 : _secondsInt2;
-        }
+		}
 
-        private void CreateAngles()
-        {
+		private void CreateAngles()
+		{
 			_angle1 = new Angle(_degreesInt1, _minutesInt1, _secondsInt1);
 			_angle2 = new Angle(_degreesInt2, _minutesInt2, _secondsInt2);
-        }
-       
-         
+		}
 
+		/// <summary>
+		/// Checks all input for Null entry data and Non-numerical data.
+		/// Returns INPUT_VALIDATION_FLAG enum to indicate the status of the input
+		/// If data passes all the tests then INPUT_OK is returned
+		/// </summary>
+		/// <returns>INPUT_VALIDATION_FLAG.</returns>
+		private INPUT_VALIDATION_FLAG CheckAllInput()
+		{
+			INPUT_VALIDATION_FLAG inputFlag = INPUT_VALIDATION_FLAG.INPUT_OK;
+
+			// check for no data entered
+			if (NoDataEnteredAngle(_degrees1, _minutes1, _seconds1) && NoDataEnteredAngle(_degrees2, _minutes2, _seconds2))
+				return INPUT_VALIDATION_FLAG.NO_INPUT_ENTERED;
+
+			inputFlag = CheckInputForErrors(_degrees1, ref _degreesInt1, 0, 360, INPUT_FIELD.DEGREES);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+			inputFlag = CheckInputForErrors(_degrees2, ref _degreesInt2, 0, 360, INPUT_FIELD.DEGREES);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+			inputFlag = CheckInputForErrors(_minutes1, ref _minutesInt1, 0, 60, INPUT_FIELD.MINUTES);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+			inputFlag = CheckInputForErrors(_minutes2, ref _minutesInt2, 0, 60, INPUT_FIELD.MINUTES);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+			inputFlag = CheckInputForErrors(_seconds1, ref _secondsInt1, 0, 60, INPUT_FIELD.SECONDS);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+            inputFlag = CheckInputForErrors(_seconds2, ref _secondsInt2, 0, 60, INPUT_FIELD.SECONDS);
+
+			if (inputFlag != INPUT_VALIDATION_FLAG.INPUT_OK)
+				return inputFlag;
+
+			return inputFlag;
+		}
+
+		/// <summary>
+		/// Check for no data entry on an angle.
+		/// Returns true if no data entered for degrees, minutes or seconds fields.
+		/// </summary>
+		/// <returns><c>true</c>, if no data entered for an angle, <c>false</c> otherwise.</returns>
+		/// <param name="input1">Input1.</param>
+		/// <param name="input2">Input2.</param>
+		/// <param name="input3">Input3.</param>
+		private bool NoDataEnteredAngle(string input1, string input2, string input3)
+		{
+			if (NoDataEntered(input1) && NoDataEntered(input2) && NoDataEntered(input3))
+				return true;
+			else
+				return false;
+		}
 	}
 }
