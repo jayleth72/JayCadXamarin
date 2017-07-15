@@ -57,7 +57,7 @@
                         <Button
                             Text="Main Menu"
                             Style="{StaticResource menuButton}"
-                            Command="{Binding BackToMainMenuCommand}"
+                            Command="{Binding BackToPreviousPageCommand}"
                             WidthRequest="150" />
                 </StackLayout>
              </StackLayout>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using JayCadSurveyXamarin.ViewModel;
 using Xamarin.Forms;
 
 namespace JayCadSurveyXamarin.ContentPages
@@ -10,13 +10,9 @@ namespace JayCadSurveyXamarin.ContentPages
 		public AboutPage()
 		{
 			InitializeComponent();
+
+            BindingContext = new AboutPageViewModel(new PageService());
 		}
 
-        async void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
-
-      
     }
 }
