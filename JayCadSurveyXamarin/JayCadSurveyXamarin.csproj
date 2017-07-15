@@ -56,7 +56,10 @@
     <EmbeddedResource Include="Views\MenuPages\MainMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\ConfigureSettingsPage.xaml">
+    <EmbeddedResource Include="Views\MenuPages\SettingsMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContentPages\RoundingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -116,13 +119,18 @@
     <Compile Include="Persistence\ILocalFileHelper.cs" />
     <Compile Include="Persistence\JayCadLocalDB.cs" />
     <Compile Include="Model\RoundingForDisplay.cs" />
-    <Compile Include="Views\ContentPages\ConfigureSettingsPage.xaml.cs">
-      <DependentUpon>ConfigureSettingsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\MainMenuViewModel.cs" />
-    <Compile Include="ViewModel\ConfigureSettingsViewModel.cs" />
+    <Compile Include="ViewModel\SettingsMenuViewModel.cs" />
     <Compile Include="ViewModel\ConversionsMenuViewModel.cs" />
     <Compile Include="ViewModel\AngleConversionMenuViewModel.cs" />
+    <Compile Include="Views\MenuPages\SettingsMenuPage.xaml.cs">
+      <DependentUpon>SettingsMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\RoundingPage.xaml.cs">
+      <DependentUpon>RoundingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\RoundingViewModel.cs" />
+    <Compile Include="ViewModel\AboutPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MarkupExtensions\" />

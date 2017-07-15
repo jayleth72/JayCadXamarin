@@ -51,9 +51,16 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
             </Grid>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                <Button Text="Back" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" WidthRequest="150" />
-            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
+                     <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
+                    
+                        <Button
+                            Text="Main Menu"
+                            Style="{StaticResource menuButton}"
+                            Command="{Binding BackToMainMenuCommand}"
+                            WidthRequest="150" />
+                </StackLayout>
+             </StackLayout>
             
        </StackLayout>
     </RelativeLayout>

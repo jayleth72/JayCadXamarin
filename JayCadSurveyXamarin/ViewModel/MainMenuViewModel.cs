@@ -38,7 +38,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private async Task GoToSettingsPage()
 		{
-            await _pageService.PushAsync(new ContentPages.AboutPage());
+            await _pageService.PushAsync(new MenuPages.SettingsMenuPage());
 		}
 	}
 }

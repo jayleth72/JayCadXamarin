@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
-    xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
-    x:Class="JayCadSurveyXamarin.Views.ContentPages.ConfigureSettingsPage"
+    x:Class="JayCadSurveyXamarin.MenuPages.SettingsMenuPage"
 	BackgroundColor="{StaticResource mainColorBackground}"
     NavigationPage.HasNavigationBar="false"
-    NavigationPage.HasBackButton="false" >
+    NavigationPage.HasBackButton="false">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
             iOS="0, 20, 0, 0"/>
@@ -43,20 +43,14 @@
                 Property=Height,
                 Factor=1,
                 Constant=20}">
-            <Label Text="Settings" Style="{StaticResource pageLabel}" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
-                    <Button
-                        Text="Back"
-                        Style="{StaticResource menuButton}"
-                        Command="{Binding BackToPreviousPageCommand}"
-                        WidthRequest="150" />
-                    <Button
-                        Text="Main Menu"
-                        Style="{StaticResource menuButton}"
-                        Command="{Binding BackToMainMenuCommand}"
-                        WidthRequest="150" />
-             </StackLayout>
-            
-       </StackLayout>
+            <Label Text="Settings Menu" Style="{StaticResource pageLabel}" />
+            <Button Text="Rounding"
+                Style="{StaticResource menuButton}"
+                Command="{Binding GoToRoundingPageCommand}" />
+           <Button
+                Text="Main Menu"
+                Style="{StaticResource menuButton}"
+                Command="{Binding GoToMainMenuCommand}" />
+        </StackLayout>
     </RelativeLayout>
 </ContentPage>
