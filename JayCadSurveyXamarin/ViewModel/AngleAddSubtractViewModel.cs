@@ -144,8 +144,8 @@ namespace JayCadSurveyXamarin.ViewModel
 			_seconds1 = "";
 			_seconds2= "";
 
-			OnPropertyChanged(Degrees1Input);
-			OnPropertyChanged(Degrees2Input);
+			OnPropertyChanged(Seconds1Input);
+			OnPropertyChanged(Seconds2Input);
 
 		}
 
@@ -242,7 +242,7 @@ namespace JayCadSurveyXamarin.ViewModel
 				// Check for Degrees out of range  errors
 				if (inputFlag == INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_SECONDS)
 				{
-					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 360 in the seconds field", "Ok");
+					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 60 in the seconds field", "Ok");
 					return;
 				}
 			}        
