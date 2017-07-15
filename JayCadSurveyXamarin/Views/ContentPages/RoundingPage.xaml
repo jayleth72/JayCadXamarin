@@ -48,94 +48,95 @@
             <Label Text="Decimal Roundings" Style="{StaticResource pageLabel}" />
             <TableView Intent="Form" HeightRequest="430"  >
                         
-                <TableSection Title="Enter Angle1 AND angle2 data" >
+                <TableSection Title="Length Conversion Decimal Rounding" >
                     <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                               <Label
-                                    Text="{Binding Source={x:Reference roundingStepper}, Path=Value }"
-                                    Style="{StaticResource pageDisplayLabel}"
-                                    WidthRequest="50" />
-                               <Stepper
-                                    x:Name="roundingStepper"
-                                    Minimum="0"
-                                    Maximum="5" />
-                               <Label
-                                    Text="Rounding"/>
+                             
+                                <Label
+                                    Text="Round To"
+                                    HorizontalTextAlignment="End"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="CenterAndExpand"/>
+                                <Picker
+                                    HorizontalOptions="CenterAndExpand"
+                                    Title="Select Rounding">
+                                    <Picker.Items>
+                                        <x:String>0 figures</x:String> 
+                                        <x:String>1 figures</x:String> 
+                                        <x:String>2 figures</x:String> 
+                                        <x:String>3 figures</x:String> 
+                                        <x:String>4 figures</x:String> 
+                                        <x:String>5 figures</x:String> 
+                                    </Picker.Items>
+                                </Picker>  
                             </StackLayout>
                     </ViewCell>
-                    <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                              <Entry
-                                    Placeholder="minutes1"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="{Binding Minutes1Input, Mode=TwoWay}"
-                                    HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric" >
-                                    <Entry.Behaviors>
-                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
-                                        <behaviors:NumberIntegerValidationBehavior />
-                                     </Entry.Behaviors>
-                              </Entry>  
-                              <Button 
-                                    Text="Clear"
-                                    Style="{StaticResource pageButton}"
-                                    Command="{Binding ClearMinutesInputCommand}" />
-                               <Entry
-                                    Placeholder="minutes2"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="{Binding Minutes2Input, Mode=TwoWay}"
-                                    HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric" >
-                                    <Entry.Behaviors>
-                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
-                                        <behaviors:NumberIntegerValidationBehavior />
-                                     </Entry.Behaviors>
-                              </Entry>    
-                            </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                              <Entry
-                                    Placeholder="seconds1"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="{Binding Seconds1Input, Mode=TwoWay}"
-                                    HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric" >
-                                    <Entry.Behaviors>
-                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
-                                        <behaviors:NumberIntegerValidationBehavior />
-                                     </Entry.Behaviors>
-                              </Entry>  
-                              <Button 
-                                    Text=" Clear "
-                                    Style="{StaticResource pageButton}"
-                                    Command="{Binding ClearSecondsInputCommand}" />
-                               <Entry
-                                    Placeholder="seconds2"
-                                    HorizontalOptions="FillAndExpand"
-                                   Text="{Binding Seconds2Input, Mode=TwoWay}"
-                                    HorizontalTextAlignment="Center"
-                                    Keyboard="Numeric" >
-                                    <Entry.Behaviors>
-                                        <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
-                                        <behaviors:NumberIntegerValidationBehavior />
-                                     </Entry.Behaviors>
-                              </Entry>    
-                        </StackLayout>
-                     </ViewCell>
+                   
                 </TableSection>
 
-                <TableSection Title="Add or subtract angles" >
+                <TableSection Title="Area Conversion Decimal Rounding" >
+                    <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                             
+                                <Label
+                                    Text="Round To"
+                                    HorizontalTextAlignment="End"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="CenterAndExpand"/>
+                                <Picker
+                                    HorizontalOptions="CenterAndExpand"
+                                    Title="Select Rounding">
+                                    <Picker.Items>
+                                        <x:String>0 figures</x:String> 
+                                        <x:String>1 figures</x:String> 
+                                        <x:String>2 figures</x:String> 
+                                        <x:String>3 figures</x:String> 
+                                        <x:String>4 figures</x:String> 
+                                        <x:String>5 figures</x:String> 
+                                    </Picker.Items>
+                                </Picker>  
+                            </StackLayout>
+                    </ViewCell>
+                   
+                </TableSection>
+
+                <TableSection Title="Decimal Angle Conversion Rounding" >
+                    <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
+                             
+                                <Label
+                                    Text="Round To"
+                                    HorizontalTextAlignment="End"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="CenterAndExpand"/>
+                                <Picker
+                                    HorizontalOptions="CenterAndExpand"
+                                    Title="Select Rounding">
+                                    <Picker.Items>
+                                        <x:String>0 figures</x:String> 
+                                        <x:String>1 figures</x:String> 
+                                        <x:String>2 figures</x:String> 
+                                        <x:String>3 figures</x:String> 
+                                        <x:String>4 figures</x:String> 
+                                        <x:String>5 figures</x:String> 
+                                    </Picker.Items>
+                                </Picker>  
+                            </StackLayout>
+                    </ViewCell>
+                   
+                </TableSection>
+                
+                <TableSection Title="Save Changes" >
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
                                   <Button 
-                                    Text="   Add   "
+                                    Text="   Save   "
                                     Style="{StaticResource pageButton}"
                                     Command="{Binding AddAngleCommand}"
                                     HorizontalOptions="FillAndExpand"/>
                                 
                                 <Button 
-                                    Text="Subtract"
+                                    Text="Default"
                                     Style="{StaticResource pageButton}"
                                     Command="{Binding SubtractAngleCommand}"
                                     HorizontalOptions="FillAndExpand"/>
@@ -143,32 +144,6 @@
                         </ViewCell>
                 </TableSection>
 
-                  
-                <TableSection Title="Results" >
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                
-                                 <Label
-                                    Text="{Binding Result}"
-                                    Style="{StaticResource pageDisplayLabel}"
-                                    WidthRequest="85" />
-                              
-                             </StackLayout>
-
-                        </ViewCell>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="13, 5" Spacing="10">
-                                  <Button 
-                                    Text="    Clear Result    "
-                                    Style="{StaticResource pageButton}"
-                                    Command="{Binding ClearResultsCommand}"
-                                    HorizontalOptions="CenterAndExpand"/>
-                                 
-                            </StackLayout>
-
-                        </ViewCell>
-                </TableSection>
-                           
             </TableView>
             
              <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
