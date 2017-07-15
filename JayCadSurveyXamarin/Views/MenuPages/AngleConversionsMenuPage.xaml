@@ -42,11 +42,25 @@
                 Property=Height,
                 Factor=1,
                 Constant=20}">
-            <Label Text="Angle Conversions Menu" Style="{StaticResource pageLabel}" />
-            <Button Text="Decimal Conversion" Style="{StaticResource menuButton}" Clicked="Handle_Clicked" />
-            <Button Text="DEG/MIN/SEC Conversion" Style="{StaticResource menuButton}" Clicked="Handle_Clicked"/>
-            <Button Text="Back" Style="{StaticResource menuButton}" Clicked="Handle_Clicked"/>
-            <Button Text="Main Menu" Style="{StaticResource menuButton}" Clicked="Handle_Clicked"/>
+            <Label
+                Text="Angle Conversions Menu"
+                Style="{StaticResource pageLabel}" />
+            <Button
+                Text="Decimal Conversion"
+                Style="{StaticResource menuButton}"
+                Command="{Binding GoToDecimalConversionPageCommand}" />
+            <Button
+                Text="DEG/MIN/SEC Conversion"
+                Style="{StaticResource menuButton}"
+                Command="{Binding GoToDegMinSecConversionPageCommand}" />
+            <Button
+                Text="Back"
+                Style="{StaticResource menuButton}"
+                Command="{Binding BackPageCommand}" />
+            <Button
+                Text="Main Menu"
+                Style="{StaticResource menuButton}"
+                Command="{Binding GoToMainMenuCommand}" />
         </StackLayout>
     </RelativeLayout>
 </ContentPage>

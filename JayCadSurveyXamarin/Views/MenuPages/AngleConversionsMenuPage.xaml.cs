@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using JayCadSurveyXamarin.ViewModel;
 using Xamarin.Forms;
+
 
 namespace JayCadSurveyXamarin.MenuPages
 {
@@ -10,29 +11,10 @@ namespace JayCadSurveyXamarin.MenuPages
         public AngleConversionsMenuPage()
         {
             InitializeComponent();
+
+            BindingContext = new AngleConversionMenuViewModel(new PageService());
         }
 
-		async void Handle_Clicked(object sender, System.EventArgs e)
-		{
-			Button selectedButton = (Button)sender;
-
-			switch (selectedButton.Text)
-			{
-				case "Decimal Conversion":
-                    await Navigation.PushAsync(new ContentPages.DecimalAngleConversionPage());
-					break;
-				case "DEG/MIN/SEC Conversion":
-                    await Navigation.PushAsync(new ContentPages.DegreesMinutesSecondsConversionPage());
-					break;
-				case "Back":
-					await Navigation.PopAsync();
-					break;
-				case "Main Menu":
-					await Navigation.PopToRootAsync();
-					break;
-				default:
-					break;
-			}
-		}
+		
     }
 }
