@@ -189,7 +189,7 @@ namespace JayCadSurveyXamarin.ViewModel
 			_inchPickerSelectedIndex = 0;
 
             OnPropertyChanged(ConvertFromUserInput);
-
+           
         }
 
 		private void ClearResultField()
