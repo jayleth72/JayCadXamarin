@@ -5,7 +5,7 @@
     xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
     xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
     xmlns:behaviors="clr-namespace:JayCadSurveyXamarin.Behaviors"
-    x:Class="JayCadSurveyXamarin.ContentPages.LengthConversion2Page"
+    x:Class="JayCadSurveyXamarin.ContentPages.AreaConversion2Page"
     BackgroundColor="{StaticResource mainColorBackground}"
     NavigationPage.HasNavigationBar="false"
     NavigationPage.HasBackButton="false" >
@@ -80,23 +80,25 @@
 
            <Picker 
                 Grid.Column="0"
-                Title="Inches"
+                Title="Roods"
                 BackgroundColor="#fff"
-                IsVisible="{Binding IsFeetPickersVisible}" 
-                ItemsSource="{x:Static model:Inches.AllInches}"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsAcresPickersVisible}" 
+                ItemsSource="{x:Static model:Roods.AllRoods}"
                 ItemDisplayBinding="{Binding DisplayValue}"
-                SelectedItem="{Binding SelectedInches, Mode=TwoWay}"
-                SelectedIndex="{Binding InchPickerIndex, Mode=TwoWay}"/>
-        
+                SelectedItem="{Binding SelectedRoods, Mode=TwoWay}"
+                SelectedIndex="{Binding RoodsPickerIndex, Mode=TwoWay}"/>
+
              <Picker
                 Grid.Column="1"
-                Title="Fractions"
+                Title="Perches"
                 BackgroundColor="#fff"
-                IsVisible="{Binding IsFeetPickersVisible}"  
-                ItemsSource="{x:Static model:FractionInch.AllFractionInches}"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsAcresPickersVisible}"  
+                ItemsSource="{x:Static model:Perches.AllPerches}"
                 ItemDisplayBinding="{Binding DisplayValue}"
-                SelectedItem="{Binding SelectedFractionInch, Mode=TwoWay}"
-                SelectedIndex="{Binding FractionInchPickerIndex, Mode=TwoWay}"/>
+                SelectedItem="{Binding SelectedPerches, Mode=TwoWay}"
+                SelectedIndex="{Binding PerchesPickerIndex, Mode=TwoWay}"/>
            
         </Grid>
 
@@ -117,10 +119,10 @@
              <Picker 
                 Grid.Column="1"
                 Title="Select Conversion"
-                ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
+                ItemsSource="{x:Static model:AreaConversion.AllAreaConversions}"
                 ItemDisplayBinding="{Binding ConvertName}"
-                SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}"
-                SelectedIndex="{Binding SelectedLengthConversionIndex, Mode=TwoWay}">
+                SelectedItem="{Binding SelectedAreaConversion, Mode=TwoWay}"
+                SelectedIndex="{Binding SelectedAreaConversionIndex, Mode=TwoWay}">
              </Picker>    
            
         </Grid>
@@ -135,16 +137,14 @@
             <Label
                Grid.Column="0"
                Text="Result"
-               FontSize="30"
                TextColor="#fff"
                HorizontalTextAlignment="End"
                MinimumHeightRequest="60" />
             <Label
                 Grid.Column="1"
                 Text="{Binding ConversionResult}"
-                Style="{StaticResource pageDisplayLabel}"
-                FontSize="30"
-            />
+                FontSize="25"
+                Style="{StaticResource pageDisplayLabel}" />
         </Grid>
            
         <!-- Clear Button -->

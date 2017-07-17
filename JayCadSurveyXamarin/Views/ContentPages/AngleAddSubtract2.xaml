@@ -214,9 +214,8 @@
                 Grid.Row="8"
                 Text="Clear Result"
                 Style="{StaticResource pageButton}"
-                Command="{Binding ClearResultsCommand}"
-                HorizontalOptions="CenterAndExpand"/>
-       
+                Command="{Binding ClearResultsCommand}" />
+
         <!--  Navigation Buttons -->
         <Grid Grid.Row="9" ColumnSpacing="20">
             <Grid.ColumnDefinitions >

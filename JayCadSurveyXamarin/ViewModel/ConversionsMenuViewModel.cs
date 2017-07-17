@@ -23,7 +23,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private async Task GoToLengthConversionPage()
 		{
-			await _pageService.PushAsync(new ContentPages.LengthConversionPage());
+			await _pageService.PushAsync(new ContentPages.LengthConversion2Page());
 		}
 
 		private async Task GoToAreaConversionPage()
