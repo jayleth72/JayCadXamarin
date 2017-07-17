@@ -27,7 +27,6 @@
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
-          
         </Grid.RowDefinitions>  
 
         <!--   Page label   -->
@@ -52,6 +51,7 @@
 
             <Entry
                 Grid.Column="0"
+                HeightRequest="45"
                 Text="{Binding ConvertFromUserInput, Mode=TwoWay }"
                 Placeholder="{Binding SelectedLengthConversion.ConvertFrom}"
                 HorizontalTextAlignment="Center"
@@ -82,6 +82,7 @@
                 Grid.Column="0"
                 Title="Inches"
                 BackgroundColor="#fff"
+                HeightRequest="45"
                 IsVisible="{Binding IsFeetPickersVisible}" 
                 ItemsSource="{x:Static model:Inches.AllInches}"
                 ItemDisplayBinding="{Binding DisplayValue}"
@@ -101,61 +102,41 @@
         </Grid>
 
         <!-- Conversion Rows  -->
-         <Grid Grid.Row="4" ColumnSpacing="15" >
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="2*" />
-            </Grid.ColumnDefinitions>
-
-           <Button
-                Grid.Column="0"
-                Text="Convert"
-                Style="{StaticResource pageButton}"
-                HorizontalOptions="FillAndExpand"
-                Command="{Binding ConvertUserInputCommand}" />
+        <Button
+            Grid.Row="4"
+            Text="Convert"
+            Style="{StaticResource pageButton}"
+            HorizontalOptions="FillAndExpand"
+            Command="{Binding ConvertUserInputCommand}" />
                                 
-             <Picker 
-                Grid.Column="1"
-                Title="Select Conversion"
-                ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
-                ItemDisplayBinding="{Binding ConvertName}"
-                SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}"
-                SelectedIndex="{Binding SelectedLengthConversionIndex, Mode=TwoWay}">
-             </Picker>    
-           
-        </Grid>
+        <Picker 
+            Grid.Row="5"
+            Title="Select Conversion"
+            HeightRequest="45"
+            ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
+            ItemDisplayBinding="{Binding ConvertName}"
+            SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}"
+            SelectedIndex="{Binding SelectedLengthConversionIndex, Mode=TwoWay}">
+        </Picker>    
+     
 
         <!-- Results Rows  -->
-        <Grid Grid.Row="5">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="4*" />
-            </Grid.ColumnDefinitions>
-
-            <Label
-               Grid.Column="0"
-               Text="Result"
-               FontSize="20"
-               TextColor="#fff"
-               HorizontalTextAlignment="End"
-               MinimumHeightRequest="60" />
-            <Label
-                Grid.Column="1"
+        <Label
+                Grid.Row="6"
+                HeightRequest="45"
                 Text="{Binding ConversionResult}"
                 Style="{StaticResource pageDisplayLabel}"
-                FontSize="20"
-            />
-        </Grid>
-           
+                FontSize="20" />
+        
         <!-- Clear Button -->
         <Button 
-                Grid.Row="6"
+                Grid.Row="8"
                 Text="Clear Result"
                 Style="{StaticResource pageButton}"
                 Command="{Binding ClearResultFieldCommand}" />
 
         <!-- Running Total  -->
-        <Grid Grid.Row="7" ColumnSpacing="15">
+        <!--<Grid Grid.Row="7" ColumnSpacing="15">
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="4*" />
@@ -174,9 +155,8 @@
                 FontSize="20"
                
                 Style="{StaticResource pageDisplayLabel}" />
-        </Grid>
-       
-
+        </Grid>-->
+    
         <!-- Clear and Show Stack Buttons -->
         <Grid Grid.Row="9" ColumnSpacing="20">
             <Grid.ColumnDefinitions >
@@ -192,7 +172,7 @@
 
             <Button 
                 Grid.Column="1"
-                Text="Clear Sack"
+                Text="Clear Stack"
                 Style="{StaticResource pageButton}"
                 Command="{Binding ClearStackCommand}" />
 

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
+    xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
+    xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
+    xmlns:behaviors="clr-namespace:JayCadSurveyXamarin.Behaviors"
+    x:Class="JayCadSurveyXamarin.ContentPages.Roundings2Page"
+    BackgroundColor="{StaticResource mainColorBackground}"
+    NavigationPage.HasNavigationBar="false"
+    NavigationPage.HasBackButton="false" >
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+
+    <Grid RowSpacing="15" Padding="20,0,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+        </Grid.RowDefinitions>  
+
+         <!--   Page label   -->
+        <Label
+            Grid.Row="0"
+            Text="Decimal Roundings"
+            Style="{StaticResource pageLabel}" />
+        
+        <!--   Row label   -->
+        <Label
+            Grid.Row="1"
+            Text="Length Conversion Rounding"
+            TextColor="#fff"
+            HorizontalTextAlignment="Start" />
+  
+        <!-- Length Conversion Picker Row  -->
+        <Grid Grid.Row="2" ColumnSpacing="15" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Text="Round To"
+                TextColor="#fff"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"/>
+            
+           <Picker
+                Grid.Column="1"
+                Title="Select Rounding"
+                BackgroundColor="#fff"
+                SelectedIndex="{Binding LengthConversionSelected, Mode=TwoWay}">
+                <Picker.Items>
+                    <x:String>0 figures</x:String> 
+                    <x:String>1 figures</x:String> 
+                    <x:String>2 figures</x:String> 
+                    <x:String>3 figures</x:String> 
+                    <x:String>4 figures</x:String> 
+                    <x:String>5 figures</x:String> 
+                </Picker.Items>
+            </Picker>  
+        </Grid>
+
+        <!--   Row label   -->
+        <Label
+            Grid.Row="4"
+            Text="Area Conversion Rounding"
+            TextColor="#fff"
+            HorizontalTextAlignment="Start" />
+        
+        <!-- Area Conversion Picker Row  -->
+        <Grid Grid.Row="5" ColumnSpacing="15" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Text="Round To"
+                TextColor="#fff"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"/>
+            
+           <Picker
+                Grid.Column="1"
+                Title="Select Rounding"
+                BackgroundColor="#fff"
+                SelectedIndex="{Binding AreaConversionSelected, Mode=TwoWay}">
+                <Picker.Items>
+                    <x:String>0 figures</x:String> 
+                    <x:String>1 figures</x:String> 
+                    <x:String>2 figures</x:String> 
+                    <x:String>3 figures</x:String> 
+                    <x:String>4 figures</x:String> 
+                    <x:String>5 figures</x:String> 
+                </Picker.Items>
+            </Picker>  
+        </Grid>
+
+        <!--   Row label   -->
+        <Label
+            Grid.Row="7"
+            Text="Decimal Angle Conversion Rounding"
+            TextColor="#fff"
+            HorizontalTextAlignment="Start" />
+        
+         <!-- Decimal Angle Conversion Picker Row  -->
+        <Grid Grid.Row="8" ColumnSpacing="15" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Text="Round To"
+                TextColor="#fff"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"/>
+            
+           <Picker
+                Grid.Column="1"
+                Title="Select Rounding"
+                BackgroundColor="#fff"
+                SelectedIndex="{Binding DecimalAngleConversionSelected, Mode=TwoWay}">
+                <Picker.Items>
+                    <x:String>0 figures</x:String> 
+                    <x:String>1 figures</x:String> 
+                    <x:String>2 figures</x:String> 
+                    <x:String>3 figures</x:String> 
+                    <x:String>4 figures</x:String> 
+                    <x:String>5 figures</x:String> 
+                </Picker.Items>
+            </Picker>  
+        </Grid>
+        
+      <!-- Save Button -->
+        <Button 
+                Grid.Row="10"
+                Text="Save Roundings"
+                Style="{StaticResource pageButton}"
+               Command="{Binding SaveRoundingsCommand}" />
+
+        <!--  Navigation Buttons -->
+        <Grid Grid.Row="11" ColumnSpacing="20">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+           <Button
+            Grid.Column="0"    
+            Text="Back"
+            Style="{StaticResource menuButton}"
+            Command="{Binding BackToPreviousPageCommand}" />
+        
+         <Button
+            Grid.Column="1"     
+            Text="Main Menu"
+            Style="{StaticResource menuButton}"
+            Command="{Binding BackToMainMenuCommand}" />
+        </Grid>
+         
+        
+    </Grid>
+</ContentPage>

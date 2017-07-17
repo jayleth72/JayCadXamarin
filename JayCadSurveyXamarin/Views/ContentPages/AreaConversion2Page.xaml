@@ -27,7 +27,6 @@
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
-          
         </Grid.RowDefinitions>  
 
         <!--   Page label   -->
@@ -52,8 +51,9 @@
 
             <Entry
                 Grid.Column="0"
+                HeightRequest="45"
                 Text="{Binding ConvertFromUserInput, Mode=TwoWay }"
-                Placeholder="{Binding SelectedLengthConversion.ConvertFrom}"
+                Placeholder="{Binding SelectedAreaConversion.ConvertFrom}"
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
                 Style="{StaticResource userInputEntry}">
@@ -82,19 +82,18 @@
                 Grid.Column="0"
                 Title="Roods"
                 BackgroundColor="#fff"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsAcresPickersVisible}" 
+                HeightRequest="45"
+                IsVisible="{Binding IsAcresPickersVisible}"
                 ItemsSource="{x:Static model:Roods.AllRoods}"
                 ItemDisplayBinding="{Binding DisplayValue}"
                 SelectedItem="{Binding SelectedRoods, Mode=TwoWay}"
                 SelectedIndex="{Binding RoodsPickerIndex, Mode=TwoWay}"/>
-
+        
              <Picker
                 Grid.Column="1"
                 Title="Perches"
                 BackgroundColor="#fff"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsAcresPickersVisible}"  
+                IsVisible="{Binding IsAcresPickersVisible}"
                 ItemsSource="{x:Static model:Perches.AllPerches}"
                 ItemDisplayBinding="{Binding DisplayValue}"
                 SelectedItem="{Binding SelectedPerches, Mode=TwoWay}"
@@ -103,59 +102,41 @@
         </Grid>
 
         <!-- Conversion Rows  -->
-         <Grid Grid.Row="4" ColumnSpacing="15" >
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="2*" />
-            </Grid.ColumnDefinitions>
-
-           <Button
-                Grid.Column="0"
-                Text="Convert"
-                Style="{StaticResource pageButton}"
-                HorizontalOptions="FillAndExpand"
-                Command="{Binding ConvertUserInputCommand}" />
+        <Button
+            Grid.Row="4"
+            Text="Convert"
+            Style="{StaticResource pageButton}"
+            HorizontalOptions="FillAndExpand"
+            Command="{Binding ConvertUserInputCommand}" />
                                 
-             <Picker 
-                Grid.Column="1"
-                Title="Select Conversion"
-                ItemsSource="{x:Static model:AreaConversion.AllAreaConversions}"
-                ItemDisplayBinding="{Binding ConvertName}"
-                SelectedItem="{Binding SelectedAreaConversion, Mode=TwoWay}"
-                SelectedIndex="{Binding SelectedAreaConversionIndex, Mode=TwoWay}">
-             </Picker>    
-           
-        </Grid>
+        <Picker 
+            Grid.Row="5"
+            Title="Select Conversion"
+            HeightRequest="45"
+            ItemsSource="{x:Static model:AreaConversion.AllAreaConversions}"
+            ItemDisplayBinding="{Binding ConvertName}"
+            SelectedItem="{Binding SelectedAreaConversion, Mode=TwoWay}"
+            SelectedIndex="{Binding SelectedAreaConversionIndex, Mode=TwoWay}">
+        </Picker>    
+     
 
         <!-- Results Rows  -->
-        <Grid Grid.Row="5">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="4*" />
-            </Grid.ColumnDefinitions>
-
-            <Label
-               Grid.Column="0"
-               Text="Result"
-               TextColor="#fff"
-               HorizontalTextAlignment="End"
-               MinimumHeightRequest="60" />
-            <Label
-                Grid.Column="1"
+        <Label
+                Grid.Row="6"
+                HeightRequest="45"
                 Text="{Binding ConversionResult}"
-                FontSize="25"
-                Style="{StaticResource pageDisplayLabel}" />
-        </Grid>
-           
+                Style="{StaticResource pageDisplayLabel}"
+                FontSize="20" />
+        
         <!-- Clear Button -->
         <Button 
-                Grid.Row="6"
+                Grid.Row="8"
                 Text="Clear Result"
                 Style="{StaticResource pageButton}"
                 Command="{Binding ClearResultFieldCommand}" />
 
         <!-- Running Total  -->
-        <Grid Grid.Row="7" ColumnSpacing="15">
+        <!--<Grid Grid.Row="7" ColumnSpacing="15">
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="4*" />
@@ -164,17 +145,18 @@
             <Label
                Grid.Column="0"
                Text="Total"
+               FontSize="20"
                TextColor="#fff"
                HorizontalTextAlignment="End"
                MinimumHeightRequest="60" />
             <Label
                 Grid.Column="1"
                 Text="{Binding RunningTotal}"
-                FontSize="25"
+                FontSize="20"
+               
                 Style="{StaticResource pageDisplayLabel}" />
-        </Grid>
-       
-
+        </Grid>-->
+    
         <!-- Clear and Show Stack Buttons -->
         <Grid Grid.Row="9" ColumnSpacing="20">
             <Grid.ColumnDefinitions >
@@ -190,7 +172,7 @@
 
             <Button 
                 Grid.Column="1"
-                Text="Clear Sack"
+                Text="Clear Stack"
                 Style="{StaticResource pageButton}"
                 Command="{Binding ClearStackCommand}" />
 

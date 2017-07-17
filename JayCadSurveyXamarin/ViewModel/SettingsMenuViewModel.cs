@@ -20,7 +20,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private async Task GoToRoundingPage()
 		{
-			await _pageService.PushAsync(new ContentPages.RoundingPage());
+			await _pageService.PushAsync(new ContentPages.Roundings2Page());
 		}
 
 		private async Task GoToMainMenu()

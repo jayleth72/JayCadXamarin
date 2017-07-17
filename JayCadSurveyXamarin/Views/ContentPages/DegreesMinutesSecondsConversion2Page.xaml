@@ -53,7 +53,7 @@
                 Keyboard="Numeric"
                 Style="{StaticResource userInputEntry}">
                 <Entry.Behaviors>
-                    <behaviors:NumberIntegerValidationBehavior />
+                    <behaviors:NumberDoubleValidationBehavior />
                  </Entry.Behaviors>
             </Entry> 
             

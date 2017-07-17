@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using JayCadSurveyXamarin.Model;
-using JayCadSurveyXamarin.ViewModel;
+﻿using JayCadSurveyXamarin.ViewModel;
 using Xamarin.Forms;
 
 namespace JayCadSurveyXamarin.ContentPages
