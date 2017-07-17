@@ -6,6 +6,12 @@
             
             <Color x:Key="mainColorBackground">#283460</Color>
             <Color x:Key="bannerBackground">#3E2A98</Color>
+
+            <!-- Navigation Button Background Colors -->
+            <OnPlatform x:Key="NavigationButtonBackgroundColor" x:TypeArguments="x:String">
+                <On Platform="iOS">#283460</On>
+                <On Platform="Android">#991f00</On>
+            </OnPlatform>
             
             <Style x:Key="menuButton" TargetType="Button">
                 <Setter Property="BorderRadius" Value="15" />
@@ -13,6 +19,7 @@
                 <Setter Property="TextColor" Value="#FBC70C" />
                 <Setter Property="BorderColor" Value="#fff" />
                 <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="BackgroundColor" Value="{StaticResource NavigationButtonBackgroundColor}" />
             </Style>
             
             <Style x:Key="pageLabel" TargetType="Label" >
@@ -21,6 +28,7 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
             </Style>
             
             <Style x:Key="pageButton" TargetType="Button" >
@@ -34,6 +42,10 @@
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             </Style>
+
+            <Style x:Key="userInputEntry" TargetType="Entry" >
+                <Setter Property="BackgroundColor" Value="#fff" />
+             </Style>
 
         </ResourceDictionary>
 	</Application.Resources>

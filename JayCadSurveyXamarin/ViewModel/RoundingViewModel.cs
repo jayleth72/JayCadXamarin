@@ -101,15 +101,19 @@ namespace JayCadSurveyXamarin.ViewModel
       
         async public void RetrieveRoundings()
         {
-            //RoundingForDisplay length = await App.Database.GetRoundingForDIsplay(1);
-            //RoundingForDisplay area = await App.Database.GetRoundingForDIsplay(2);
-            //RoundingForDisplay decimalAngle = await App.Database.GetRoundingForDIsplay(3);
+    
+            if (await App.Database.GetRoundingDisplayCount() > 0)
+            {
+				RoundingForDisplay length = await App.Database.GetRoundingForDIsplay(1);
+				RoundingForDisplay area = await App.Database.GetRoundingForDIsplay(2);
+				RoundingForDisplay decimalAngle = await App.Database.GetRoundingForDIsplay(3);
 
-            int ass = await App.Database.GetRoundingForDIsplayFromName("ass");
-
-             //InitialiseRoundings(length.RoundingValue, area.RoundingValue, decimalAngle.RoundingValue);
-
-            InitialiseRoundings(ass, 0, 0);
+				InitialiseRoundings(length.RoundingValue, area.RoundingValue, decimalAngle.RoundingValue);
+			}
+            else
+            {
+                InitialiseRoundings(0, 0, 0);
+            }
         }
     }
 }

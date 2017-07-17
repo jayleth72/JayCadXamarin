@@ -62,6 +62,12 @@
     <EmbeddedResource Include="Views\ContentPages\RoundingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContentPages\AngleAddSubtract2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContentPages\LengthConversion2Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -131,6 +137,12 @@
     </Compile>
     <Compile Include="ViewModel\RoundingViewModel.cs" />
     <Compile Include="ViewModel\AboutPageViewModel.cs" />
+    <Compile Include="Views\ContentPages\AngleAddSubtract2.xaml.cs">
+      <DependentUpon>AngleAddSubtract2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\LengthConversion2Page.xaml.cs">
+      <DependentUpon>LengthConversion2Page.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MarkupExtensions\" />

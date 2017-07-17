@@ -28,7 +28,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private async Task GoToAngleAddSubtractPage()
 		{
-			await _pageService.PushAsync(new ContentPages.AngleAddSubtractPage());
+			await _pageService.PushAsync(new ContentPages.AngleAddSubtract2());
 		}
 
 		private async Task GoToAboutPage()

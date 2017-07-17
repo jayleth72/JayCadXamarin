@@ -34,7 +34,7 @@
                     Type=RelativeToParent,
                     Property=Width,
                     Factor=1}" />
-           <StackLayout Padding="30, 0, 30, 0" Spacing="15"
+           <StackLayout Padding="15, 0, 15, 0" Spacing="15"
                 RelativeLayout.WidthConstraint="{ConstraintExpression
                     Type=RelativeToParent,
                     Property=Width,
@@ -194,13 +194,12 @@
                 <Button
                         Text="Back"
                         Style="{StaticResource menuButton}"
-                        Command="{Binding BackToPreviousPageCommand}"
-                        WidthRequest="150" />
+                        Command="{Binding BackToPreviousPageCommand}" />
                 <Button
                         Text="Main Menu"
                         Style="{StaticResource menuButton}"
-                        Command="{Binding BackToMainMenuCommand}"
-                        WidthRequest="150" />
+                        Command="{Binding BackToMainMenuCommand}" />
+
                 </StackLayout>
                    
             </StackLayout>

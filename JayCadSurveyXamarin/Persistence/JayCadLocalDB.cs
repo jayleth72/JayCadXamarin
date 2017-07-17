@@ -16,21 +16,34 @@ namespace JayCadSurveyXamarin.Persistence
             database.CreateTableAsync<RoundingForDisplay>().Wait();
         }
 
+        /// <summary>
+        /// Returns a List of RoundingDisplays
+        /// </summary>
+        /// <returns>The rounding for display list.</returns>
         public Task <List<RoundingForDisplay>> GetRoundingForDisplayList()
         {
             return database.Table<RoundingForDisplay>().ToListAsync();
         }
 
+        /// <summary>
+        /// Returns a RoundingDisplay for a specified ID
+        /// </summary>
+        /// <returns>The rounding for DI splay.</returns>
+        /// <param name="id">ID for a RoundingDisplay.</param>
         public Task <RoundingForDisplay> GetRoundingForDIsplay(int id)
         {
             return database.Table<RoundingForDisplay>().Where(rd => rd.RoundingId == id).FirstOrDefaultAsync();
         }
 
-		public Task<int> GetRoundingForDIsplayFromName(string id)
-		{
-			//return database.Table<RoundingForDisplay>().Where(rd => rd.RoundingName == id).FirstOrDefaultAsync();
-            return database.Table<RoundingForDisplay>().CountAsync();
-		}
+        /// <summary>
+        /// Returns a RoundingDisplay for a specfied name
+        /// </summary>
+        /// <returns>The rounding for DI splay from name.</returns>
+        /// <param name="roundingName">Rounding name.</param>
+        public Task<RoundingForDisplay> GetRoundingForDIsplayFromName(string roundingName)
+        {
+            return database.Table<RoundingForDisplay>().Where(rd => rd.RoundingName == roundingName).FirstOrDefaultAsync();
+        }
 
         public Task<int> SaveRoundingDisplayAsync(RoundingForDisplay roundingForDisplay)
         {
@@ -49,6 +62,13 @@ namespace JayCadSurveyXamarin.Persistence
             return database.DeleteAsync(roundingForDisplay);
         }
 
-      
+        /// <summary>
+        /// Returns the number of rows in the RoundingDisplay table
+        /// </summary>
+        /// <returns>The rounding display count.</returns>
+        public Task<int> GetRoundingDisplayCount()
+        {
+			return database.Table<RoundingForDisplay>().CountAsync();
+        }
     }
 }
