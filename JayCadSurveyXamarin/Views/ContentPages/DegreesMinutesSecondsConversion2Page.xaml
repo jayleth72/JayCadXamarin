@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
+    xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
+    xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
+    xmlns:behaviors="clr-namespace:JayCadSurveyXamarin.Behaviors"
+    x:Class="JayCadSurveyXamarin.ContentPages.DegreesMinutesSecondsConversion2Page"
+    BackgroundColor="{StaticResource mainColorBackground}"
+    NavigationPage.HasNavigationBar="false"
+    NavigationPage.HasBackButton="false" >
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+
+    <Grid RowSpacing="15" Padding="20,0,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+        </Grid.RowDefinitions>  
+
+         <!--   Page label   -->
+        <Label
+            Grid.Row="0"
+            Text="Deg/Min/Sec Conversion"
+            Style="{StaticResource pageLabel}" />
+
+        <!--   Conversion labels   -->
+        <Label
+            Grid.Row="1"
+            Text="Enter Decimal Angle Data"
+            TextColor="#fff"
+            HorizontalTextAlignment="Start" />
+        
+        <!-- Degrees Rows  -->
+        <Grid Grid.Row="2" ColumnSpacing="15" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Entry
+                Grid.Column="0"
+                Placeholder="decimal degrees"
+                Text="{Binding DecimalInput, Mode=TwoWay}"
+                HorizontalTextAlignment="Center"
+                Keyboard="Numeric"
+                Style="{StaticResource userInputEntry}">
+                <Entry.Behaviors>
+                    <behaviors:NumberIntegerValidationBehavior />
+                 </Entry.Behaviors>
+            </Entry> 
+            
+            <Button 
+                Grid.Column="1"
+                Text="Clear"
+                Style="{StaticResource pageButton}"
+                Command="{Binding ClearInputCommand}" />
+           
+        </Grid>
+      
+        <!-- Convert Button  -->
+        <Button 
+            Grid.Row="3"
+            Text="Convert Decimal Angle"
+            Style="{StaticResource pageButton}"
+            Command="{Binding ConvertResultCommand}" />
+
+        <!-- Results Rows  -->
+        <Label
+                Grid.Row="4"
+                Text="{Binding ConversionResult}"
+                FontSize="25"
+                Style="{StaticResource pageDisplayLabel}" />
+
+        <!-- Clear Button -->
+        <Button 
+                Grid.Row="5"
+                Text="Clear Result"
+                Style="{StaticResource pageButton}"
+                Command="{Binding ClearResultCommand}" />
+
+        <!--  Navigation Buttons -->
+        <Grid Grid.Row="6" ColumnSpacing="20">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+           <Button
+            Grid.Column="0"    
+            Text="Back"
+            Style="{StaticResource menuButton}"
+            Command="{Binding BackToPreviousPageCommand}" />
+        
+         <Button
+            Grid.Column="1"     
+            Text="Main Menu"
+            Style="{StaticResource menuButton}"
+            Command="{Binding BackToMainMenuCommand}" />
+        </Grid>
+  
+    </Grid>
+</ContentPage>

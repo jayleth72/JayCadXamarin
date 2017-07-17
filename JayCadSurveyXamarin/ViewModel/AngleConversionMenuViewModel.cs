@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -28,7 +28,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private async Task GoToDegMinSecConversionPage()
 		{
-			await _pageService.PushAsync(new ContentPages.DegreesMinutesSecondsConversionPage());
+			await _pageService.PushAsync(new ContentPages.DegreesMinutesSecondsConversion2Page());
 		}
 
 		private async Task BackPage()

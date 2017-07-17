@@ -74,6 +74,9 @@
     <EmbeddedResource Include="Views\ContentPages\DecimalAngleConversion2Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContentPages\DegreesMinutesSecondsConversion2Page.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -154,6 +157,9 @@
     </Compile>
     <Compile Include="Views\ContentPages\DecimalAngleConversion2Page.xaml.cs">
       <DependentUpon>DecimalAngleConversion2Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\DegreesMinutesSecondsConversion2Page.xaml.cs">
+      <DependentUpon>DegreesMinutesSecondsConversion2Page.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

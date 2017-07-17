@@ -44,12 +44,19 @@
         <!-- Degrees Rows  -->
         <Grid Grid.Row="2" ColumnSpacing="15" >
             <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <Label
+                Grid.Row="0"
+                Text="Degrees"
+                TextColor="#fff"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"/>
             <Entry
-                Grid.Column="0"
+                Grid.Column="1"
                 Placeholder="degrees"
                 Text="{Binding DegreesInput, Mode=TwoWay}"
                 HorizontalTextAlignment="Center"
@@ -62,7 +69,7 @@
             </Entry> 
             
             <Button 
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="Clear"
                 Style="{StaticResource pageButton}"
                 Command="{Binding ResetDegreesCommand}" />
@@ -72,25 +79,32 @@
         <!-- Minutes Rows  -->
        <Grid Grid.Row="3" ColumnSpacing="15" >
             <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <Label
+                Grid.Row="0"
+                Text="Minutes"
+                TextColor="#fff"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"/>
             <Entry
-                Grid.Column="0"
+                Grid.Column="1"
                 Placeholder="minutes"
                 Text="{Binding MinutesInput, Mode=TwoWay}"
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
                 Style="{StaticResource userInputEntry}">
                 <Entry.Behaviors>
-                    <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                    <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
                     <behaviors:NumberIntegerValidationBehavior />
                  </Entry.Behaviors>
             </Entry> 
             
             <Button 
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="Clear"
                 Style="{StaticResource pageButton}"
                 Command="{Binding ResetMinutesCommand}" />
@@ -100,25 +114,32 @@
         <!-- Seconds Rows  -->
         <Grid Grid.Row="4" ColumnSpacing="15" >
             <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+             <Label
+                Grid.Row="0"
+                Text="Seconds"
+                TextColor="#fff"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"/>
             <Entry
-                Grid.Column="0"
+                Grid.Column="1"
                 Placeholder="seconds"
                 Text="{Binding SecondsInput, Mode=TwoWay}"
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
                 Style="{StaticResource userInputEntry}">
                 <Entry.Behaviors>
-                    <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                    <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="2" />
                     <behaviors:NumberIntegerValidationBehavior />
                  </Entry.Behaviors>
             </Entry> 
             
             <Button 
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="Clear"
                 Style="{StaticResource pageButton}"
                 Command="{Binding ResetSecondsCommand}" />
@@ -130,7 +151,7 @@
             Grid.Row="5"
             Text="Convert to Decimal Angle"
             Style="{StaticResource pageButton}"
-            Command="{Binding ConvertToDecimalCommand}"
+            Command="{Binding ConvertToDecimalCommand}" />
 
         <!-- Results Rows  -->
         <Label

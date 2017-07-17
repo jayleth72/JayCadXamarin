@@ -3,14 +3,13 @@ using Xamarin.Forms;
 
 namespace JayCadSurveyXamarin.ContentPages
 {
-    public partial class DegreesMinutesSecondsConversionPage : ContentPage
+    public partial class DegreesMinutesSecondsConversion2Page : ContentPage
     {
-        public DegreesMinutesSecondsConversionPage()
+        public DegreesMinutesSecondsConversion2Page()
         {
             InitializeComponent();
+
             BindingContext = new DegreesMinutesSecondsConversionViewModel(new PageService());
         }
-
-		
     }
 }
