@@ -28,7 +28,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private async Task GoToAreaConversionPage()
 		{
-			await _pageService.PushAsync(new ContentPages.AreaConversionPage());
+			await _pageService.PushAsync(new ContentPages.AreaConversion2Page());
 		}
 
         private async Task GoToAngleConversionPage()

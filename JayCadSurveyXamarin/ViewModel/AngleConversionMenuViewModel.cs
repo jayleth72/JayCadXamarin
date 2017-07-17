@@ -23,7 +23,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private async Task GoToDecimalConversionPage()
 		{
-            await _pageService.PushAsync(new ContentPages.DecimalAngleConversionPage());
+            await _pageService.PushAsync(new ContentPages.DecimalAngleConversion2Page());
 		}
 
 		private async Task GoToDegMinSecConversionPage()

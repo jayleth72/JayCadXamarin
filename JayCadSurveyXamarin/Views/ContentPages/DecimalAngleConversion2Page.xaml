@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:JayCadSurveyXamarin.MarkupExtensions"
+    xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
+    xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
+    xmlns:behaviors="clr-namespace:JayCadSurveyXamarin.Behaviors"
+    x:Class="JayCadSurveyXamarin.ContentPages.DecimalAngleConversion2Page"
+    BackgroundColor="{StaticResource mainColorBackground}"
+    NavigationPage.HasNavigationBar="false"
+    NavigationPage.HasBackButton="false" >
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="0, 20, 0, 0"/>
+    </ContentPage.Padding>
+
+    <Grid RowSpacing="15" Padding="20,0,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+        </Grid.RowDefinitions>  
+
+         <!--   Page label   -->
+        <Label
+            Grid.Row="0"
+            Text="Deciaml Angle Conversion"
+            Style="{StaticResource pageLabel}" />
+
+        <!--   Conversion labels   -->
+        <Label
+            Grid.Row="1"
+            Text="Enter Angle Data"
+            TextColor="#fff"
+            HorizontalTextAlignment="Start" />
+        
+        <!-- Degrees Rows  -->
+        <Grid Grid.Row="2" ColumnSpacing="15" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Entry
+                Grid.Column="0"
+                Placeholder="degrees"
+                Text="{Binding DegreesInput, Mode=TwoWay}"
+                HorizontalTextAlignment="Center"
+                Keyboard="Numeric"
+                Style="{StaticResource userInputEntry}">
+                <Entry.Behaviors>
+                    <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                    <behaviors:NumberIntegerValidationBehavior />
+                 </Entry.Behaviors>
+            </Entry> 
+            
+            <Button 
+                Grid.Column="1"
+                Text="Clear"
+                Style="{StaticResource pageButton}"
+                Command="{Binding ResetDegreesCommand}" />
+           
+        </Grid>
+        
+        <!-- Minutes Rows  -->
+       <Grid Grid.Row="3" ColumnSpacing="15" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Entry
+                Grid.Column="0"
+                Placeholder="minutes"
+                Text="{Binding MinutesInput, Mode=TwoWay}"
+                HorizontalTextAlignment="Center"
+                Keyboard="Numeric"
+                Style="{StaticResource userInputEntry}">
+                <Entry.Behaviors>
+                    <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                    <behaviors:NumberIntegerValidationBehavior />
+                 </Entry.Behaviors>
+            </Entry> 
+            
+            <Button 
+                Grid.Column="1"
+                Text="Clear"
+                Style="{StaticResource pageButton}"
+                Command="{Binding ResetMinutesCommand}" />
+           
+        </Grid>
+        
+        <!-- Seconds Rows  -->
+        <Grid Grid.Row="4" ColumnSpacing="15" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Entry
+                Grid.Column="0"
+                Placeholder="seconds"
+                Text="{Binding SecondsInput, Mode=TwoWay}"
+                HorizontalTextAlignment="Center"
+                Keyboard="Numeric"
+                Style="{StaticResource userInputEntry}">
+                <Entry.Behaviors>
+                    <behaviors:TextFieldLengthRestrictorBehavior MaxFieldLength="3" />
+                    <behaviors:NumberIntegerValidationBehavior />
+                 </Entry.Behaviors>
+            </Entry> 
+            
+            <Button 
+                Grid.Column="1"
+                Text="Clear"
+                Style="{StaticResource pageButton}"
+                Command="{Binding ResetSecondsCommand}" />
+           
+        </Grid>
+        
+        <!-- Convert Button  -->
+        <Button 
+            Grid.Row="5"
+            Text="Convert to Decimal Angle"
+            Style="{StaticResource pageButton}"
+            Command="{Binding ConvertToDecimalCommand}"
+
+        <!-- Results Rows  -->
+        <Label
+                Grid.Row="7"
+                Text="{Binding DecimalConversionResult}"
+                FontSize="25"
+                Style="{StaticResource pageDisplayLabel}" />
+
+        <!-- Clear Button -->
+        <Button 
+                Grid.Row="8"
+                Text="Clear Result"
+                Style="{StaticResource pageButton}"
+                Command="{Binding ClearResultCommand}" />
+
+        <!--  Navigation Buttons -->
+        <Grid Grid.Row="9" ColumnSpacing="20">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+           <Button
+            Grid.Column="0"    
+            Text="Back"
+            Style="{StaticResource menuButton}"
+            Command="{Binding BackToPreviousPageCommand}" />
+        
+         <Button
+            Grid.Column="1"     
+            Text="Main Menu"
+            Style="{StaticResource menuButton}"
+            Command="{Binding BackToMainMenuCommand}" />
+        </Grid>
+  
+    </Grid>
+</ContentPage>
