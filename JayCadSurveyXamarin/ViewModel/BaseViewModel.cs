@@ -5,15 +5,20 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using SQLite;
+using JayCadSurveyXamarin.Persistence;
+using JayCadSurveyXamarin.Model;
 
 namespace JayCadSurveyXamarin.ViewModel
 {
   
 	public class BaseViewModel : INotifyPropertyChanged
 	{
-		protected readonly IPageService _pageService;         // This is here to enable Page Navigation and DispalyAlerts
-		protected enum INPUT_VALIDATION_FLAG                  // Used to indicate error status of input  
-		{
+		protected readonly IPageService _pageService;         // This is here to enable Page Navigation and DispalyAlert.
+        protected int _conversionRounding;                     // Rounding for conversion results stored in SQLite db.  This is changed via a picker via Settings/Roundings2Page.  
+
+		protected enum INPUT_VALIDATION_FLAG                  // Used to indicate error status of input.
+        {
 			NO_INPUT_ENTERED,
 			NON_NUMERICAL_DATA_ENTERED,
             NUMBER_OUT_OF_RANGE,
@@ -161,6 +166,38 @@ namespace JayCadSurveyXamarin.ViewModel
 
             return inputFlag;
 		}
+
+        /// <summary>
+        /// Retrieves the result rounding from SQLite db.  If none retrieved then rounding set to 0.
+        /// </summary>
+        /// <param name="roundingName">Rounding name.</param>
+        async protected void RetrieveResultRounding(string roundingName)
+        {
+            RoundingForDisplay selectedRounding = null;
+
+            // Get database connection
+            var connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            await connection.CreateTableAsync<RoundingForDisplay>();
+
+            // See if RoundingsForDisplay Table exists
+            if (await connection.Table<RoundingForDisplay>().CountAsync() > 0)
+            {
+                selectedRounding = await connection.Table<RoundingForDisplay>().Where(rd => rd.RoundingName.Equals(roundingName)).FirstOrDefaultAsync();
+
+                // see if rounding retrieved from SQLitedb
+                if (selectedRounding != null)
+                    _conversionRounding = selectedRounding.RoundingValue;
+                else
+                    _conversionRounding = 0;
+
+			} 
+            else
+            {
+                // set rounding to default = 0
+                _conversionRounding = 0;
+            }
+
+        }
 	}
 
 }

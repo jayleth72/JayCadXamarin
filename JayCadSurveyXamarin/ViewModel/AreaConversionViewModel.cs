@@ -179,8 +179,11 @@ namespace JayCadSurveyXamarin.ViewModel
 			ConvertUserInputCommand = new Command(ConvertUserInput);
 			ClearStackCommand = new Command(ClearStack);
 			ShowStackCommand = new Command(ShowStack);
-			
-		
+
+            _conversionResult = "Conversion Results";
+
+			// Get rounding for Conversion Results display
+			RetrieveResultRounding("AreaConversion");
 		}
 
 		private void ClearInputField()

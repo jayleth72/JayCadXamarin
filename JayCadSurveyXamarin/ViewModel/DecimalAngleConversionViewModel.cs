@@ -69,7 +69,9 @@ namespace JayCadSurveyXamarin.ViewModel
             ResetSecondsCommand = new Command(ResetSecondsStepper);                                    // Reset Seconds Stepper
             ClearResultCommand = new Command(ClearConversionResult);                                   // Clear Result of conversionn field
 			ConvertToDecimalCommand = new Command(ConvertToDecimal);                                   // Clear Result of conversionn field
-					
+
+			// Get rounding for Conversion Results display
+			RetrieveResultRounding("DecimalAngleConversion");
         }
 
         // Button Methods

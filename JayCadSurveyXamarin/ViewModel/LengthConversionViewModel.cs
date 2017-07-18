@@ -11,7 +11,7 @@ namespace JayCadSurveyXamarin.ViewModel
 {
     public class LengthConversionViewModel: BaseViewModel
     {
-       private LengthConversion _selectedConversion;       // Selected Conversion from Conversion picker
+        private LengthConversion _selectedConversion;       // Selected Conversion from Conversion picker
         private FractionInch _selectedFractionInch;         // Selected Conversion from FractionInches picker
         private Inches _selectedInches;                     // Selected Inch from Inch picker
 		private string _conversionResult = "";              // Result from a user selected conversion
@@ -25,6 +25,7 @@ namespace JayCadSurveyXamarin.ViewModel
         private int _fractionInchPickerSelectedIndex;        
         private int _inchPickerSelectedIndex;
         private int _selectedLengthConversionIndex = -1;
+
 
 		/// <summary>
 		/// Gets or sets the selected length conversion from the Conversion Picker on the LengthConversion View.
@@ -180,7 +181,10 @@ namespace JayCadSurveyXamarin.ViewModel
             ClearStackCommand = new Command(ClearStack);
             ShowStackCommand = new Command(ShowStack);
 
-            _conversionResult = "Conversion Results";          
+            _conversionResult = "Conversion Results";
+
+            // Get rounding for Conversion Results display
+            RetrieveResultRounding("LengthConversion");
         }
 		
         private void ClearInputField()
@@ -257,6 +261,9 @@ namespace JayCadSurveyXamarin.ViewModel
             }
                 
             ClearResultField();  // This is here for the Conversion to show in the result field ??? 
+
+            // Round to input or default specified rounding 
+            result = Math.Round(result, _conversionRounding, MidpointRounding.AwayFromZero);
 
 			_conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
 

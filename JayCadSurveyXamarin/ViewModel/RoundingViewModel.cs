@@ -1,10 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using JayCadSurveyXamarin.Persistence;
 using JayCadSurveyXamarin.Model;
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
 using SQLite;
 
 namespace JayCadSurveyXamarin.ViewModel
