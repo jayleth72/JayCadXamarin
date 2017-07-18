@@ -11,8 +11,8 @@ namespace JayCadSurveyXamarin.ContentPages
         {
             InitializeComponent();
 
-            BindingContext = new LengthConversionViewModel(new PageService());
-                       
+            BindingContext = new ShowStackViewModel(new PageService());
+                    
         }
     }
 }

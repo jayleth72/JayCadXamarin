@@ -6,6 +6,7 @@ using JayCadSurveyXamarin.Model;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace JayCadSurveyXamarin.ViewModel
 {
@@ -24,7 +25,7 @@ namespace JayCadSurveyXamarin.ViewModel
         private double _runningTotalDouble = 0.0;           // Displays running total for conversions as a double
         private int _fractionInchPickerSelectedIndex;        
         private int _inchPickerSelectedIndex;
-        private int _selectedLengthConversionIndex = -1;
+        private int _selectedLengthConversionIndex = 0;
 
 
 		/// <summary>
@@ -51,6 +52,7 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 		}
 
+		
 		/// <summary>
 		/// Gets or sets the selected fraction inches from the Fraction Inch Picker.
 		/// </summary>
@@ -278,7 +280,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private void ClearStack()
 		{
-            _calculations.Clear();
+            
 		}
         	
 
