@@ -1,4 +1,4 @@
-﻿﻿﻿using System;
+﻿﻿﻿﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -168,9 +168,8 @@ namespace JayCadSurveyXamarin.ViewModel
        	public ICommand ClearInputFieldCommand { get; private set; }
         public ICommand ClearResultFieldCommand { get; private set; }
 		public ICommand ConvertUserInputCommand { get; private set; }
-        public ICommand ClearStackCommand { get; private set; }
-        public ICommand ShowStackCommand { get; private set; }
-       
+		public ICommand ClearStackCommand { get; private set; }
+		public ICommand ShowStackCommand { get; private set; }
 
 		public LengthConversionViewModel(IPageService pageService) : base(pageService)
         {
@@ -179,7 +178,7 @@ namespace JayCadSurveyXamarin.ViewModel
             ClearResultFieldCommand = new Command(ClearResultField);
             ConvertUserInputCommand = new Command(ConvertUserInput);
             ClearStackCommand = new Command(ClearStack);
-            ShowStackCommand = new Command(ShowStack);
+            ShowStackCommand = new Command(async () => await ShowStack()); ;
 
             _conversionResult = "Conversion Results";
 
@@ -267,21 +266,25 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			_conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
 
-            // calculate and show running total
-            _runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
+			// Add Calculation to stack
+			AddCalculationToStack((_convertFromUserInput + " " + SelectedLengthConversion.ConvertFrom), _conversionResult);
+
+			// calculate and show running total
+			_runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
 
             OnPropertyChanged(ConversionResult);
 		}
-        		
+
+
 		private void ClearStack()
 		{
-
+            _calculations.Clear();
 		}
         	
 
-		private void ShowStack()
+		protected async Task ShowStack()
 		{
-
+            await _pageService.PushAsync(new ContentPages.ShowLengthStackPage());
 		}
             
         /// <summary>

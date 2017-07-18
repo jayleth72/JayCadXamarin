@@ -162,6 +162,8 @@ namespace JayCadSurveyXamarin.ViewModel
             else
                result = (double)_degreesIntegerInput - ((double)_minutesIntegerInput / 60) - (_secondsDoubleInput / 3600);
 
+			// Round to input or default specified rounding 
+			result = Math.Round(result, _conversionRounding, MidpointRounding.AwayFromZero);
 
             _decimalConversionResult = result.ToString();
 

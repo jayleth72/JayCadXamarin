@@ -51,9 +51,9 @@
 
             <Label
                 Grid.Row="0"
-                Text="Degrees"
+                Text="Deg"
                 TextColor="#fff"
-                HorizontalTextAlignment="Start"
+                HorizontalTextAlignment="End"
                 VerticalTextAlignment="Center"/>
             <Entry
                 Grid.Column="1"
@@ -86,9 +86,9 @@
 
             <Label
                 Grid.Row="0"
-                Text="Minutes"
+                Text="Min"
                 TextColor="#fff"
-                HorizontalTextAlignment="Start"
+                HorizontalTextAlignment="End"
                 VerticalTextAlignment="Center"/>
             <Entry
                 Grid.Column="1"
@@ -121,9 +121,9 @@
 
              <Label
                 Grid.Row="0"
-                Text="Seconds"
+                Text="Sec"
                 TextColor="#fff"
-                HorizontalTextAlignment="Start"
+                HorizontalTextAlignment="End"
                 VerticalTextAlignment="Center"/>
             <Entry
                 Grid.Column="1"

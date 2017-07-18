@@ -113,6 +113,7 @@ namespace JayCadSurveyXamarin.ViewModel
             _decimalAngleConversionIndex = selectedDecimalRounding;
             _dummyEntry = "";
 
+            // DummyEntry is used here to enable changes on Pickers
             OnPropertyChanged(DummyEntry);
         }
       
