@@ -5,7 +5,7 @@ namespace JayCadSurveyXamarin
 {
     public partial class App : Application
     {
-        static JayCadLocalDB database;
+        //static JayCadLocalDB database;
 
         public App()
         {
@@ -13,19 +13,7 @@ namespace JayCadSurveyXamarin
 
             MainPage = new NavigationPage(new MenuPages.MainMenuPage());
         }
-
-        public static JayCadLocalDB Database 
-        {
-            get 
-            {
-                if (database == null)
-                {
-                    database = new JayCadLocalDB(DependencyService.Get<ILocalFileHelper>().GetLocalFilePath("Jaycad.db3"));
-                }
-                return database;
-            }
-        }
-
+              
         protected override void OnStart()
         {
             // Handle when your app starts

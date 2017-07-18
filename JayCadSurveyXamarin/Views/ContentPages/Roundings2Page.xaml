@@ -146,7 +146,12 @@
                 </Picker.Items>
             </Picker>  
         </Grid>
-        
+
+        <Entry 
+            Grid.Row="9"
+            Text="{Binding DummyEntry}"
+            IsVisible="false"/>
+            
       <!-- Save Button -->
         <Button 
                 Grid.Row="10"

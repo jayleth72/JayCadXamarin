@@ -134,8 +134,6 @@
     <Compile Include="Behaviors\NumberDoubleValidationBehavior.cs" />
     <Compile Include="ViewModel\AngleAddSubtractViewModel.cs" />
     <Compile Include="Model\Angle.cs" />
-    <Compile Include="Persistence\ILocalFileHelper.cs" />
-    <Compile Include="Persistence\JayCadLocalDB.cs" />
     <Compile Include="Model\RoundingForDisplay.cs" />
     <Compile Include="ViewModel\MainMenuViewModel.cs" />
     <Compile Include="ViewModel\SettingsMenuViewModel.cs" />
@@ -167,6 +165,7 @@
     <Compile Include="Views\ContentPages\Roundings2Page.xaml.cs">
       <DependentUpon>Roundings2Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\ISQLiteDb.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MarkupExtensions\" />
