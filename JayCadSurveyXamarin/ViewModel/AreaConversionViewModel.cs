@@ -17,7 +17,6 @@ namespace JayCadSurveyXamarin.ViewModel
 		private string _conversionResult = "";              // Result from a user selected conversion
 		private string _convertFromUserInput = "";          // User entered value to be converted
 		private string _userInputPlaceholder;               // Placeholder for userInput value to be converted
-		private string _runningTotal;                       // Displays running total for conversions as a string
 		private bool _isAcresPickersVisible;                // Visibility modifier for Perches and Roods pickers
 		private int _acresInput = 0;                        // Variable to hold value of user input value when converting from Acres to Hectares
 		private double _numericalDoubleInput = 0.0;         // Variable to hold value of user input value when converting from other conversions
@@ -44,8 +43,10 @@ namespace JayCadSurveyXamarin.ViewModel
 					_selectedConversion = value;
 					SetAcresPickersVisibility();
 					ClearResultField();
-					ClearRunningTotalField();
 					ClearInputField();
+
+					// Also clear the stack
+					ClearStackCalculationsTable();
 				}
 			}
 		}
@@ -121,18 +122,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			}
 		}
-
-		/// <summary>
-		/// The running total of user entered conversions
-		/// </summary>
-		/// <value>The running total.</value>
-		public string RunningTotal
-		{
-
-			get { return _runningTotal; }
-			set { SetValue(ref _runningTotal, value); }
-		}
-
+        		
 		/// <summary>
 		/// Gets or sets the index of the fraction inch picker.
 		/// </summary>
@@ -178,9 +168,9 @@ namespace JayCadSurveyXamarin.ViewModel
 			ClearResultFieldCommand = new Command(ClearResultField);
 			ConvertUserInputCommand = new Command(ConvertUserInput);
 			ClearStackCommand = new Command(ClearStack);
-			ShowStackCommand = new Command(ShowStack);
+			ShowStackCommand = new Command(async () => await ShowStack());
 
-            _conversionResult = "Conversion Results";
+			_conversionResult = "Conversion Results";
 
 			// Get rounding for Conversion Results display
 			RetrieveResultRounding("AreaConversion");
@@ -200,13 +190,6 @@ namespace JayCadSurveyXamarin.ViewModel
 		{
 			_conversionResult = "";
 			OnPropertyChanged(ConversionResult);
-		}
-
-		private void ClearRunningTotalField()
-		{
-			_runningTotal = "";
-			_runningTotalDouble = 0.0;
-			OnPropertyChanged(RunningTotal);
 		}
 
 		/// <summary>
@@ -249,51 +232,55 @@ namespace JayCadSurveyXamarin.ViewModel
 			}
 
 			if (SelectedAreaConversion.conversionType == AreaConversion.CONVERSION_TYPE.ACRES_TO_HECTARES)
-			{
-				result = CalculateDecimalFeet() * SelectedAreaConversion.ConversionFactor;
+            {
+                _numericalDoubleInput = CalculateDecimalAcres();
+            }    
+			 			
+			result = _numericalDoubleInput * SelectedAreaConversion.ConversionFactor;
 
-			}
-			else
-			{
-				result = _numericalDoubleInput * SelectedAreaConversion.ConversionFactor;
+            ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
-			}
-
-			// Round to input or default specified rounding 
+			// Round to User specified rounding (Via Settings/roundings) or default rounding which is zero
 			result = Math.Round(result, _conversionRounding, MidpointRounding.AwayFromZero);
+			_numericalDoubleInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
 
 			_conversionResult = result.ToString() + " " + SelectedAreaConversion.ConvertTo;
 
 			// Add Calculation to stack
-			//AddCalculationToStack(ConversionCalculationDisplay(result), result, _numericalDoubleInput,
-								  //GetAbbreviation(SelectedLengthConversion.ConvertTo), GetAbbreviation(SelectedLengthConversion.ConvertFrom));
-
-			// calculate and show running total
-			_runningTotal = CalculateRunningTotal(result) + " " + SelectedAreaConversion.ConvertTo;
-
-            string temp = _convertFromUserInput;
-			int temp1 = _roodsPickerSelectedIndex;
-			int temp2 = _PerchesPickerSelectedIndex;
-
-			ClearInputField();  // This is here for the Conversion to show in the result field ??? - need to fix in future versions
-
-			// Re-initalise User input fields
-			_convertFromUserInput = temp;
-			_roodsPickerSelectedIndex = temp1;
-			_PerchesPickerSelectedIndex = temp2;
-
+			AddCalculationToStack(ConversionCalculationDisplay(result), result, _numericalDoubleInput,
+								  GetAbbreviation(SelectedAreaConversion.ConvertTo), GetAbbreviation(SelectedAreaConversion.ConvertFrom));
+            			
 			OnPropertyChanged();
 		}
 
-		private void ClearStack()
-		{
 
+		/// <summary>
+		/// Returns the input and converted output to a string for display in the Conversion stack
+		/// </summary>
+		/// <returns>The calculation display.</returns>
+		private string ConversionCalculationDisplay(Double conversionResult)
+		{
+			string calculation = "";
+			double userInput = 0.0;
+
+			// Input and Result Output are rounded to User specified roundings
+			userInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
+			calculation = userInput.ToString() + GetAbbreviation(SelectedAreaConversion.ConvertFrom) + " = "
+							   + conversionResult.ToString() + GetAbbreviation(SelectedAreaConversion.ConvertTo);
+			
+			return calculation;
 		}
 
 
-		private void ShowStack()
+		private void ClearStack()
 		{
+            ClearStackCalculationsTable();
+		}
 
+
+		async private Task ShowStack()
+		{
+            await _pageService.PushAsync(new ContentPages.ShowConversionStackPage());
 		}
 
 		/// <summary>
@@ -336,16 +323,58 @@ namespace JayCadSurveyXamarin.ViewModel
 			return isValid;
 		}
 
-		private double CalculateDecimalFeet()
+		private double CalculateDecimalAcres()
 		{
-			return Convert.ToDouble(_acresInput) + (SelectedPerches.perchesValue * 1 / 12) + (SelectedRoods.RoodsValue * 1 / 192);
+			return Convert.ToDouble(_acresInput) + (SelectedPerches.perchesValue * 0.00625) + (SelectedRoods.RoodsValue * 0.249999998616);
 		}
 
-		private string CalculateRunningTotal(double result)
-		{
+        /// <summary>
+        /// Converts  decimal acres to acres,roods and perches.
+        /// </summary>
+        /// <returns>The decimal acres to acres roods perches.</returns>
+        /// <param name="input">Input.</param>
+        private string ConvertDecimalAcresToAcresRoodsPerches(double input)
+        {
+			double fractionalPart = 0.0;
+			double integralPart = 0.0;
+			int acresPart = 0;
+			int roodPart = 0;
+			double perchesPart = 0;
+			double calc = 0.0;
+			string formattedAcresMeasure = "";
 
-			_runningTotalDouble += result;
-			return _runningTotalDouble.ToString();
-		}
+			fractionalPart = input % 1;
+			integralPart = input - fractionalPart;
+			acresPart = (int)integralPart;
+
+			// Get roods
+			calc = fractionalPart / (0.25);
+
+			fractionalPart = calc % 1;
+			integralPart = calc - fractionalPart;
+			roodPart = (int)integralPart;
+
+			// Get perches in decimal format
+			calc = fractionalPart / 0.025;
+
+			perchesPart = calc;
+
+			if (acresPart == 0)
+				formattedAcresMeasure = "0A ";
+			else
+				formattedAcresMeasure = acresPart + "A ";
+
+			if (roodPart == 0)
+				formattedAcresMeasure += " 0R ";
+			else
+				formattedAcresMeasure += roodPart + "R ";
+
+			if (perchesPart > 0)
+				formattedAcresMeasure += (Math.Round(perchesPart, 1, MidpointRounding.AwayFromZero)) + "P";
+
+			return formattedAcresMeasure;
+		
+        }
+
     }
 }

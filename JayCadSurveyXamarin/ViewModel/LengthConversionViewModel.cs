@@ -18,11 +18,9 @@ namespace JayCadSurveyXamarin.ViewModel
 		private string _conversionResult = "";              // Result from a user selected conversion
         private string _convertFromUserInput = "";          // User entered value to be converted
         private string _userInputPlaceholder;               // Placeholder for userInput value to be converted
-        private string _runningTotal;                       // Displays running total for conversions as a string
         private bool _isFeetPickersVisible;                 // Visibility modifier for Inches and FractionInches pickers
         private int _feetInput = 0;                         // Variable to hold value of user input value when converting from feet to metres
         private double _numericalDoubleInput = 0.0;         // Variable to hold value of user input value when converting from other conversions
-        private double _runningTotalDouble = 0.0;           // Displays running total for conversions as a double
         private int _fractionInchPickerSelectedIndex;        
         private int _inchPickerSelectedIndex;
         private int _selectedLengthConversionIndex = 0;
@@ -46,7 +44,6 @@ namespace JayCadSurveyXamarin.ViewModel
 					_selectedConversion = value;
 					 SetFeetPickersVisibility();
                      ClearResultField();
-                     ClearRunningTotalField();
                      ClearInputField();
 
                     // Also clear the stack
@@ -129,17 +126,6 @@ namespace JayCadSurveyXamarin.ViewModel
 		}
 
 		/// <summary>
-        /// The running total of user entered conversions
-        /// </summary>
-        /// <value>The running total.</value>
-        public string RunningTotal
-		{
-
-			get { return _runningTotal; }
-			set { SetValue(ref _runningTotal, value); }
-		}
-
-		/// <summary>
         /// Gets or sets the index of the fraction inch picker.
         /// </summary>
         /// <value>The index of the fraction inch picker.</value>
@@ -183,7 +169,7 @@ namespace JayCadSurveyXamarin.ViewModel
             ClearResultFieldCommand = new Command(ClearResultField);
             ConvertUserInputCommand = new Command(ConvertUserInput);
             ClearStackCommand = new Command(ClearStack);
-            ShowStackCommand = new Command(async () => await ShowStack()); ;
+            ShowStackCommand = new Command(async () => await ShowStack()); 
 
             _conversionResult = "Conversion Results";
 
@@ -210,12 +196,6 @@ namespace JayCadSurveyXamarin.ViewModel
 			OnPropertyChanged(ConversionResult);
 		}
 
-		private void ClearRunningTotalField()
-		{
-			_runningTotal = "";
-            _runningTotalDouble = 0.0;
-			OnPropertyChanged(RunningTotal);
-		}
           
         /// <summary>
         /// 1.  Checks data has been entered - display alert if no data entered.
@@ -266,18 +246,15 @@ namespace JayCadSurveyXamarin.ViewModel
            
             ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
-            // Round to input or default specified rounding 
+            // Round to User specified rounding (Via Settings/roundings) or default rounding which is zero
             result = Math.Round(result, _conversionRounding, MidpointRounding.AwayFromZero);
+            _numericalDoubleInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
 
 			_conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
-
 
 			// Add Calculation to stack
 			AddCalculationToStack(ConversionCalculationDisplay(result), result, _numericalDoubleInput,
                                   GetAbbreviation(SelectedLengthConversion.ConvertTo), GetAbbreviation(SelectedLengthConversion.ConvertFrom));
-
-			// calculate and show running total
-			_runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
 
             OnPropertyChanged(ConversionResult);
 		}
@@ -295,8 +272,8 @@ namespace JayCadSurveyXamarin.ViewModel
             // Input and Result Output are rounded to User specified roundings
             if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
             {
-                userInput = Math.Round(CalculateDecimalFeet(), _conversionRounding, MidpointRounding.AwayFromZero);
-                calculation = userInput.ToString() + "ft = " + _conversionResult + "m";
+                userInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
+                calculation = userInput.ToString() + "ft = " + conversionResult.ToString() + "m";
             }
             else
             {
@@ -363,13 +340,7 @@ namespace JayCadSurveyXamarin.ViewModel
         {
             return Convert.ToDouble(_feetInput) + (SelectedInches.InchValue * 1 / 12) + (SelectedFractionInch.FractionInchValue * 1 / 192) ;
         }
-
-        private string CalculateRunningTotal(double result)
-        {
-            
-            _runningTotalDouble += result;
-            return _runningTotalDouble.ToString();
-        }
+             
     }   
 
 }

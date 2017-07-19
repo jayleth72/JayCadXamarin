@@ -32,7 +32,7 @@
         <!--   Page label   -->
         <Label
             Grid.Row="0"
-            Text="Length Conversion"
+            Text="Area Conversion"
             Style="{StaticResource pageLabel}" />
         
         <!--   Conversion labels   -->

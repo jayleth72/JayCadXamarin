@@ -57,9 +57,7 @@
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric"
                 Style="{StaticResource userInputEntry}">
-                <Entry.Behaviors>
-                    <behaviors:NumberIntegerValidationBehavior />
-                </Entry.Behaviors>
+          
             </Entry> 
             
             <Button 
