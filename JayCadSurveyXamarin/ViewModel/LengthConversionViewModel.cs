@@ -48,6 +48,9 @@ namespace JayCadSurveyXamarin.ViewModel
                      ClearResultField();
                      ClearRunningTotalField();
                      ClearInputField();
+
+                    // Also clear the stack
+                    ClearStackCalculationsTable();
 				}
 			}
 		}
@@ -282,7 +285,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		private void ClearStack()
 		{
-            
+            ClearStackCalculationsTable();
 		}
         	
 

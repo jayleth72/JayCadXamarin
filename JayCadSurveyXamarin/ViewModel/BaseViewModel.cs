@@ -221,6 +221,16 @@ namespace JayCadSurveyXamarin.ViewModel
 			await _connection.CreateTableAsync<ConversionCalculation>();
             await _connection.InsertAsync(convertCalculation);
         }
+
+        /// <summary>
+        ///  Clears the ConversionCalculation Table of all data
+        /// </summary>
+        async protected void ClearStackCalculationsTable()
+        {
+            await _connection.CreateTableAsync<ConversionCalculation>();
+
+            await _connection.DropTableAsync<ConversionCalculation>();
+        }
 	}
 
 }

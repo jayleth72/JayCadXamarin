@@ -12,10 +12,10 @@
             iOS="0, 20, 0, 0"/>
     </ContentPage.Padding>
     <StackLayout>
-        <!--   Page label   -->
-            <Label
-                Text="List"
-                Style="{StaticResource pageLabel}" />
+        <!--   Page Heading   -->
+        <Label
+            Text="Conversions Stack"
+            Style="{StaticResource pageLabel}" />
         <ListView x:Name="stackList">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -23,11 +23,15 @@
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding ConvertFrom}" />
                             <Label Text="{Binding ConvertTo}" />
-                            <Label Text="{Binding Ass}" />
+                         
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button
+           Text="Back"
+            Style="{StaticResource menuButton}"
+            Clicked="Handle_Clicked" />
     </StackLayout>    
 </ContentPage>

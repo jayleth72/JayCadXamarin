@@ -9,8 +9,8 @@ namespace JayCadSurveyXamarin.ContentPages
 {
     public partial class ShowLengthStackPage : ContentPage
     {
-        private SQLiteAsyncConnection _connection;
-        private ObservableCollection<ConversionCalculation> _calculations;
+       private SQLiteAsyncConnection _connection;
+        private ObservableCollection<ConversionCalculation> _calculations;      // List used to populate The Conversion Calculations  Stack
 
         public ShowLengthStackPage()
         {
@@ -29,5 +29,10 @@ namespace JayCadSurveyXamarin.ContentPages
             stackList.ItemsSource = _calculations;
 			base.OnAppearing();
         }
+
+		async void Handle_Clicked(object sender, System.EventArgs e)
+		{
+            await Navigation.PopAsync();
+		}
     }
 }
