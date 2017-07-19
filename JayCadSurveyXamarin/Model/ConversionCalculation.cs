@@ -23,11 +23,28 @@ namespace JayCadSurveyXamarin.Model
             get;
             set;
         }
-              
+
+		public double ConversiontFromValue
+		{
+			get;
+			set;
+		}
         public double ConversiontToValue
         {
             get;
             set;
         }
+
+        public string ConverToUnit
+        {
+            get;
+            set;
+        }
+
+		public string ConverFromUnit
+		{
+			get;
+			set;
+		}
     }
 }

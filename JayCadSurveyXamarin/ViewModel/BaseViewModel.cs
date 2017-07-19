@@ -219,12 +219,15 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// </summary>
 		/// <param name="conversionDisplayValue">Displays Input dimensio and result of the Conversion.</param>
 		/// <param name="convertToValue">Conversion result used to calculate a running total</param>
-		async protected void AddCalculationToStack(string conversionDisplayValue, double convertToValue)
+		async protected void AddCalculationToStack(string conversionDisplayValue, double convertToValue, double convertFromValue, string convertToUnit, string convertFromUnit)
         {
             var convertCalculation = new ConversionCalculation
             {
                 ConversionDisplayValue = conversionDisplayValue,
-                ConversiontToValue = convertToValue
+                ConversiontToValue = convertToValue,
+                ConverToUnit = convertToUnit,
+                ConverFromUnit = convertFromUnit,
+                ConversiontFromValue = convertFromValue
             };
 
 			await _connection.CreateTableAsync<ConversionCalculation>();
@@ -261,7 +264,7 @@ namespace JayCadSurveyXamarin.ViewModel
 					abbreviation = "ft";
 					break;
 				case "Links":
-					abbreviation = "links";
+					abbreviation = " links";
 					break;
 				case "Hectares":
 					abbreviation = "ha";

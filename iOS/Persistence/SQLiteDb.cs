@@ -2,12 +2,12 @@
 using System.IO;
 using SQLite;
 using Xamarin.Forms;
-using JayCadSurveyXamarin.iOS;
+using JayCadSurveyXamarin.Droid;
 using JayCadSurveyXamarin.Persistence;
 
-[assembly: Dependency(typeof(JayCadSurveyXamarin.iOS.Persistence.SQLiteDb))]
+[assembly: Dependency(typeof(JayCadSurveyXamarin.Droid.Persistence.SQLiteDb))]
 
-namespace JayCadSurveyXamarin.iOS.Persistence
+namespace JayCadSurveyXamarin.Droid.Persistence
 {
     public class SQLiteDb : ISQLiteDb
     {

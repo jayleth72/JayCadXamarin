@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:JayCadSurveyXamarin.Model"
     xmlns:view_model="clr-namespace:JayCadSurveyXamarin.ViewModel"
-    x:Class="JayCadSurveyXamarin.ContentPages.ShowLengthStackPage"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="JayCadSurveyXamarin.ContentPages.ShowConversionStackPage"
 	BackgroundColor="{StaticResource mainColorBackground}"
     NavigationPage.HasNavigationBar="false"
     NavigationPage.HasBackButton="false" >
@@ -19,23 +19,7 @@
         <ListView x:Name="stackList">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                  <!--  <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                Text="{Binding ConvertFrom}"
-                                Style="{StaticResource stackListLabel}"
-                                HorizontalOptions="StartAndExpand"/>
-                            <Label
-                                Text="Converts To"
-                                Style="{StaticResource stackListLabel}"
-                                HorizontalOptions="Center"/>
-                            <Label Text="{Binding ConvertTo}"
-                                Style="{StaticResource stackListLabel}" 
-                                HorizontalOptions="EndAndExpand"/>
-                            
-                        </StackLayout>
-                        </ViewCell>-->
-                    <TextCell Text="{Binding ConversionDisplayValue}" >
+                  <TextCell Text="{Binding ConversionDisplayValue}" >
                         <TextCell.ContextActions>
                             <MenuItem
                                 Text="Delete"
@@ -44,14 +28,32 @@
                                 CommandParameter="{Binding .}"/>
                         </TextCell.ContextActions>
                     </TextCell>
-                        
-                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button
+       
+        <Label
+            Text="Running Totals"
+            HorizontalOptions="Center"
+            TextColor="#fff"
+            VerticalTextAlignment="End"/>
+        <StackLayout Orientation="Horizontal" Spacing="15">
+           <Label
+                x:Name="convertFromTotal"
+                Text="0"
+                Style="{StaticResource pageDisplayLabel}"
+                FontSize="20" />  
+           <Label
+                x:Name="convertToTotal"
+                Text="0"
+                Style="{StaticResource pageDisplayLabel}"
+                FontSize="20" /> 
+        </StackLayout>
+       
+         <Button
            Text="Back"
             Style="{StaticResource menuButton}"
             Clicked="Handle_Clicked" />
     </StackLayout>    
 </ContentPage>
+

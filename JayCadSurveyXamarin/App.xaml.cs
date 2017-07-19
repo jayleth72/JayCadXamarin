@@ -5,8 +5,7 @@ namespace JayCadSurveyXamarin
 {
     public partial class App : Application
     {
-        //static JayCadLocalDB database;
-
+       
         public App()
         {
             InitializeComponent();

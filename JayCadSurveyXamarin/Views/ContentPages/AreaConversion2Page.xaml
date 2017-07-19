@@ -81,23 +81,23 @@
            <Picker 
                 Grid.Column="0"
                 Title="Roods"
-                BackgroundColor="#fff"
                 HeightRequest="45"
                 IsVisible="{Binding IsAcresPickersVisible}"
                 ItemsSource="{x:Static model:Roods.AllRoods}"
                 ItemDisplayBinding="{Binding DisplayValue}"
                 SelectedItem="{Binding SelectedRoods, Mode=TwoWay}"
-                SelectedIndex="{Binding RoodsPickerIndex, Mode=TwoWay}"/>
+                SelectedIndex="{Binding RoodsPickerIndex, Mode=TwoWay}"
+                Style="{StaticResource pickerUnits}" />
         
              <Picker
                 Grid.Column="1"
                 Title="Perches"
-                BackgroundColor="#fff"
                 IsVisible="{Binding IsAcresPickersVisible}"
                 ItemsSource="{x:Static model:Perches.AllPerches}"
                 ItemDisplayBinding="{Binding DisplayValue}"
                 SelectedItem="{Binding SelectedPerches, Mode=TwoWay}"
-                SelectedIndex="{Binding PerchesPickerIndex, Mode=TwoWay}"/>
+                SelectedIndex="{Binding PerchesPickerIndex, Mode=TwoWay}"
+                Style="{StaticResource pickerUnits}"/>
            
         </Grid>
 
@@ -116,9 +116,8 @@
             ItemsSource="{x:Static model:AreaConversion.AllAreaConversions}"
             ItemDisplayBinding="{Binding ConvertName}"
             SelectedItem="{Binding SelectedAreaConversion, Mode=TwoWay}"
-            SelectedIndex="{Binding SelectedAreaConversionIndex, Mode=TwoWay}">
-        </Picker>    
-     
+            SelectedIndex="{Binding SelectedAreaConversionIndex, Mode=TwoWay}"
+            Style="{StaticResource pickerUnits}" />
 
         <!-- Results Rows  -->
         <Label

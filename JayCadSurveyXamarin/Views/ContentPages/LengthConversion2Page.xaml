@@ -81,23 +81,23 @@
            <Picker 
                 Grid.Column="0"
                 Title="Inches"
-                BackgroundColor="#fff"
                 HeightRequest="45"
                 IsVisible="{Binding IsFeetPickersVisible}" 
                 ItemsSource="{x:Static model:Inches.AllInches}"
                 ItemDisplayBinding="{Binding DisplayValue}"
                 SelectedItem="{Binding SelectedInches, Mode=TwoWay}"
-                SelectedIndex="{Binding InchPickerIndex, Mode=TwoWay}"/>
+                SelectedIndex="{Binding InchPickerIndex, Mode=TwoWay}"
+                Style="{StaticResource pickerUnits}" />
         
              <Picker
                 Grid.Column="1"
                 Title="Fractions"
-                BackgroundColor="#fff"
                 IsVisible="{Binding IsFeetPickersVisible}"  
                 ItemsSource="{x:Static model:FractionInch.AllFractionInches}"
                 ItemDisplayBinding="{Binding DisplayValue}"
                 SelectedItem="{Binding SelectedFractionInch, Mode=TwoWay}"
-                SelectedIndex="{Binding FractionInchPickerIndex, Mode=TwoWay}"/>
+                SelectedIndex="{Binding FractionInchPickerIndex, Mode=TwoWay}"
+                Style="{StaticResource pickerUnits}" />
            
         </Grid>
 
@@ -116,10 +116,9 @@
             ItemsSource="{x:Static model:LengthConversion.AllLengthConversions}"
             ItemDisplayBinding="{Binding ConvertName}"
             SelectedItem="{Binding SelectedLengthConversion, Mode=TwoWay}"
-            SelectedIndex="{Binding SelectedLengthConversionIndex, Mode=TwoWay}">
-        </Picker>    
-     
-
+            SelectedIndex="{Binding SelectedLengthConversionIndex, Mode=TwoWay}"
+            Style="{StaticResource pickerUnits}" />
+      
         <!-- Results Rows  -->
         <Label
                 Grid.Row="6"
@@ -135,28 +134,6 @@
                 Style="{StaticResource pageButton}"
                 Command="{Binding ClearResultFieldCommand}" />
 
-        <!-- Running Total  -->
-        <!--<Grid Grid.Row="7" ColumnSpacing="15">
-            <Grid.ColumnDefinitions >
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="4*" />
-            </Grid.ColumnDefinitions>
-            
-            <Label
-               Grid.Column="0"
-               Text="Total"
-               FontSize="20"
-               TextColor="#fff"
-               HorizontalTextAlignment="End"
-               MinimumHeightRequest="60" />
-            <Label
-                Grid.Column="1"
-                Text="{Binding RunningTotal}"
-                FontSize="20"
-               
-                Style="{StaticResource pageDisplayLabel}" />
-        </Grid>-->
-    
         <!-- Clear and Show Stack Buttons -->
         <Grid Grid.Row="9" ColumnSpacing="20">
             <Grid.ColumnDefinitions >

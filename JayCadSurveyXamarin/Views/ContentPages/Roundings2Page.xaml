@@ -60,8 +60,8 @@
            <Picker
                 Grid.Column="1"
                 Title="Select Rounding"
-                BackgroundColor="#fff"
-                SelectedIndex="{Binding LengthConversionSelected, Mode=TwoWay}">
+                SelectedIndex="{Binding LengthConversionSelected, Mode=TwoWay}"
+                Style="{StaticResource pickerUnits}" >
                 <Picker.Items>
                     <x:String>0 figures</x:String> 
                     <x:String>1 figures</x:String> 
@@ -97,8 +97,8 @@
            <Picker
                 Grid.Column="1"
                 Title="Select Rounding"
-                BackgroundColor="#fff"
-                SelectedIndex="{Binding AreaConversionSelected, Mode=TwoWay}">
+                SelectedIndex="{Binding AreaConversionSelected, Mode=TwoWay}"
+                Style="{StaticResource pickerUnits}" >
                 <Picker.Items>
                     <x:String>0 figures</x:String> 
                     <x:String>1 figures</x:String> 
@@ -134,8 +134,8 @@
            <Picker
                 Grid.Column="1"
                 Title="Select Rounding"
-                BackgroundColor="#fff"
-                SelectedIndex="{Binding DecimalAngleConversionSelected, Mode=TwoWay}">
+                SelectedIndex="{Binding DecimalAngleConversionSelected, Mode=TwoWay}"
+                Style="{StaticResource pickerUnits}" >
                 <Picker.Items>
                     <x:String>0 figures</x:String> 
                     <x:String>1 figures</x:String> 

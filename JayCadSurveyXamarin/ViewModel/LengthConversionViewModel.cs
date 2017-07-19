@@ -225,7 +225,6 @@ namespace JayCadSurveyXamarin.ViewModel
         private async void ConvertUserInput()
         {
             string userInput = this.ConvertFromUserInput;
-            string displayTotalCalulation = "";
             double result = 0.0;
 
             // Check user has enterd a converion
@@ -259,15 +258,12 @@ namespace JayCadSurveyXamarin.ViewModel
 
             if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
             {
-                result = CalculateDecimalFeet() * SelectedLengthConversion.ConversionFactor;
-       
+                _numericalDoubleInput = CalculateDecimalFeet();
             }
-            else
-            {
-                result = _numericalDoubleInput * SelectedLengthConversion.ConversionFactor; 
+           
+            result = _numericalDoubleInput * SelectedLengthConversion.ConversionFactor; 
 
-            }
-                
+           
             ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
             // Round to input or default specified rounding 
@@ -277,7 +273,8 @@ namespace JayCadSurveyXamarin.ViewModel
 
 
 			// Add Calculation to stack
-			AddCalculationToStack(ConversionCalculationDisplay(result), result);
+			AddCalculationToStack(ConversionCalculationDisplay(result), result, _numericalDoubleInput,
+                                  GetAbbreviation(SelectedLengthConversion.ConvertTo), GetAbbreviation(SelectedLengthConversion.ConvertFrom));
 
 			// calculate and show running total
 			_runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
@@ -319,7 +316,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		protected async Task ShowStack()
 		{
-            await _pageService.PushAsync(new ContentPages.ShowLengthStackPage());
+            await _pageService.PushAsync(new ContentPages.ShowConversionStackPage());
 		}
             
         /// <summary>

@@ -264,8 +264,9 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			_conversionResult = result.ToString() + " " + SelectedAreaConversion.ConvertTo;
 
-            // Add Calculation to stack
-            AddCalculationToStack((_convertFromUserInput + " " + SelectedAreaConversion.ConvertFrom), result);
+			// Add Calculation to stack
+			//AddCalculationToStack(ConversionCalculationDisplay(result), result, _numericalDoubleInput,
+								  //GetAbbreviation(SelectedLengthConversion.ConvertTo), GetAbbreviation(SelectedLengthConversion.ConvertFrom));
 
 			// calculate and show running total
 			_runningTotal = CalculateRunningTotal(result) + " " + SelectedAreaConversion.ConvertTo;

@@ -32,21 +32,6 @@
     <EmbeddedResource Include="Views\ContentPages\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\AngleAddSubtractPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\AreaConversionPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\DegreesMinutesSecondsConversionPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\DecimalAngleConversionPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\LengthConversionPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\MenuPages\AngleConversionsMenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -57,9 +42,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MenuPages\SettingsMenuPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\RoundingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ContentPages\AngleAddSubtract2.xaml">
@@ -80,7 +62,7 @@
     <EmbeddedResource Include="Views\ContentPages\Roundings2Page.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContentPages\ShowLengthStackPage.xaml">
+    <EmbeddedResource Include="Views\ContentPages\ShowConversionStackPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -94,21 +76,6 @@
     <Compile Include="Model\LengthConversion.cs" />
     <Compile Include="Views\ContentPages\AboutPage.xaml.cs">
       <DependentUpon>..\..\ContentPages\AboutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ContentPages\AngleAddSubtractPage.xaml.cs">
-      <DependentUpon>..\..\ContentPages\AngleAddSubtractPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ContentPages\AreaConversionPage.xaml.cs">
-      <DependentUpon>..\..\ContentPages\AreaConversionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ContentPages\DecimalAngleConversionPage.xaml.cs">
-      <DependentUpon>..\..\ContentPages\DecimalAngleConversionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ContentPages\DegreesMinutesSecondsConversionPage.xaml.cs">
-      <DependentUpon>..\..\ContentPages\DegreesMinutesSecondsConversionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ContentPages\LengthConversionPage.xaml.cs">
-      <DependentUpon>..\..\ContentPages\LengthConversionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuPages\AngleConversionsMenuPage.xaml.cs">
       <DependentUpon>..\..\MenuPages\AngleConversionsMenuPage.xaml</DependentUpon>
@@ -145,9 +112,6 @@
     <Compile Include="Views\MenuPages\SettingsMenuPage.xaml.cs">
       <DependentUpon>SettingsMenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ContentPages\RoundingPage.xaml.cs">
-      <DependentUpon>RoundingPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\RoundingViewModel.cs" />
     <Compile Include="ViewModel\AboutPageViewModel.cs" />
     <Compile Include="Views\ContentPages\AngleAddSubtract2.xaml.cs">
@@ -170,8 +134,8 @@
     </Compile>
     <Compile Include="Persistence\ISQLiteDb.cs" />
     <Compile Include="Model\ConversionCalculation.cs" />
-    <Compile Include="Views\ContentPages\ShowLengthStackPage.xaml.cs">
-      <DependentUpon>ShowLengthStackPage.xaml</DependentUpon>
+    <Compile Include="Views\ContentPages\ShowConversionStackPage.xaml.cs">
+      <DependentUpon>ShowConversionStackPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
