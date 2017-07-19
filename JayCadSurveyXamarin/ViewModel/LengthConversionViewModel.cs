@@ -186,6 +186,8 @@ namespace JayCadSurveyXamarin.ViewModel
 
             // Get rounding for Conversion Results display
             RetrieveResultRounding("LengthConversion");
+
+
         }
 		
         private void ClearInputField()

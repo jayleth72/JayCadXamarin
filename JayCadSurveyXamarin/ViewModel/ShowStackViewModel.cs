@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using JayCadSurveyXamarin.Model;
+using SQLite;
 
 namespace JayCadSurveyXamarin.ViewModel
 {
@@ -8,7 +9,8 @@ namespace JayCadSurveyXamarin.ViewModel
     {
         
 		private  ObservableCollection<ConversionCalculation> _calculations;    // Collection to hold a series of sequential conversion calculations
-
+        private string _ass;
+        ObservableCollection<ConversionCalculation> _butt;
 		/// <summary>
 		/// Returns the list of calculations
 		/// </summary>
@@ -20,15 +22,41 @@ namespace JayCadSurveyXamarin.ViewModel
 			set { SetValue(ref _calculations, value); }
 		}
 
+		public string Ass
+		{
+
+			get { return _ass; }
+			set { SetValue(ref _ass, value); }
+		}
 
 		public ShowStackViewModel(IPageService pageService) : base(pageService)
         {
-            _calculations = new ObservableCollection<ConversionCalculation>(){
-                new ConversionCalculation{ CalculationId = 1, ConvertFrom = "10 metres", ConvertTo = "20 feet" },
-                new ConversionCalculation{ CalculationId = 1, ConvertFrom = "10 metres", ConvertTo = "20 feet" },
-                new ConversionCalculation{ CalculationId = 1, ConvertFrom = "10 metres", ConvertTo = "20 feet" },
-                new ConversionCalculation{ CalculationId = 1, ConvertFrom = "10 metres", ConvertTo = "20 feet" }
-            };
+
+
+            //RetrieveCalculations();
+            GH();
+			_ass = "butt";
+            OnPropertyChanged();
+        }
+
+        private void GH()
+        {
+            RetrieveCalculations();
+        }
+
+        async private void RetrieveCalculations()
+        {
+           await _connection.CreateTableAsync<ConversionCalculation>();
+
+            //var calcs = await _connection.Table<ConversionCalculation>().ToListAsync();
+			//_calculations = new ObservableCollection<ConversionCalculation>(calcs);
+
+			_calculations = new ObservableCollection<ConversionCalculation> {
+				new ConversionCalculation{ CalculationId=20, ConvertFrom="ass", ConvertTo="bum"},
+				new ConversionCalculation{ CalculationId=20, ConvertFrom="ass", ConvertTo="bum"},
+				new ConversionCalculation{ CalculationId=20, ConvertFrom="ass", ConvertTo="bum"},
+				new ConversionCalculation{ CalculationId=20, ConvertFrom="ass", ConvertTo="bum"}
+			};
         }
     }
 }

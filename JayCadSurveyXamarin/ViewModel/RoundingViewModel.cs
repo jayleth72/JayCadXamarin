@@ -8,7 +8,7 @@ namespace JayCadSurveyXamarin.ViewModel
 {
     public class RoundingViewModel : BaseViewModel
     {
-        private SQLiteAsyncConnection _connection;
+        
         private int _lengthConversionSelectedIndex;     // Index for length conversion picker for selecting decimal roundings
         private int _areaConversionSelectedIndex;       // Index for area conversion picker for selecting decimal roundings
         private int _decimalAngleConversionIndex;            // Index for deciaml angle conversion picker for selecting decimal roundings
@@ -57,8 +57,6 @@ namespace JayCadSurveyXamarin.ViewModel
         {
             SaveRoundingsCommand = new Command(SaveRoundings);
             //DefaultRoundingsCommand = new Command(DefaultRoundings);
-
-            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 
             RetrieveRoundings();
            

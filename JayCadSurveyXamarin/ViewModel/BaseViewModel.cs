@@ -17,7 +17,8 @@ namespace JayCadSurveyXamarin.ViewModel
 	{
 		protected readonly IPageService _pageService;                           // This is here to enable Page Navigation and DispalyAlert.
 		protected int _conversionRounding;                                      // Rounding for conversion results stored in SQLite db.  This is changed via a picker via Settings/Roundings2Page.  
-       
+        protected SQLiteAsyncConnection _connection;
+
 		protected enum INPUT_VALIDATION_FLAG                                    // Used to indicate error status of input.
 		{
 			NO_INPUT_ENTERED,
@@ -66,6 +67,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			_pageService = pageService;                                                         // Enable navigation and DisplayAlerts from View Model
 
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 		}
 
 		protected async Task BackToPreviousPage()
@@ -208,16 +210,16 @@ namespace JayCadSurveyXamarin.ViewModel
         /// </summary>
         /// <param name="convertFrom">Convert from.</param>
         /// <param name="convertTo">Convert to.</param>
-        protected void AddCalculationToStack(string convertFrom, string convertTo)
+        async protected void AddCalculationToStack(string convertFrom, string convertTo)
         {
             var convertCalculation = new ConversionCalculation
             {
-                CalculationId = 1,
                 ConvertFrom = convertFrom,
                 ConvertTo = convertTo
-            }; 
+            };
 
-
+			await _connection.CreateTableAsync<ConversionCalculation>();
+            await _connection.InsertAsync(convertCalculation);
         }
 	}
 
