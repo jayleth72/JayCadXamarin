@@ -211,22 +211,24 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		}
 
-        /// <summary>
-        /// Adds the calculation to stack.
-        /// </summary>
-        /// <param name="convertFrom">Convert from.</param>
-        /// <param name="convertTo">Convert to.</param>
-        async protected void AddCalculationToStack(string convertFrom, string convertTo)
+
+		/// <summary>
+		/// Adds the calculation to stack.
+		/// </summary>
+		/// <param name="conversionDisplayValue">Displays Input dimensio and result of the Conversion.</param>
+		/// <param name="convertToValue">Conversion result used to calculate a running total</param>
+		async protected void AddCalculationToStack(string conversionDisplayValue, double convertToValue)
         {
             var convertCalculation = new ConversionCalculation
             {
-                ConvertFrom = convertFrom,
-                ConvertTo = convertTo
+                ConversionDisplayValue = conversionDisplayValue,
+                ConversiontToValue = convertToValue
             };
 
 			await _connection.CreateTableAsync<ConversionCalculation>();
             await _connection.InsertAsync(convertCalculation);
         }
+
 
         /// <summary>
         ///  Clears the ConversionCalculation Table of all data
@@ -237,6 +239,41 @@ namespace JayCadSurveyXamarin.ViewModel
 
             await _connection.DropTableAsync<ConversionCalculation>();
         }
+
+
+		/// <summary>
+		/// Gets the abbreviation for the selected measurement (e.g metres = m).
+		/// </summary>
+		/// <returns>The abbreviation.</returns>
+		/// <param name="measurment">Measurment.</param>
+		protected string GetAbbreviation(string measurment)
+		{
+			string abbreviation;
+
+			switch (measurment)
+			{
+				case "Metres":
+					abbreviation = "m";
+					break;
+				case "Feet":
+					abbreviation = "ft";
+					break;
+				case "Links":
+					abbreviation = "links";
+					break;
+				case "Hectares":
+					abbreviation = "ha";
+					break;
+				case "Acres":
+					abbreviation = "ac";
+					break;
+				default:
+					abbreviation = "";
+					break;
+			}
+
+			return abbreviation;
+		}
 	}
 
 }

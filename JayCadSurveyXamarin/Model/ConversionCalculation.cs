@@ -18,13 +18,13 @@ namespace JayCadSurveyXamarin.Model
             set;
         }
 
-        public string ConvertFrom
+       public string ConversionDisplayValue
         {
             get;
             set;
         }
-
-        public string ConvertTo
+              
+        public double ConversiontToValue
         {
             get;
             set;

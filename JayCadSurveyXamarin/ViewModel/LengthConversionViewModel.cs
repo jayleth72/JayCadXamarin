@@ -190,20 +190,21 @@ namespace JayCadSurveyXamarin.ViewModel
             // Get rounding for Conversion Results display
             RetrieveResultRounding("LengthConversion");
 
-
         }
-		
-        private void ClearInputField()
-        {
-            _convertFromUserInput = "";
+
+	
+		private void ClearInputField()
+		{
+			_convertFromUserInput = "";
 			_fractionInchPickerSelectedIndex = 0;
 			_inchPickerSelectedIndex = 0;
 
-            OnPropertyChanged(ConvertFromUserInput);
-           
-        }
+			OnPropertyChanged(ConvertFromUserInput);
 
-		private void ClearResultField()
+		}
+
+
+        private void ClearResultField()
 		{
 			_conversionResult = "";
 			OnPropertyChanged(ConversionResult);
@@ -224,6 +225,7 @@ namespace JayCadSurveyXamarin.ViewModel
         private async void ConvertUserInput()
         {
             string userInput = this.ConvertFromUserInput;
+            string displayTotalCalulation = "";
             double result = 0.0;
 
             // Check user has enterd a converion
@@ -273,15 +275,41 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			_conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
 
+
 			// Add Calculation to stack
-			AddCalculationToStack((_convertFromUserInput + " " + SelectedLengthConversion.ConvertFrom), _conversionResult);
+			AddCalculationToStack(ConversionCalculationDisplay(), result);
 
 			// calculate and show running total
 			_runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
 
             OnPropertyChanged(ConversionResult);
 		}
+       
 
+        /// <summary>
+        /// Returns the input and converted output to a string for display in the Conversion stack
+        /// </summary>
+        /// <returns>The calculation display.</returns>
+        private string ConversionCalculationDisplay()
+        {
+            string calculation = "";
+            double userInput = 0.0;
+
+            // Input and Result Output are rounded to User specified roundings
+            if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
+            {
+                userInput = Math.Round(CalculateDecimalFeet(), _conversionRounding, MidpointRounding.AwayFromZero);
+                calculation = userInput.ToString() + "ft = " + _conversionResult + "m";
+            }
+            else
+            {
+                userInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
+                calculation = userInput.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertFrom) + " = "
+                                       + _conversionResult + GetAbbreviation(SelectedLengthConversion.ConvertTo);
+            }
+
+            return calculation;
+        }
 
 		private void ClearStack()
 		{
