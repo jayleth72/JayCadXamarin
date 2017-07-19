@@ -9,31 +9,33 @@ namespace JayCadSurveyXamarin.ContentPages
 {
     public partial class ShowLengthStackPage : ContentPage
     {
-       private SQLiteAsyncConnection _connection;
+        private SQLiteAsyncConnection _connection;
         private ObservableCollection<ConversionCalculation> _calculations;      // List used to populate The Conversion Calculations  Stack
+
+        public SQLiteAsyncConnection Connection { get => _connection; set => _connection = value; }
 
         public ShowLengthStackPage()
         {
             InitializeComponent();
 
             //BindingContext = new ShowStackViewModel(new PageService());
-            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();       
+            Connection = DependencyService.Get<ISQLiteDb>().GetConnection();
         }
 
         protected override async void OnAppearing()
         {
-            await _connection.CreateTableAsync<ConversionCalculation>();
+            await Connection.CreateTableAsync<ConversionCalculation>();
 
-			var calcs = await _connection.Table<ConversionCalculation>().ToListAsync();
-			_calculations = new ObservableCollection<ConversionCalculation>(calcs);
+            var calcs = await Connection.Table<ConversionCalculation>().ToListAsync();
+            _calculations = new ObservableCollection<ConversionCalculation>(calcs);
             stackList.ItemsSource = _calculations;
-			base.OnAppearing();
+            base.OnAppearing();
         }
 
-		async void Handle_Clicked(object sender, System.EventArgs e)
-		{
+        async void Handle_Clicked(object sender, System.EventArgs e)
+        {
             await Navigation.PopAsync();
-		}
+        }
 
         async void Delete_Clicked(object sender, System.EventArgs e)
         {
@@ -41,10 +43,10 @@ namespace JayCadSurveyXamarin.ContentPages
             _calculations.Remove(convertedCalulation);
 
             // Delete from SQLiteDb as well
-            await _connection.DeleteAsync(convertedCalulation);
+            await Connection.DeleteAsync(convertedCalulation);
         }
 
 
-            
+
     }
 }

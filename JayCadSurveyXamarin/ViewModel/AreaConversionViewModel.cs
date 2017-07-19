@@ -265,12 +265,12 @@ namespace JayCadSurveyXamarin.ViewModel
 			_conversionResult = result.ToString() + " " + SelectedAreaConversion.ConvertTo;
 
             // Add Calculation to stack
-            AddCalculationToStack((_convertFromUserInput + " " + SelectedAreaConversion.ConvertFrom), _conversionResult);
+            AddCalculationToStack((_convertFromUserInput + " " + SelectedAreaConversion.ConvertFrom), result);
 
 			// calculate and show running total
 			_runningTotal = CalculateRunningTotal(result) + " " + SelectedAreaConversion.ConvertTo;
 
-            			string temp = _convertFromUserInput;
+            string temp = _convertFromUserInput;
 			int temp1 = _roodsPickerSelectedIndex;
 			int temp2 = _PerchesPickerSelectedIndex;
 

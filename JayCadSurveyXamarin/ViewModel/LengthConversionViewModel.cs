@@ -277,7 +277,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 
 			// Add Calculation to stack
-			AddCalculationToStack(ConversionCalculationDisplay(), result);
+			AddCalculationToStack(ConversionCalculationDisplay(result), result);
 
 			// calculate and show running total
 			_runningTotal = CalculateRunningTotal(result) + " " + SelectedLengthConversion.ConvertTo;
@@ -290,7 +290,7 @@ namespace JayCadSurveyXamarin.ViewModel
         /// Returns the input and converted output to a string for display in the Conversion stack
         /// </summary>
         /// <returns>The calculation display.</returns>
-        private string ConversionCalculationDisplay()
+        private string ConversionCalculationDisplay(Double conversionResult)
         {
             string calculation = "";
             double userInput = 0.0;
@@ -305,7 +305,7 @@ namespace JayCadSurveyXamarin.ViewModel
             {
                 userInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
                 calculation = userInput.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertFrom) + " = "
-                                       + _conversionResult + GetAbbreviation(SelectedLengthConversion.ConvertTo);
+                                       + conversionResult.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertTo);
             }
 
             return calculation;

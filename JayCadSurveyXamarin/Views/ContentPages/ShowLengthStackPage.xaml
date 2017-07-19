@@ -35,7 +35,7 @@
                             
                         </StackLayout>
                         </ViewCell>-->
-                    <TextCell Text="{Binding ConvertFrom}" >
+                    <TextCell Text="{Binding ConversionDisplayValue}" >
                         <TextCell.ContextActions>
                             <MenuItem
                                 Text="Delete"

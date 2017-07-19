@@ -173,7 +173,6 @@
     <Compile Include="Views\ContentPages\ShowLengthStackPage.xaml.cs">
       <DependentUpon>ShowLengthStackPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ShowStackViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MarkupExtensions\" />

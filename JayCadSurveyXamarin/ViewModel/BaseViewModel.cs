@@ -144,6 +144,7 @@ namespace JayCadSurveyXamarin.ViewModel
 				return false;
 		}
 
+
 		/// <summary>
 		/// Checks the input for errors.
 		/// Check for Non Numerical Data and Input out of range errors
@@ -178,6 +179,7 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			return inputFlag;
 		}
+
 
 		/// <summary>
 		/// Retrieves the result rounding from SQLite db.  If none retrieved then rounding set to 0.
