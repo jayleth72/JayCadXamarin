@@ -11,7 +11,7 @@
         <OnPlatform x:TypeArguments="Thickness"
             iOS="0, 20, 0, 0"/>
     </ContentPage.Padding>
-    <StackLayout>
+    <StackLayout Spacing="15" Margin="10, 10, 10, 10">
         <!--   Page Heading   -->
         <Label
             Text="Conversions Stack"
@@ -19,13 +19,33 @@
         <ListView x:Name="stackList">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
+                  <!--  <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding ConvertFrom}" />
-                            <Label Text="{Binding ConvertTo}" />
-                         
+                            <Label
+                                Text="{Binding ConvertFrom}"
+                                Style="{StaticResource stackListLabel}"
+                                HorizontalOptions="StartAndExpand"/>
+                            <Label
+                                Text="Converts To"
+                                Style="{StaticResource stackListLabel}"
+                                HorizontalOptions="Center"/>
+                            <Label Text="{Binding ConvertTo}"
+                                Style="{StaticResource stackListLabel}" 
+                                HorizontalOptions="EndAndExpand"/>
+                            
                         </StackLayout>
-                    </ViewCell>
+                        </ViewCell>-->
+                    <TextCell Text="{Binding ConvertFrom}" >
+                        <TextCell.ContextActions>
+                            <MenuItem
+                                Text="Delete"
+                                Clicked="Delete_Clicked"
+                                IsDestructive="true"
+                                CommandParameter="{Binding .}"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                        
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

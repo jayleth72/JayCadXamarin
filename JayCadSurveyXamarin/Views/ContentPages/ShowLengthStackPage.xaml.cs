@@ -34,5 +34,17 @@ namespace JayCadSurveyXamarin.ContentPages
 		{
             await Navigation.PopAsync();
 		}
+
+        async void Delete_Clicked(object sender, System.EventArgs e)
+        {
+            var convertedCalulation = (sender as MenuItem).CommandParameter as ConversionCalculation;
+            _calculations.Remove(convertedCalulation);
+
+            // Delete from SQLiteDb as well
+            await _connection.DeleteAsync(convertedCalulation);
+        }
+
+
+            
     }
 }

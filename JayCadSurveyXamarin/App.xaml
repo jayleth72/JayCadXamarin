@@ -45,8 +45,14 @@
 
             <Style x:Key="userInputEntry" TargetType="Entry" >
                 <Setter Property="BackgroundColor" Value="#fff" />
-             </Style>
+            </Style>
 
+            <Style x:Key="stackListLabel" TargetType="Label" >
+                <Setter Property="BackgroundColor" Value="#fff" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
         </ResourceDictionary>
 	</Application.Resources>
 </Application>

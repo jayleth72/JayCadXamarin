@@ -73,11 +73,17 @@ namespace JayCadSurveyXamarin.ViewModel
 		protected async Task BackToPreviousPage()
 		{
 			await _pageService.PopAsync();
+
+            // Clear stack in Area and Length Conversion Pages
+            ClearStackCalculationsTable();
 		}
 
 		protected async Task BackToMainMenu()
 		{
 			await _pageService.PopToRootAsync();
+
+			// Clear stack in Area and Length Conversion Pages
+			ClearStackCalculationsTable();
 		}
 
 		/// <summary>
