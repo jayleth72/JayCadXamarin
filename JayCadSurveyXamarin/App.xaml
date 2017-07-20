@@ -34,6 +34,8 @@
             <Style x:Key="pageButton" TargetType="Button" >
                 <Setter Property="BackgroundColor" Value="#F8CE18" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="#283460" />
+                <Setter Property="FontSize" Value="15" />
             </Style>
 
              <Style x:Key="pageDisplayLabel" TargetType="Label" >

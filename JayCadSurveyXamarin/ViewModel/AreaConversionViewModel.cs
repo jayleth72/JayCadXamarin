@@ -20,7 +20,6 @@ namespace JayCadSurveyXamarin.ViewModel
 		private bool _isAcresPickersVisible;                // Visibility modifier for Perches and Roods pickers
 		private int _acresInput = 0;                        // Variable to hold value of user input value when converting from Acres to Hectares
 		private double _numericalDoubleInput = 0.0;         // Variable to hold value of user input value when converting from other conversions
-		private double _runningTotalDouble = 0.0;           // Displays running total for conversions as a double
 		private int _PerchesPickerSelectedIndex;
 		private int _roodsPickerSelectedIndex;
 		private int _selectedAreaConversionIndex = -1;

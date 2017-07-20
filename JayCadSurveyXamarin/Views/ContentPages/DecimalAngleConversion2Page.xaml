@@ -31,7 +31,7 @@
          <!--   Page label   -->
         <Label
             Grid.Row="0"
-            Text="Deciaml Angle Conversion"
+            Text="Decimal Angle Conversion"
             Style="{StaticResource pageLabel}" />
 
         <!--   Conversion labels   -->

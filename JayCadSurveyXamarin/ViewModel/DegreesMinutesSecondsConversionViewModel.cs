@@ -125,6 +125,8 @@ namespace JayCadSurveyXamarin.ViewModel
 
 			// Calculate seconds
 			double theSeconds = ((calcMinutesValue - (double)minutes) * 60);
+            theSeconds = Math.Round(theSeconds, 1, MidpointRounding.AwayFromZero);
+            //Round Seconds to one decimal plae
 
             return degrees.ToString() + "\u00B0 " + minutes.ToString() + "\' " + theSeconds.ToString() + "\"";
         }

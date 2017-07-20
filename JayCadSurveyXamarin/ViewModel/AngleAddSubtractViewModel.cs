@@ -228,21 +228,21 @@ namespace JayCadSurveyXamarin.ViewModel
 				// Check for Degrees out of range  errors
 				if (inputFlag == INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_DEGREES)
 				{
-					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 360 in the degrees field", "Ok");
+					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 359 in the degrees field", "Ok");
 					return;
 				}
 
 				// Check for Degrees out of range  errors
 				if (inputFlag == INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_MINUTES)
 				{
-					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 60 in the minutes field", "Ok");
+					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 59 in the minutes field", "Ok");
 					return;
 				}
 
 				// Check for Degrees out of range  errors
 				if (inputFlag == INPUT_VALIDATION_FLAG.NUMBER_OUT_OF_RANGE_SECONDS)
 				{
-					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 60 in the seconds field", "Ok");
+					await _pageService.DisplayAlert("Out of Range Error", "Please enter a value between 0 and 59 in the seconds field", "Ok");
 					return;
 				}
 			}        

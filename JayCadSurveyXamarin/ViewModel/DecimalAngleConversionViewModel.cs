@@ -137,14 +137,14 @@ namespace JayCadSurveyXamarin.ViewModel
   			// Check that minutes numbers are in range
 			if (NumberOutOfRange(59, 0, _minutesIntegerInput))
 			{
-				await _pageService.DisplayAlert("Data Input Error", "Minutes need to be a Numerical value between 0 and 60", "Ok");
+				await _pageService.DisplayAlert("Data Input Error", "Minutes need to be a Numerical value between 0 and 59", "Ok");
 				return;
 			}
 
             // Check that seconds numbers are in range
             if (NumberOutOfRange(59, 0, ((int)_secondsDoubleInput)))
             {
-                await _pageService.DisplayAlert("Data Input Error", "Seconds need to be a Numerical value between 0 and 60", "Ok");
+                await _pageService.DisplayAlert("Data Input Error", "Seconds need to be a Numerical value between 0 and 59", "Ok");
                 return;
             }
 

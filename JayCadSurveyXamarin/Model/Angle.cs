@@ -72,6 +72,13 @@ namespace JayCadSurveyXamarin.Model
 			
 			// round to nearest whole number
 			_seconds = (int)Math.Round(_decimalSeconds);
+
+            //account for edge cases where seconds add up to 60 when a value is entered in degrees field
+            if (_seconds >= 60)
+            {
+                _minutes += 1;
+                _seconds = 0;
+            }    
 		}
 
         /// <summary>
