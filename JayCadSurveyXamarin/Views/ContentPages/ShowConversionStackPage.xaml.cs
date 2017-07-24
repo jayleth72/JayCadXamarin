@@ -11,15 +11,14 @@ namespace JayCadSurveyXamarin.ContentPages
 	{
 		private SQLiteAsyncConnection _connection;
 		private ObservableCollection<ConversionCalculation> _calculations;      // List used to populate The Conversion Calculations  Stack
-
+        private int _conversionRounding;                                             // Specified rounding for decimal place fugures
 		public SQLiteAsyncConnection Connection { get => _connection; set => _connection = value; }
 
 
-		public ShowConversionStackPage()
+		public ShowConversionStackPage(int conversionRounding)
 		{
 			InitializeComponent();
-
-			//BindingContext = new ShowStackViewModel(new PageService());
+            _conversionRounding = conversionRounding;
 			Connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 		}
 
@@ -74,10 +73,49 @@ namespace JayCadSurveyXamarin.ContentPages
             }
 
             if (totalType.Equals("convertFrom"))
-                return convertFrom + convertFromUnit;
+                return RoundDecimalFigures(convertFrom) + convertFromUnit;
             else
-                return convertTo + convertToUnit;
+                return RoundDecimalFigures(convertTo) + convertToUnit;
         }
+
+
+		/// <summary>
+		/// Rounds the result to specified number of decimal figures stored in SQLite database.
+		/// For example if length conversion roundings is set to 5 decimal figures then 1234.55555 will be displayed.
+		/// </summary>
+		/// <returns>The result formatted to specidfied number of figures after the decimal point</returns>
+		/// <param name="result">Result.</param>
+		protected string RoundDecimalFigures(double result)
+		{
+			string formattedResult;
+
+			switch (_conversionRounding)
+			{
+				case 1:
+					formattedResult = string.Format("{0:0.0}", result);
+					break;
+				case 2:
+					formattedResult = string.Format("{0:0.00}", result);
+					break;
+				case 3:
+					formattedResult = string.Format("{0:0.000}", result);
+					break;
+				case 4:
+					formattedResult = string.Format("{0:0.0000}", result);
+					break;
+				case 5:
+					formattedResult = string.Format("{0:0.00000}", result);
+					break;
+				default:
+					formattedResult = string.Format("{0:0}", result);
+					break;
+			}
+
+			// Remove any trailing zeros e.g. 541.167000 will be displayed as 541.167
+			formattedResult = formattedResult.TrimEnd('0', '.');
+
+			return formattedResult;
+		}
 
 	}
 }

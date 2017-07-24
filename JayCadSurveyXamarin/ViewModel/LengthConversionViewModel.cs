@@ -246,14 +246,10 @@ namespace JayCadSurveyXamarin.ViewModel
            
             ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
-            // Round to User specified rounding (Via Settings/roundings) or default rounding which is zero
-            result = Math.Round(result, _conversionRounding, MidpointRounding.AwayFromZero);
-            _numericalDoubleInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
-
-			_conversionResult = result.ToString() + " " + SelectedLengthConversion.ConvertTo;
+            _conversionResult = RoundDecimalFigures(result) + " " + SelectedLengthConversion.ConvertTo;
 
 			// Add Calculation to stack
-			AddCalculationToStack(ConversionCalculationDisplay(result), result, _numericalDoubleInput,
+			AddCalculationToStack(ConversionCalculationDisplay(_conversionResult), result, _numericalDoubleInput,
                                   GetAbbreviation(SelectedLengthConversion.ConvertTo), GetAbbreviation(SelectedLengthConversion.ConvertFrom));
 
             OnPropertyChanged(ConversionResult);
@@ -264,21 +260,22 @@ namespace JayCadSurveyXamarin.ViewModel
         /// Returns the input and converted output to a string for display in the Conversion stack
         /// </summary>
         /// <returns>The calculation display.</returns>
-        private string ConversionCalculationDisplay(Double conversionResult)
+        private string ConversionCalculationDisplay(string conversionResult)
         {
             string calculation = "";
-            double userInput = 0.0;
+            string userInput = "";
+
+            userInput = RoundDecimalFigures(_numericalDoubleInput);
 
             // Input and Result Output are rounded to User specified roundings
             if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
             {
-                userInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
-                calculation = userInput.ToString() + "ft = " + conversionResult.ToString() + "m";
+                
+                calculation = userInput + "ft = " + conversionResult.ToString() + "m";
             }
             else
             {
-                userInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
-                calculation = userInput.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertFrom) + " = "
+              calculation = userInput.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertFrom) + " = "
                                        + conversionResult.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertTo);
             }
 
@@ -291,9 +288,10 @@ namespace JayCadSurveyXamarin.ViewModel
 		}
         	
 
-		protected async Task ShowStack()
+		private async Task ShowStack()
 		{
-            await _pageService.PushAsync(new ContentPages.ShowConversionStackPage());
+			// pass conversionRounding to format running totals in Stack page
+			await _pageService.PushAsync(new ContentPages.ShowConversionStackPage(_conversionRounding));
 		}
             
         /// <summary>

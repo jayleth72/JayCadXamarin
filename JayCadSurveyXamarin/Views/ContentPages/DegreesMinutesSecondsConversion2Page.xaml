@@ -34,7 +34,7 @@
         <!--   Conversion labels   -->
         <Label
             Grid.Row="1"
-            Text="Enter Decimal Angle Data"
+            Text="Enter Decimal Bearing Data"
             TextColor="#fff"
             HorizontalTextAlignment="Start" />
         
@@ -68,7 +68,7 @@
         <!-- Convert Button  -->
         <Button 
             Grid.Row="3"
-            Text="Convert Decimal Angle"
+            Text="Convert Decimal Bearing"
             Style="{StaticResource pageButton}"
             Command="{Binding ConvertResultCommand}" />
 

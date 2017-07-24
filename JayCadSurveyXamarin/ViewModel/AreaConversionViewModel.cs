@@ -239,14 +239,10 @@ namespace JayCadSurveyXamarin.ViewModel
 
             ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
-			// Round to User specified rounding (Via Settings/roundings) or default rounding which is zero
-			result = Math.Round(result, _conversionRounding, MidpointRounding.AwayFromZero);
-			_numericalDoubleInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
-
-			_conversionResult = result.ToString() + " " + SelectedAreaConversion.ConvertTo;
+			_conversionResult = RoundDecimalFigures(result) + " " + SelectedAreaConversion.ConvertTo;
 
 			// Add Calculation to stack
-			AddCalculationToStack(ConversionCalculationDisplay(result), result, _numericalDoubleInput,
+			AddCalculationToStack(ConversionCalculationDisplay(_conversionResult), result, _numericalDoubleInput,
 								  GetAbbreviation(SelectedAreaConversion.ConvertTo), GetAbbreviation(SelectedAreaConversion.ConvertFrom));
             			
 			OnPropertyChanged();
@@ -257,15 +253,15 @@ namespace JayCadSurveyXamarin.ViewModel
 		/// Returns the input and converted output to a string for display in the Conversion stack
 		/// </summary>
 		/// <returns>The calculation display.</returns>
-		private string ConversionCalculationDisplay(Double conversionResult)
+		private string ConversionCalculationDisplay(string conversionResult)
 		{
 			string calculation = "";
-			double userInput = 0.0;
+			string userInput = "";
 
 			// Input and Result Output are rounded to User specified roundings
-			userInput = Math.Round(_numericalDoubleInput, _conversionRounding, MidpointRounding.AwayFromZero);
-			calculation = userInput.ToString() + GetAbbreviation(SelectedAreaConversion.ConvertFrom) + " = "
-							   + conversionResult.ToString() + GetAbbreviation(SelectedAreaConversion.ConvertTo);
+			userInput = RoundDecimalFigures(_numericalDoubleInput);
+			calculation = userInput + GetAbbreviation(SelectedAreaConversion.ConvertFrom) + " = "
+							   + conversionResult + GetAbbreviation(SelectedAreaConversion.ConvertTo);
 			
 			return calculation;
 		}
@@ -279,7 +275,8 @@ namespace JayCadSurveyXamarin.ViewModel
 
 		async private Task ShowStack()
 		{
-            await _pageService.PushAsync(new ContentPages.ShowConversionStackPage());
+            // pass conversionRounding to format running totals in Stack page
+            await _pageService.PushAsync(new ContentPages.ShowConversionStackPage(_conversionRounding));
 		}
 
 		/// <summary>

@@ -113,7 +113,7 @@
         <!--   Row label   -->
         <Label
             Grid.Row="7"
-            Text="Decimal Angle Conversion Rounding"
+            Text="Decimal Bearing Conversion Rounding"
             TextColor="#fff"
             HorizontalTextAlignment="Start" />
         

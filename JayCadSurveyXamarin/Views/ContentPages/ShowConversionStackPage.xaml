@@ -16,10 +16,13 @@
         <Label
             Text="Conversions Stack"
             Style="{StaticResource pageLabel}" />
-        <ListView x:Name="stackList">
+        <ListView x:Name="stackList"
+                BackgroundColor="#fff">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                  <TextCell Text="{Binding ConversionDisplayValue}" >
+                  <TextCell
+                        Text="{Binding ConversionDisplayValue}"
+                        TextColor="Black">
                         <TextCell.ContextActions>
                             <MenuItem
                                 Text="Delete"

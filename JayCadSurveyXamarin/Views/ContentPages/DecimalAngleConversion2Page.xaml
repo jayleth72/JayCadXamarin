@@ -31,7 +31,7 @@
          <!--   Page label   -->
         <Label
             Grid.Row="0"
-            Text="Decimal Angle Conversion"
+            Text="Decimal Bearing Conversion"
             Style="{StaticResource pageLabel}" />
 
         <!--   Conversion labels   -->
@@ -149,7 +149,7 @@
         <!-- Convert Button  -->
         <Button 
             Grid.Row="5"
-            Text="Convert to Decimal Angle"
+            Text="Convert to Decimal Bearing"
             Style="{StaticResource pageButton}"
             Command="{Binding ConvertToDecimalCommand}" />
 
