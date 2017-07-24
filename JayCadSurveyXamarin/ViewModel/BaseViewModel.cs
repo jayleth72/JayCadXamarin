@@ -70,20 +70,14 @@ namespace JayCadSurveyXamarin.ViewModel
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
 		}
 
-		protected async Task BackToPreviousPage()
+		protected virtual async Task BackToPreviousPage()
 		{
 			await _pageService.PopAsync();
+        }
 
-            // Clear stack in Area and Length Conversion Pages
-            ClearStackCalculationsTable();
-		}
-
-		protected async Task BackToMainMenu()
+		protected virtual async Task BackToMainMenu()
 		{
 			await _pageService.PopToRootAsync();
-
-			// Clear stack in Area and Length Conversion Pages
-			ClearStackCalculationsTable();
 		}
 
 		/// <summary>
@@ -226,27 +220,25 @@ namespace JayCadSurveyXamarin.ViewModel
 
             switch (_conversionRounding)
             {   case 1:
-                    formattedResult = string.Format("{0:0.0}", result);
+                    formattedResult = string.Format("{0:0.#}", result);
                     break;
 				case 2:
-					formattedResult = string.Format("{0:0.00}", result);
+					formattedResult = string.Format("{0:0.##}", result);
 					break;
 				case 3:
-					formattedResult = string.Format("{0:0.000}", result);
+					formattedResult = string.Format("{0:0.###}", result);
 					break;
 				case 4:
-					formattedResult = string.Format("{0:0.0000}", result);
+					formattedResult = string.Format("{0:0.####}", result);
 					break;
 				case 5:
-					formattedResult = string.Format("{0:0.00000}", result);
+					formattedResult = string.Format("{0:0.#####}", result);
 					break;
                 default:
                     formattedResult = string.Format("{0:0}", result);
                     break;
             }
 
-            // Remove any trailing zeros e.g. 541.167000 will be displayed as 541.167
-            formattedResult = formattedResult.TrimEnd('0', '.');
             return formattedResult;    
         }
 

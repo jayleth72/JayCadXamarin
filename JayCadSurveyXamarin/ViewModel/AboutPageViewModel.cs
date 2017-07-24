@@ -172,7 +172,7 @@ namespace JayCadSurveyXamarin.ViewModel
                 "  Accuracy of a conversion can be shown up to 5 decimal places by selecting the corresponding rounding in the Roundings Page." + 
                 "  To avoid clutterd displays, trailing zeros are removed from conversion calculations.  For example if a rounding of 5 decimal figure is chosen" +
 				" the number 34.85000 will be displayed as 34.85."  +
-				"  Default roundings are set to zero when the application is loaded on to your device.  Ensure to press Save Button when changing your roundings";
+				"  Default roundings are set to zero when the application is loaded on to your device";
 
             _legalText = "The information contained in this mobile app (\"JAYCAD\") is for general information purposes only." +
                 "  JayLeth Technologies assumes no responsibility for errors or omissions in the contents on this mobile application." +

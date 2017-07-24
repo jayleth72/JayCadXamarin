@@ -151,14 +151,8 @@
             Grid.Row="9"
             Text="{Binding DummyEntry}"
             IsVisible="false"/>
-            
-      <!-- Save Button -->
-        <Button 
-                Grid.Row="10"
-                Text="Save Roundings"
-                Style="{StaticResource pageButton}"
-               Command="{Binding SaveRoundingsCommand}" />
-
+           
+     
         <!--  Navigation Buttons -->
         <Grid Grid.Row="11" ColumnSpacing="20">
             <Grid.ColumnDefinitions >

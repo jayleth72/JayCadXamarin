@@ -56,6 +56,7 @@ namespace JayCadSurveyXamarin.ContentPages
 			convertToTotal.Text = RunningTotals("convertTo");
 		}
 
+
         private string RunningTotals(string totalType)
         {
             double convertFrom = 0.0;

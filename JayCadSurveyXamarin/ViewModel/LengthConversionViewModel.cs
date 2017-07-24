@@ -246,10 +246,14 @@ namespace JayCadSurveyXamarin.ViewModel
            
             ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
-            _conversionResult = RoundDecimalFigures(result) + " " + SelectedLengthConversion.ConvertTo;
-
+            // This is here for when 0 inches and 0 fraction inches and the convert button is pressed
+            if (result > 0)
+                 _conversionResult = RoundDecimalFigures(result) + " " + SelectedLengthConversion.ConvertTo;
+            else
+                _conversionResult = "0" + " " + SelectedLengthConversion.ConvertTo;
+            
 			// Add Calculation to stack
-			AddCalculationToStack(ConversionCalculationDisplay(_conversionResult), result, _numericalDoubleInput,
+			AddCalculationToStack(ConversionCalculationDisplay(RoundDecimalFigures(result)), result, _numericalDoubleInput,
                                   GetAbbreviation(SelectedLengthConversion.ConvertTo), GetAbbreviation(SelectedLengthConversion.ConvertFrom));
 
             OnPropertyChanged(ConversionResult);
@@ -271,12 +275,12 @@ namespace JayCadSurveyXamarin.ViewModel
             if (SelectedLengthConversion.conversionType == LengthConversion.CONVERSION_TYPE.FEET_TO_METRES)
             {
                 
-                calculation = userInput + "ft = " + conversionResult.ToString() + "m";
+                calculation = userInput + "ft = " + conversionResult + "m";
             }
             else
             {
-              calculation = userInput.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertFrom) + " = "
-                                       + conversionResult.ToString() + GetAbbreviation(SelectedLengthConversion.ConvertTo);
+              calculation = userInput + GetAbbreviation(SelectedLengthConversion.ConvertFrom) + " = "
+                                       + conversionResult + GetAbbreviation(SelectedLengthConversion.ConvertTo);
             }
 
             return calculation;
@@ -338,7 +342,20 @@ namespace JayCadSurveyXamarin.ViewModel
         {
             return Convert.ToDouble(_feetInput) + (SelectedInches.InchValue * 1 / 12) + (SelectedFractionInch.FractionInchValue * 1 / 192) ;
         }
-             
+         
+        async protected override Task BackToPreviousPage()
+        {
+            await base.BackToPreviousPage();
+			// Clear stack in Area and Length Conversion Pages
+			ClearStackCalculationsTable();
+        }
+
+		async protected override Task BackToMainMenu()
+		{
+			await base.BackToPreviousPage();
+			// Clear stack in Area and Length Conversion Pages
+			ClearStackCalculationsTable();
+		}
     }   
 
 }

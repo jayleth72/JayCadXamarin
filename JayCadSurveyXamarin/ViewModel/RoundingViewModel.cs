@@ -3,6 +3,7 @@ using JayCadSurveyXamarin.Persistence;
 using JayCadSurveyXamarin.Model;
 using Xamarin.Forms;
 using SQLite;
+using System.Threading.Tasks;
 
 namespace JayCadSurveyXamarin.ViewModel
 {
@@ -50,16 +51,10 @@ namespace JayCadSurveyXamarin.ViewModel
             set { SetValue(ref _dummyEntry, value); }
         }
                 
-        public ICommand SaveRoundingsCommand { get; private set; }
-        //public ICommand DefaultRoundingsCommand { get; private set; }
-
+       
         public RoundingViewModel(IPageService pageService) : base(pageService)
         {
-            SaveRoundingsCommand = new Command(SaveRoundings);
-            //DefaultRoundingsCommand = new Command(DefaultRoundings);
-
             RetrieveRoundings();
-           
         }
 
         async private void SaveRoundings()
@@ -143,5 +138,21 @@ namespace JayCadSurveyXamarin.ViewModel
             await _connection.UpdateAsync(areaRounding);
             await _connection.UpdateAsync(decimalAngleRounding);
         }
+
+
+		async protected override Task BackToPreviousPage()
+		{
+			await base.BackToPreviousPage();
+            // Clear stack in Area and Length Conversion Pages
+            SaveRoundings();
+		}
+
+
+		async protected override Task BackToMainMenu()
+		{
+			await base.BackToPreviousPage();
+			// Clear stack in Area and Length Conversion Pages
+			SaveRoundings();
+		}
     }
 }

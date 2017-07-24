@@ -234,15 +234,21 @@ namespace JayCadSurveyXamarin.ViewModel
             {
                 _numericalDoubleInput = CalculateDecimalAcres();
             }    
-			 			
+			 
+
 			result = _numericalDoubleInput * SelectedAreaConversion.ConversionFactor;
 
             ClearResultField();  // This is here for the Conversion to show in the result field ??? 
 
-			_conversionResult = RoundDecimalFigures(result) + " " + SelectedAreaConversion.ConvertTo;
+			// This is here for when 0 inches and 0 fraction inches and the convert button is pressed
+			if (result > 0)
+				_conversionResult = RoundDecimalFigures(result) + " " + SelectedAreaConversion.ConvertTo;
+			else
+				_conversionResult = "0" + " " + SelectedAreaConversion.ConvertTo;
+
 
 			// Add Calculation to stack
-			AddCalculationToStack(ConversionCalculationDisplay(_conversionResult), result, _numericalDoubleInput,
+			AddCalculationToStack(ConversionCalculationDisplay(RoundDecimalFigures(result)), result, _numericalDoubleInput,
 								  GetAbbreviation(SelectedAreaConversion.ConvertTo), GetAbbreviation(SelectedAreaConversion.ConvertFrom));
             			
 			OnPropertyChanged();
@@ -371,6 +377,13 @@ namespace JayCadSurveyXamarin.ViewModel
 			return formattedAcresMeasure;
 		
         }
+
+		async protected override Task BackToPreviousPage()
+		{
+			await base.BackToPreviousPage();
+			// Clear stack in Area and Length Conversion Pages
+			ClearStackCalculationsTable();
+		}
 
     }
 }
