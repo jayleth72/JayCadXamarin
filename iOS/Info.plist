@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>JayCadX</string>
+	<string>JayCadx</string>
 	<key>CFBundleName</key>
-	<string>JayCadX</string>
+	<string>JayCadx</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.jaylethinc.jaycadsurveyxamarin</string>
 	<key>CFBundleShortVersionString</key>

@@ -22,7 +22,7 @@
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />

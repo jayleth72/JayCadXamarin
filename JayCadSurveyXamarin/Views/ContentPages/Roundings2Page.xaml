@@ -14,18 +14,12 @@
             iOS="0, 20, 0, 0"/>
     </ContentPage.Padding>
 
-    <Grid RowSpacing="15" Padding="20,0,20,20">
+    <Grid RowSpacing="25" Padding="20,0,20,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
-            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="AUTO" />
             <RowDefinition Height="AUTO" />
         </Grid.RowDefinitions>  
@@ -36,22 +30,29 @@
             Text="Decimal Roundings"
             Style="{StaticResource pageLabel}" />
         
-        <!--   Row label   -->
-        <Label
-            Grid.Row="1"
-            Text="Length Conversion Rounding"
-            TextColor="#fff"
-            HorizontalTextAlignment="Start" />
-  
         <!-- Length Conversion Picker Row  -->
-        <Grid Grid.Row="2" ColumnSpacing="15" >
+        <Grid Grid.Row="1" ColumnSpacing="15" >
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+            </Grid.RowDefinitions>  
 
+            <!--   Row label   -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="Length Conversion Rounding"
+                TextColor="#fff"
+                HorizontalTextAlignment="Start" />  
             <Label
                 Grid.Column="0"
+                Grid.Row="1"
                 Text="Round To"
                 TextColor="#fff"
                 HorizontalTextAlignment="End"
@@ -59,6 +60,7 @@
             
            <Picker
                 Grid.Column="1"
+                Grid.Row="1"
                 Title="Select Rounding"
                 SelectedIndex="{Binding LengthConversionSelected, Mode=TwoWay}"
                 Style="{StaticResource pickerUnits}" >
@@ -73,22 +75,31 @@
             </Picker>  
         </Grid>
 
-        <!--   Row label   -->
-        <Label
-            Grid.Row="4"
-            Text="Area Conversion Rounding"
-            TextColor="#fff"
-            HorizontalTextAlignment="Start" />
+       
         
         <!-- Area Conversion Picker Row  -->
-        <Grid Grid.Row="5" ColumnSpacing="15" >
+        <Grid Grid.Row="2" ColumnSpacing="15" >
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+            </Grid.RowDefinitions>  
 
+             <!--   Row label   -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="Area Conversion Rounding"
+                TextColor="#fff"
+                HorizontalTextAlignment="Start" />
             <Label
                 Grid.Column="0"
+                Grid.Row="1"
                 Text="Round To"
                 TextColor="#fff"
                 HorizontalTextAlignment="End"
@@ -96,6 +107,7 @@
             
            <Picker
                 Grid.Column="1"
+                Grid.Row="1"
                 Title="Select Rounding"
                 SelectedIndex="{Binding AreaConversionSelected, Mode=TwoWay}"
                 Style="{StaticResource pickerUnits}" >
@@ -110,22 +122,31 @@
             </Picker>  
         </Grid>
 
-        <!--   Row label   -->
-        <Label
-            Grid.Row="7"
-            Text="Decimal Bearing Conversion Rounding"
-            TextColor="#fff"
-            HorizontalTextAlignment="Start" />
+       
         
          <!-- Decimal Angle Conversion Picker Row  -->
-        <Grid Grid.Row="8" ColumnSpacing="15" >
+        <Grid Grid.Row="3" ColumnSpacing="15" >
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+            </Grid.RowDefinitions>  
 
+             <!--   Row label   -->
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="Decimal Bearing Conversion Rounding"
+                TextColor="#fff"
+                HorizontalTextAlignment="Start" />
             <Label
                 Grid.Column="0"
+                Grid.Row="1"
                 Text="Round To"
                 TextColor="#fff"
                 HorizontalTextAlignment="End"
@@ -133,6 +154,7 @@
             
            <Picker
                 Grid.Column="1"
+                Grid.Row="1"
                 Title="Select Rounding"
                 SelectedIndex="{Binding DecimalAngleConversionSelected, Mode=TwoWay}"
                 Style="{StaticResource pickerUnits}" >
@@ -148,13 +170,13 @@
         </Grid>
 
         <Entry 
-            Grid.Row="9"
+            Grid.Row="4"
             Text="{Binding DummyEntry}"
             IsVisible="false"/>
            
      
         <!--  Navigation Buttons -->
-        <Grid Grid.Row="11" ColumnSpacing="20">
+        <Grid Grid.Row="5" ColumnSpacing="20">
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
