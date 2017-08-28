@@ -86,36 +86,38 @@ namespace JayCadSurveyXamarin.ContentPages
 		/// </summary>
 		/// <returns>The result formatted to specidfied number of figures after the decimal point</returns>
 		/// <param name="result">Result.</param>
-		protected string RoundDecimalFigures(double result)
+		private string RoundDecimalFigures(double result)
 		{
 			string formattedResult;
 
 			switch (_conversionRounding)
 			{
 				case 1:
-					formattedResult = string.Format("{0:0.0}", result);
+					formattedResult = string.Format("{0:0.#}", result);
 					break;
 				case 2:
-					formattedResult = string.Format("{0:0.00}", result);
+					formattedResult = string.Format("{0:0.##}", result);
 					break;
 				case 3:
-					formattedResult = string.Format("{0:0.000}", result);
+					formattedResult = string.Format("{0:0.###}", result);
 					break;
 				case 4:
-					formattedResult = string.Format("{0:0.0000}", result);
+					formattedResult = string.Format("{0:0.####}", result);
 					break;
 				case 5:
-					formattedResult = string.Format("{0:0.00000}", result);
+					formattedResult = string.Format("{0:0.#####}", result);
 					break;
 				default:
 					formattedResult = string.Format("{0:0}", result);
 					break;
 			}
 
-			// Remove any trailing zeros e.g. 541.167000 will be displayed as 541.167
-			formattedResult = formattedResult.TrimEnd('0', '.');
-
 			return formattedResult;
+
+			//// Remove any trailing zeros e.g. 541.167000 will be displayed as 541.167
+			//formattedResult = formattedResult.TrimEnd('0', '.');
+
+			//return formattedResult;
 		}
 
 	}

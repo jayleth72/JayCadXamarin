@@ -119,7 +119,7 @@
         <!-- Results Rows  -->
         <Label
                 Grid.Row="6"
-                HeightRequest="45"
+                MinimumHeightRequest="45"
                 Text="{Binding ConversionResult}"
                 Style="{StaticResource pageDisplayLabel}"
                 FontSize="20" />

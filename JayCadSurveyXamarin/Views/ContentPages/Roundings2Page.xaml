@@ -49,7 +49,8 @@
                 Grid.ColumnSpan="2"
                 Text="Length Conversion Rounding"
                 TextColor="#fff"
-                HorizontalTextAlignment="Start" />  
+                FontAttributes="Bold"
+               HorizontalTextAlignment="Start" />  
             <Label
                 Grid.Column="0"
                 Grid.Row="1"
@@ -96,6 +97,7 @@
                 Grid.ColumnSpan="2"
                 Text="Area Conversion Rounding"
                 TextColor="#fff"
+                FontAttributes="Bold"
                 HorizontalTextAlignment="Start" />
             <Label
                 Grid.Column="0"
@@ -143,6 +145,7 @@
                 Grid.ColumnSpan="2"
                 Text="Decimal Bearing Conversion Rounding"
                 TextColor="#fff"
+                FontAttributes="Bold"
                 HorizontalTextAlignment="Start" />
             <Label
                 Grid.Column="0"
