@@ -124,13 +124,25 @@
                 Style="{StaticResource pageDisplayLabel}"
                 FontSize="20" />
         
-        <!-- Clear Button -->
-        <Button 
-                Grid.Row="7"
-                Text="Clear Result"
-                Style="{StaticResource pageButton}"
-                Command="{Binding ClearResultFieldCommand}" />
-
+        <!-- Clear Button and Calulator Button-->
+        <Grid Grid.Row="7" ColumnSpacing="20">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button 
+                    Grid.Column="0"
+                    Text="Clear Result"
+                    Style="{StaticResource pageButton}"
+                    Command="{Binding ClearResultFieldCommand}" />
+            
+            <Button 
+                    Grid.Column="1"
+                    Text="Calculator"
+                    Style="{StaticResource pageButton}"
+                    Command="{Binding GoToCalculatorPageCommand}" /> 
+        </Grid>
+        
         <!-- Clear and Show Stack Buttons -->
         <Grid Grid.Row="8" ColumnSpacing="20">
             <Grid.ColumnDefinitions >

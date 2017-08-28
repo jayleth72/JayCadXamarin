@@ -65,6 +65,9 @@
     <EmbeddedResource Include="Views\ContentPages\ShowConversionStackPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContentPages\CalculatorPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -136,6 +139,9 @@
     <Compile Include="Model\ConversionCalculation.cs" />
     <Compile Include="Views\ContentPages\ShowConversionStackPage.xaml.cs">
       <DependentUpon>ShowConversionStackPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ContentPages\CalculatorPage.xaml.cs">
+      <DependentUpon>CalculatorPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

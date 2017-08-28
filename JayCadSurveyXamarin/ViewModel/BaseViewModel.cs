@@ -43,9 +43,9 @@ namespace JayCadSurveyXamarin.ViewModel
         // View Buttons
         public ICommand BackToPreviousPageCommand { get; private set; }     // Enable Back navigation on pages
         public ICommand BackToMainMenuCommand { get; private set; }         // Enable Main menu navigation on pages
+        public ICommand GoToCalculatorPageCommand { get; private set; }     // Enable Calculator navigation
 
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -65,13 +65,14 @@ namespace JayCadSurveyXamarin.ViewModel
         {
             BackToPreviousPageCommand = new Command(async () => await BackToPreviousPage());    // Navigation Back Buttom
             BackToMainMenuCommand = new Command(async () => await BackToMainMenu());            // Navigation for Button to Main Menu
+            GoToCalculatorPageCommand = new Command(async () => await GoToCalculatorPage());    // Navigation for Calculator
 
-            _pageService = pageService;                                                         // Enable navigation and DisplayAlerts from View Model
+			_pageService = pageService;                                                         // Enable navigation and DisplayAlerts from View Model
 
             _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
         }
 
-        #region Nav Buttons
+       
         protected virtual async Task BackToPreviousPage()
         {
             await _pageService.PopAsync();
@@ -81,7 +82,11 @@ namespace JayCadSurveyXamarin.ViewModel
         {
             await _pageService.PopToRootAsync();
         }
-        #endregion
+
+		protected virtual async Task GoToCalculatorPage()
+		{
+            await _pageService.PushAsync(new ContentPages.CalculatorPage());
+		}
 
         #region Data Validation
         /// <summary>
