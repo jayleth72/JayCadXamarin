@@ -143,6 +143,7 @@
     <Compile Include="Views\ContentPages\CalculatorPage.xaml.cs">
       <DependentUpon>CalculatorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CalculatorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MarkupExtensions\" />

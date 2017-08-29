@@ -16,6 +16,7 @@
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
           </Grid.RowDefinitions> 
 
           <Grid.ColumnDefinitions>
@@ -25,30 +26,57 @@
                 <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>  
 
+          <!-- Calculator Output -->
+          <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="4"
+                MinimumHeightRequest="50"
+                Text="0"
+                HorizontalTextAlignment="End"
+                Style="{StaticResource pageDisplayLabel}"
+                FontSize="25"
+                />  
+        
           <Button 
                 Grid.Column="0"
-                Grid.Row="0"
+                Grid.Row="1"
                 Text="7"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Seven}" />
           <Button 
                 Grid.Column="1"
-                Grid.Row="0"
+                Grid.Row="1"
                 Text="8"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Eight}" />  
           <Button 
-                Grid.Column="0"
-                Grid.Row="2"
+                Grid.Column="2"
+                Grid.Row="1"
                 Text="9"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Nine}" />
           <Button 
-                Grid.Column="0"
-                Grid.Row="3"
+                Grid.Column="3"
+                Grid.Row="1"
                 Text="div"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Division}" />
-             
+
+          <!-- Navigation Buttons -->
+          <Button
+                Grid.Column="0" 
+                 Grid.ColumnSpan="2"
+                Grid.Row="4"
+                Text="Back"
+                Style="{StaticResource menuButton}"
+                Command="{Binding BackToPreviousPageCommand}" />
+        
+         <Button
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Grid.Row="4"
+                Text="Main Menu"
+                Style="{StaticResource menuButton}"
+                Command="{Binding BackToMainMenuCommand}" />   
     </Grid>
 </ContentPage>
