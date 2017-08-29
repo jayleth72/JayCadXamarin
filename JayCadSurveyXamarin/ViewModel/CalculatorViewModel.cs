@@ -1,9 +1,9 @@
 ﻿using System;
 namespace JayCadSurveyXamarin.ViewModel
 {
-    public class CalculatorViewModel
+    public class CalculatorViewModel : BaseViewModel
     {
-        public CalculatorViewModel()
+        public CalculatorViewModel(IPageService pageService) : base(pageService)
         {
         }
     }

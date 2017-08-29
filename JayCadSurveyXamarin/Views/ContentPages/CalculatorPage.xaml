@@ -9,7 +9,7 @@
         <OnPlatform x:TypeArguments="Thickness"
             iOS="0, 20, 0, 0"/>
     </ContentPage.Padding>
-    <Grid RowSpacing="15" Padding="20,0,20,20">
+    <Grid RowSpacing="15" ColumnSpacing="15" Padding="20,0,20,20">
         
           <Grid.RowDefinitions>
                 <RowDefinition Height="AUTO" />
@@ -17,6 +17,7 @@
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" /> 
           </Grid.RowDefinitions> 
 
           <Grid.ColumnDefinitions>
@@ -37,6 +38,7 @@
                 FontSize="25"
                 />  
         
+          <!-- Row 1 Buttons -->  
           <Button 
                 Grid.Column="0"
                 Grid.Row="1"
@@ -62,11 +64,88 @@
                 Style="{StaticResource pageButton}"
                 Command="{Binding Division}" />
 
+         <!-- Row 2 Buttons -->  
+          <Button 
+                Grid.Column="0"
+                Grid.Row="2"
+                Text="4"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Seven}" />
+          <Button 
+                Grid.Column="1"
+                Grid.Row="2"
+                Text="5"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Eight}" />  
+          <Button 
+                Grid.Column="2"
+                Grid.Row="2"
+                Text="6"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Nine}" />
+          <Button 
+                Grid.Column="3"
+                Grid.Row="2"
+                Text="x"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Division}" />
+
+         <!-- Row 3 Buttons -->  
+          <Button 
+                Grid.Column="0"
+                Grid.Row="3"
+                Text="1"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Seven}" />
+          <Button 
+                Grid.Column="1"
+                Grid.Row="3"
+                Text="2"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Eight}" />  
+          <Button 
+                Grid.Column="2"
+                Grid.Row="3"
+                Text="3"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Nine}" />
+          <Button 
+                Grid.Column="3"
+                Grid.Row="3"
+                Text="-"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Division}" />
+
+        <!-- Row 4 Buttons -->  
+          <Button 
+                Grid.Column="0"
+                Grid.Row="4"
+                Text="0"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Seven}" />
+          <Button 
+                Grid.Column="1"
+                Grid.Row="4"
+                Text="."
+                Style="{StaticResource pageButton}"
+                Command="{Binding Eight}" />  
+          <Button 
+                Grid.Column="2"
+                Grid.Row="4"
+                Text="="
+                Style="{StaticResource pageButton}"
+                Command="{Binding Nine}" />
+          <Button 
+                Grid.Column="3"
+                Grid.Row="4"
+                Text="+"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Division}" />
           <!-- Navigation Buttons -->
           <Button
                 Grid.Column="0" 
                  Grid.ColumnSpan="2"
-                Grid.Row="4"
+                Grid.Row="5"
                 Text="Back"
                 Style="{StaticResource menuButton}"
                 Command="{Binding BackToPreviousPageCommand}" />
@@ -74,7 +153,7 @@
          <Button
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
-                Grid.Row="4"
+                Grid.Row="5"
                 Text="Main Menu"
                 Style="{StaticResource menuButton}"
                 Command="{Binding BackToMainMenuCommand}" />   
