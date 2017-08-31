@@ -17,6 +17,10 @@
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" /> 
           </Grid.RowDefinitions> 
 
@@ -141,11 +145,116 @@
                 Text="+"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Division}" />
+
+           <!-- Number Buttons Row 1  -->  
+          <Button 
+                Grid.Column="0"
+                Grid.Row="4"
+                Text="7"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Seven}" />
+          <Button 
+                Grid.Column="1"
+                Grid.Row="4"
+                Text="8"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Eight}" />  
+          <Button 
+                Grid.Column="2"
+                Grid.Row="4"
+                Text="9"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Nine}" />
+          <Button 
+                Grid.Column="3"
+                Grid.Row="4"
+                Text="div"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Division}" />
+
+         <!-- Row 2 Buttons -->  
+          <Button 
+                Grid.Column="0"
+                Grid.Row="5"
+                Text="4"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Seven}" />
+          <Button 
+                Grid.Column="1"
+                Grid.Row="5"
+                Text="5"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Eight}" />  
+          <Button 
+                Grid.Column="2"
+                Grid.Row="5"
+                Text="6"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Nine}" />
+          <Button 
+                Grid.Column="3"
+                Grid.Row="5"
+                Text="x"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Division}" />
+
+         <!-- Row 3 Buttons -->  
+          <Button 
+                Grid.Column="0"
+                Grid.Row="6"
+                Text="1"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Seven}" />
+          <Button 
+                Grid.Column="1"
+                Grid.Row="6"
+                Text="2"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Eight}" />  
+          <Button 
+                Grid.Column="2"
+                Grid.Row="6"
+                Text="3"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Nine}" />
+          <Button 
+                Grid.Column="3"
+                Grid.Row="6"
+                Text="-"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Division}" />
+
+        <!-- Row 4 Buttons -->  
+          <Button 
+                Grid.Column="0"
+                Grid.Row="7"
+                Text="0"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Seven}" />
+          <Button 
+                Grid.Column="1"
+                Grid.Row="7"
+                Text="."
+                Style="{StaticResource pageButton}"
+                Command="{Binding Eight}" />  
+          <Button 
+                Grid.Column="2"
+                Grid.Row="7"
+                Text="="
+                Style="{StaticResource pageButton}"
+                Command="{Binding Nine}" />
+          <Button 
+                Grid.Column="3"
+                Grid.Row="7"
+                Text="+"
+                Style="{StaticResource pageButton}"
+                Command="{Binding Division}" />
+        
           <!-- Navigation Buttons -->
           <Button
                 Grid.Column="0" 
                  Grid.ColumnSpan="2"
-                Grid.Row="5"
+                Grid.Row="8"
                 Text="Back"
                 Style="{StaticResource menuButton}"
                 Command="{Binding BackToPreviousPageCommand}" />
@@ -153,7 +262,7 @@
          <Button
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
-                Grid.Row="5"
+                Grid.Row="8"
                 Text="Main Menu"
                 Style="{StaticResource menuButton}"
                 Command="{Binding BackToMainMenuCommand}" />   
