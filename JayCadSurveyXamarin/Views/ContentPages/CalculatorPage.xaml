@@ -12,7 +12,7 @@
     <Grid RowSpacing="15" ColumnSpacing="15" Padding="20,0,20,20">
         
           <Grid.RowDefinitions>
-                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
                 <RowDefinition Height="AUTO" />
@@ -47,25 +47,25 @@
                 Grid.Column="0"
                 Grid.Row="1"
                 Text="7"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Seven}" />
           <Button 
                 Grid.Column="1"
                 Grid.Row="1"
                 Text="8"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Eight}" />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="1"
                 Text="9"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Nine}" />
           <Button 
                 Grid.Column="3"
                 Grid.Row="1"
                 Text="div"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Division}" />
 
          <!-- Row 2 Buttons -->  
@@ -73,25 +73,25 @@
                 Grid.Column="0"
                 Grid.Row="2"
                 Text="4"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Seven}" />
           <Button 
                 Grid.Column="1"
                 Grid.Row="2"
                 Text="5"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Eight}" />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="2"
                 Text="6"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Nine}" />
           <Button 
                 Grid.Column="3"
                 Grid.Row="2"
                 Text="x"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Division}" />
 
          <!-- Row 3 Buttons -->  
@@ -99,25 +99,25 @@
                 Grid.Column="0"
                 Grid.Row="3"
                 Text="1"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Seven}" />
           <Button 
                 Grid.Column="1"
                 Grid.Row="3"
                 Text="2"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Eight}" />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="3"
                 Text="3"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Nine}" />
           <Button 
                 Grid.Column="3"
                 Grid.Row="3"
                 Text="-"
-                Style="{StaticResource pageButton}"
+                Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Division}" />
 
         <!-- Row 4 Buttons -->  

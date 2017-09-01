@@ -38,6 +38,13 @@
                 <Setter Property="FontSize" Value="15" />
             </Style>
 
+            <Style x:Key="calculatorScienceButton" TargetType="Button" >
+                <Setter Property="BackgroundColor" Value="#ffffe6" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="#000" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            
              <Style x:Key="pageDisplayLabel" TargetType="Label" >
                 <Setter Property="BackgroundColor" Value="#B7B5CF" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
