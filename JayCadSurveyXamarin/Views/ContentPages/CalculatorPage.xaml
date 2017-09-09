@@ -46,25 +46,25 @@
           <Button 
                 Grid.Column="0"
                 Grid.Row="1"
-                Text="7"
+                Text="Inv"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Seven}" />
           <Button 
                 Grid.Column="1"
                 Grid.Row="1"
-                Text="8"
+                Text="sin"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Eight}" />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="1"
-                Text="9"
+                Text="In"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Nine}" />
           <Button 
                 Grid.Column="3"
                 Grid.Row="1"
-                Text="div"
+                Text="AC"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Division}" />
 
@@ -72,25 +72,25 @@
           <Button 
                 Grid.Column="0"
                 Grid.Row="2"
-                Text="4"
+                Text="&#960;"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Seven}" />
           <Button 
                 Grid.Column="1"
                 Grid.Row="2"
-                Text="5"
+                Text="cos"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Eight}" />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="2"
-                Text="6"
+                Text="log"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Nine}" />
           <Button 
                 Grid.Column="3"
                 Grid.Row="2"
-                Text="x"
+                Text="+/-"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Division}" />
 
@@ -98,25 +98,25 @@
           <Button 
                 Grid.Column="0"
                 Grid.Row="3"
-                Text="1"
+                Text="1/x"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Seven}" />
           <Button 
                 Grid.Column="1"
                 Grid.Row="3"
-                Text="2"
+                Text="tan"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Eight}" />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="3"
-                Text="3"
+                Text="√"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Nine}" />
           <Button 
                 Grid.Column="3"
                 Grid.Row="3"
-                Text="-"
+                Text="x²"
                 Style="{StaticResource calculatorScienceButton}"
                 Command="{Binding Division}" />
 
@@ -168,7 +168,9 @@
           <Button 
                 Grid.Column="3"
                 Grid.Row="4"
-                Text="div"
+                FontSize="20"
+                Text="÷"
+                FontAttributes="Bold"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Division}" />
 
@@ -194,6 +196,8 @@
           <Button 
                 Grid.Column="3"
                 Grid.Row="5"
+                FontAttributes="Bold"
+                FontSize="20"
                 Text="x"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Division}" />
@@ -220,6 +224,8 @@
           <Button 
                 Grid.Column="3"
                 Grid.Row="6"
+                FontAttributes="Bold"
+                FontSize="20"
                 Text="-"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Division}" />
@@ -234,18 +240,24 @@
           <Button 
                 Grid.Column="1"
                 Grid.Row="7"
+                FontAttributes="Bold"
+                FontSize="25"
                 Text="."
                 Style="{StaticResource pageButton}"
                 Command="{Binding Eight}" />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="7"
+                FontAttributes="Bold"
+                FontSize="20"
                 Text="="
                 Style="{StaticResource pageButton}"
                 Command="{Binding Nine}" />
           <Button 
                 Grid.Column="3"
                 Grid.Row="7"
+                FontAttributes="Bold"
+                FontSize="20"
                 Text="+"
                 Style="{StaticResource pageButton}"
                 Command="{Binding Division}" />
