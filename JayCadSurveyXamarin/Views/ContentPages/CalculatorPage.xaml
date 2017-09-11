@@ -48,25 +48,25 @@
                 Grid.Row="1"
                 Text="Inv"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Seven}" />
+                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="1"
                 Text="sin"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Eight}" />  
+                />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="1"
                 Text="In"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Nine}" />
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="1"
                 Text="AC"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Division}" />
+               />
 
          <!-- Row 2 Buttons -->  
           <Button 
@@ -74,25 +74,25 @@
                 Grid.Row="2"
                 Text="&#960;"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Seven}" />
+                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="2"
                 Text="cos"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Eight}" />  
+                />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="2"
                 Text="log"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Nine}" />
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="2"
                 Text="+/-"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Division}" />
+                />
 
          <!-- Row 3 Buttons -->  
           <Button 
@@ -100,25 +100,25 @@
                 Grid.Row="3"
                 Text="1/x"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Seven}" />
+               />
           <Button 
                 Grid.Column="1"
                 Grid.Row="3"
                 Text="tan"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Eight}" />  
+                />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="3"
                 Text="√"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Nine}" />
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="3"
                 Text="x²"
                 Style="{StaticResource calculatorScienceButton}"
-                Command="{Binding Division}" />
+               />
 
         <!-- Row 4 Buttons -->  
           <Button 
