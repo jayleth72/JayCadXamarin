@@ -43,10 +43,27 @@
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="TextColor" Value="#000" />
                 <Setter Property="FontSize" Value="15" />
+                <Setter Property="Command" Value="{Binding ScientificOperatorCommand}" />
+            </Style>
+
+            <Style x:Key="calculatorOperandButton" TargetType="Button" >
+                <Setter Property="BackgroundColor" Value="#F8CE18" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="#283460" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Command" Value="{Binding OperandCommand}" />
+            </Style>
+
+            <Style x:Key="calculatorOperatorButton" TargetType="Button" >
+                <Setter Property="BackgroundColor" Value="#F8CE18" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="#283460" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Command" Value="{Binding OperatorCommand}" />
             </Style>
             
-             <Style x:Key="pageDisplayLabel" TargetType="Label" >
+            <Style x:Key="pageDisplayLabel" TargetType="Label" >
                 <Setter Property="BackgroundColor" Value="#B7B5CF" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />

@@ -36,11 +36,19 @@
                 Grid.Row="0"
                 Grid.ColumnSpan="4"
                 MinimumHeightRequest="50"
-                Text="0"
+                Text="{Binding OutputResult}"
                 HorizontalTextAlignment="End"
                 Style="{StaticResource pageDisplayLabel}"
                 FontSize="25"
                 />  
+        
+          <!-- There are 3 styles of button here
+            1. calculatorScienceButton - cream coloured scientific function buttons
+            2. calculatorOperandButton - yellow coloured buttons displaying numbers
+            3. calculatorOperatorButton - yellow coloured buttons displaying operators (+ -) 
+
+            Style for buttons contain the binding command - see App.xaml
+          -->
         
           <!-- Row 1 Buttons -->  
           <Button 
@@ -125,14 +133,14 @@
                 Grid.Column="0"
                 Grid.Row="4"
                 Text="0"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Seven}" />
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="4"
                 Text="."
-                Style="{StaticResource pageButton}"
-                Command="{Binding Eight}" />  
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="2"
                 Grid.Row="4"
@@ -151,84 +159,78 @@
                 Grid.Column="0"
                 Grid.Row="4"
                 Text="7"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Seven}" />
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="4"
                 Text="8"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Eight}" />  
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="2"
                 Grid.Row="4"
                 Text="9"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Nine}" />
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="4"
-                FontSize="20"
                 Text="÷"
-                FontAttributes="Bold"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Division}" />
+                Style="{StaticResource calculatorOperatorButton}"
+                />
 
          <!-- Row 2 Buttons -->  
           <Button 
                 Grid.Column="0"
                 Grid.Row="5"
                 Text="4"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Seven}" />
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="5"
                 Text="5"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Eight}" />  
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="2"
                 Grid.Row="5"
                 Text="6"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Nine}" />
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="5"
-                FontAttributes="Bold"
-                FontSize="20"
                 Text="x"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Division}" />
+                Style="{StaticResource calculatorOperatorButton}"
+                />
 
          <!-- Row 3 Buttons -->  
           <Button 
                 Grid.Column="0"
                 Grid.Row="6"
                 Text="1"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Seven}" />
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="6"
                 Text="2"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Eight}" />  
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="2"
                 Grid.Row="6"
                 Text="3"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Nine}" />
+                Style="{StaticResource calculatorOperandButton}"
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="6"
-                FontAttributes="Bold"
-                FontSize="20"
                 Text="-"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Division}" />
+                Style="{StaticResource calculatorOperatorButton}"
+                />
 
         <!-- Row 4 Buttons -->  
           <Button 
@@ -248,19 +250,15 @@
           <Button 
                 Grid.Column="2"
                 Grid.Row="7"
-                FontAttributes="Bold"
-                FontSize="20"
                 Text="="
-                Style="{StaticResource pageButton}"
-                Command="{Binding Nine}" />
+                Style="{StaticResource calculatorOperatorButton}"
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="7"
-                FontAttributes="Bold"
-                FontSize="20"
                 Text="+"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Division}" />
+                Style="{StaticResource calculatorOperatorButton}"
+                />
         
           <!-- Navigation Buttons -->
           <Button
