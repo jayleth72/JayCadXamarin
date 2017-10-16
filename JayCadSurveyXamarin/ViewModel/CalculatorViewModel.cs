@@ -21,43 +21,43 @@ namespace JayCadSurveyXamarin.ViewModel
 
         public CalculatorViewModel(IPageService pageService) : base(pageService)
         {
-			OperatorCommand = new Command(Operator);                                   
-			OperandCommand = new Command(Operand);                                    
-			ScientificOperatorCommand = new Command(ScientificOperator);
+			OperatorCommand = new Command<string> (Operator);                                   
+			OperandCommand = new Command<string> (Operand);                                    
+			ScientificOperatorCommand = new Command<string> (ScientificOperator);
 
             _outputResult = "0";
 		}
 
-        private void Operator() 
+        private void Operator(string value) 
         {
             _outputResult = "";
 
             OnPropertyChanged(OutputResult);
 
-			_outputResult = "Operator";
+			_outputResult = value;
 
 			OnPropertyChanged(OutputResult);
 
         }
 
-		private void Operand()
+		private void Operand(string value)
 		{
 			_outputResult = "";
 
 			OnPropertyChanged(OutputResult);
 
-            _outputResult = "Operand";
+            _outputResult = value;
 
 			OnPropertyChanged(OutputResult);
 		}
 
-		private void ScientificOperator()
+		private void ScientificOperator(string value)
 		{
 			_outputResult = "";
 
 			OnPropertyChanged(OutputResult);
 
-            _outputResult = "Science";
+            _outputResult = value;
 
 			OnPropertyChanged(OutputResult);
 		}

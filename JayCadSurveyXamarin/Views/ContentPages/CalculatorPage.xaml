@@ -56,24 +56,28 @@
                 Grid.Row="1"
                 Text="Inv"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="Inv"
                 />
           <Button 
                 Grid.Column="1"
                 Grid.Row="1"
                 Text="sin"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="sin"
                 />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="1"
                 Text="In"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="In"
                 />
           <Button 
                 Grid.Column="3"
                 Grid.Row="1"
                 Text="AC"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="AC"
                />
 
          <!-- Row 2 Buttons -->  
@@ -82,24 +86,28 @@
                 Grid.Row="2"
                 Text="&#960;"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="&#960;"
                 />
           <Button 
                 Grid.Column="1"
                 Grid.Row="2"
                 Text="cos"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="cos"
                 />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="2"
                 Text="log"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="log"
                 />
           <Button 
                 Grid.Column="3"
                 Grid.Row="2"
                 Text="+/-"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="+/-"
                 />
 
          <!-- Row 3 Buttons -->  
@@ -108,24 +116,28 @@
                 Grid.Row="3"
                 Text="1/x"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="1/x"
                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="3"
                 Text="tan"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="tan"
                 />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="3"
                 Text="√"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="√"
                 />
           <Button 
                 Grid.Column="3"
                 Grid.Row="3"
                 Text="x²"
                 Style="{StaticResource calculatorScienceButton}"
+                CommandParameter="x²"
                />
 
         <!-- Row 4 Buttons -->  
@@ -134,25 +146,31 @@
                 Grid.Row="4"
                 Text="0"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="0"
                 />
           <Button 
                 Grid.Column="1"
                 Grid.Row="4"
                 Text="."
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="."
                 />
           <Button 
                 Grid.Column="2"
                 Grid.Row="4"
                 Text="="
                 Style="{StaticResource pageButton}"
-                Command="{Binding Nine}" />
+                Command="{Binding Nine}"
+                CommandParameter="="
+                />
           <Button 
                 Grid.Column="3"
                 Grid.Row="4"
                 Text="+"
                 Style="{StaticResource pageButton}"
-                Command="{Binding Division}" />
+                Command="{Binding Division}"
+                CommandParameter="+"
+                />
 
            <!-- Number Buttons Row 1  -->  
           <Button 
@@ -160,24 +178,28 @@
                 Grid.Row="4"
                 Text="7"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="7"
                 />
           <Button 
                 Grid.Column="1"
                 Grid.Row="4"
                 Text="8"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="8"
                 />
           <Button 
                 Grid.Column="2"
                 Grid.Row="4"
                 Text="9"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="9"
                 />
           <Button 
                 Grid.Column="3"
                 Grid.Row="4"
                 Text="÷"
                 Style="{StaticResource calculatorOperatorButton}"
+                CommandParameter="÷"
                 />
 
          <!-- Row 2 Buttons -->  
@@ -186,24 +208,28 @@
                 Grid.Row="5"
                 Text="4"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="4"
                 />
           <Button 
                 Grid.Column="1"
                 Grid.Row="5"
                 Text="5"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="5"
                 />
           <Button 
                 Grid.Column="2"
                 Grid.Row="5"
                 Text="6"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="6"
                 />
           <Button 
                 Grid.Column="3"
                 Grid.Row="5"
                 Text="x"
                 Style="{StaticResource calculatorOperatorButton}"
+                CommandParameter="x"
                 />
 
          <!-- Row 3 Buttons -->  
@@ -212,24 +238,28 @@
                 Grid.Row="6"
                 Text="1"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="1"
                 />
           <Button 
                 Grid.Column="1"
                 Grid.Row="6"
                 Text="2"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="2"
                 />
           <Button 
                 Grid.Column="2"
                 Grid.Row="6"
                 Text="3"
                 Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="3"
                 />
           <Button 
                 Grid.Column="3"
                 Grid.Row="6"
                 Text="-"
                 Style="{StaticResource calculatorOperatorButton}"
+                CommandParameter="-"
                 />
 
         <!-- Row 4 Buttons -->  
@@ -237,27 +267,30 @@
                 Grid.Column="0"
                 Grid.Row="7"
                 Text="0"
-                Style="{StaticResource pageButton}"
-                Command="{Binding Seven}" />
+                Style="{StaticResource calculatorOperandButton}"
+                CommandParameter="0"
+                />
           <Button 
                 Grid.Column="1"
                 Grid.Row="7"
                 FontAttributes="Bold"
                 FontSize="25"
                 Text="."
-                Style="{StaticResource pageButton}"
-                Command="{Binding Eight}" />  
+                Style="{StaticResource calculatorOperatorButton}"
+                CommandParameter="." />  
           <Button 
                 Grid.Column="2"
                 Grid.Row="7"
                 Text="="
                 Style="{StaticResource calculatorOperatorButton}"
+                CommandParameter="="
                 />
           <Button 
                 Grid.Column="3"
                 Grid.Row="7"
                 Text="+"
                 Style="{StaticResource calculatorOperatorButton}"
+                CommandParameter="+"
                 />
         
           <!-- Navigation Buttons -->

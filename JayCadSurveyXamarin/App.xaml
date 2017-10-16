@@ -43,7 +43,8 @@
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="TextColor" Value="#000" />
                 <Setter Property="FontSize" Value="15" />
-                <Setter Property="Command" Value="{Binding ScientificOperatorCommand}" />
+                <Setter Property="Command" Value="{Binding ScientificOperatorCommand}"/>
+
             </Style>
 
             <Style x:Key="calculatorOperandButton" TargetType="Button" >
