@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{9047522D-DAD5-4324-AF73-378A632A6AE5}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="JayCadSurveyXamarin/ViewModel/CalculatorViewModel.cs">
+    <Files>
+      <File FileName="JayCadSurveyXamarin/App.xaml.cs" Line="8" Column="8" />
+      <File FileName="JayCadSurveyXamarin/App.xaml" Line="110" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/MenuPages/MainMenuPage.xaml" Line="66" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/MenuPages/MainMenuPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="JayCadSurveyXamarin/MarkupExtensions/EmbeddedImage.cs" Line="1" Column="1" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/BaseViewModel.cs" Line="68" Column="13" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/ShowConversionStackPage.xaml" Line="63" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/ShowConversionStackPage.xaml.cs" Line="96" Column="6" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/LengthConversionViewModel.cs" Line="192" Column="12" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/RoundingViewModel.cs" Line="1" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/CalculatorPage.xaml" Line="314" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/CalculatorPage.xaml.cs" Line="19" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/AreaConversion2Page.xaml" Line="176" Column="15" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/LengthConversion2Page.xaml" Line="189" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/DecimalAngleConversion2Page.xaml" Line="192" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/AreaConversion2Page.xaml.cs" Line="1" Column="1" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/AboutPageViewModel.cs" Line="126" Column="29" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/AreaConversionViewModel.cs" Line="12" Column="41" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/AngleAddSubtract2.xaml" Line="242" Column="1" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/AngleAddSubtract2.xaml.cs" Line="1" Column="1" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/DegreesMinutesSecondsConversionViewModel.cs" Line="27" Column="14" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/ConversionsMenuViewModel.cs" Line="13" Column="71" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/DecimalAngleConversionViewModel.cs" Line="69" Column="73" />
+      <File FileName="JayCadSurveyXamarin/Views/ContentPages/DegreesMinutesSecondsConversion2Page.xaml" Line="111" Column="1" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="packages/Xamarin.Forms.2.5.0.280555/build/netstandard1.0/Xamarin.Forms.targets" Line="55" Column="16" />
+      <File FileName="JayCadSurveyXamarin/ViewModel/CalculatorViewModel.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.JayCadSurveyXamarin.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F63870D6-5BBC-4978-953F-20223CD88709" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.JayCadSurveyXamarin.Droid AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
+  <MultiItemStartupConfigurations />
+</Properties>
